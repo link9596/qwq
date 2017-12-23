@@ -44,7 +44,7 @@
 
   .page-link {
     /*color: $text-color;*/
-    color: #E91E63;
+    color: #ffffff;
     line-height: $base-line-height;
 
     // Gaps between nav items, but not on the last one
@@ -81,7 +81,8 @@
       text-align: center;
 
       > svg path {
-        fill: $grey-color-dark;
+        /*fill: $grey-color-dark;*/
+        fill: #ffffff
       }
     }
 
@@ -99,6 +100,7 @@
       padding-top: 20px;
     }
     .page-link {
+      color: #E91E63;
       display: block;
       padding: 10px 10px;
 
