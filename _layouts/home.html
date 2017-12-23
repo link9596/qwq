@@ -24,7 +24,6 @@ layout: default
         <span>{{ post.excerpt | markdownify | truncatewords: 30 }}</span>
 
       </li>
-    {% endfor %}
 
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
@@ -51,6 +50,10 @@ layout: default
   {% endif %}
 </div>
 {% endif %}
+
+    {% endfor %}
+
+
 
 
 
