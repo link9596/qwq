@@ -57,7 +57,8 @@
     position: absolute;
     top: 9px;
     right: $spacing-unit / 2;
-    background-color: $background-color;
+    background-color: transparent;
+    /*background-color: $background-color;*/
     border: 0px solid $grey-color-light;
     border-radius: 5px;
     text-align: right;
@@ -89,6 +90,8 @@
     input ~ .trigger {
       clear: both;
       display: none;
+      margin-top: 47px;
+      color: #FFFFFF;
     }
 
     input:checked ~ .trigger {
