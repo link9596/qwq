@@ -3,7 +3,7 @@ description: 这里是网红Link的实验室
 show_downloads: false
 
 baseurl: "/blog" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
-url: "https://link9596.github.io" # change this to the base hostname & protocol for your site
+url: "http://lkopp.ml" # change this to the base hostname & protocol for your site
 
 google_analytics:
 # cayman-blog date format
