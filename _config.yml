@@ -13,7 +13,7 @@ cayman-blog:
 
 theme: # leave it empty
 
-paginate: 1
+paginate: 8
 paginate_path: "page:num"
 
 
