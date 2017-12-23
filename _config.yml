@@ -6,7 +6,7 @@ baseurl: "/blog" # change this to the subpath of your site, e.g. /blog. Leave it
 url: "https://link9596.github.io" # change this to the base hostname & protocol for your site
 
 # PAGINATION
-paginate: 5
+paginate: 
 paginate_path: "blog/page:num"
 
 google_analytics:
