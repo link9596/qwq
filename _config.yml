@@ -3,7 +3,7 @@ description: Cayman Blog Theme is a clean, responsive blogging theme for Jekyll 
 show_downloads: false
 
 baseurl: "/blog" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
-url: "https://.github.io" # change this to the base hostname & protocol for your site
+url: "https://link9596.github.io" # change this to the base hostname & protocol for your site
 
 google_analytics:
 # cayman-blog date format
@@ -14,7 +14,7 @@ cayman-blog:
 theme: # leave it empty
 
 paginate: 2
-paginate_path: "page:num"
+paginate_path: "blog/page:num"
 
 
 # social
