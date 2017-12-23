@@ -14,7 +14,7 @@ cayman-blog:
 theme: # leave it empty
 
 paginate: 2
-paginate_path: "blog/page:num"
+paginate_path: "page:num"
 
 
 # social
