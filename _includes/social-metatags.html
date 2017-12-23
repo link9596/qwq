@@ -1,5 +1,5 @@
-<!-- Update your html tag to include the itemscope and itemtype attributes. -->
-<html itemscope itemtype="http://schema.org/Article">
+<!-- fuck you up -->
+<html itemscope itemtype="">
 
 {% if page.title %}
  {% assign page_title = page.title | escape %}
@@ -30,7 +30,7 @@
 
 {% assign canonical_url = page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url %}
 
-<!-- Place this data between the <head> tags of your website -->
+<!-- seo的tags -->
 {%if page_author %}
   <meta name="author" content="{{ page_author }}">
 {%endif %}
@@ -48,7 +48,7 @@
   <meta name="keywords" itemprop="category" content="{{ category | escape  }}">
 {%endif %}
 
-<!-- Schema.org markup for Google+ -->
+<!-- 给Google+的 -->
 <meta itemprop="name" content="{{ page_title }}">
 <meta itemprop="description" content="{{ page_description }}">
 {%if page_image %}
@@ -69,14 +69,14 @@
   <meta name="twitter:creator" content="@{{ twitter_creator }}">
 {%endif %}
 
-<!-- Twitter summary card with large image must be at least 280x150px -->
+<!-- 最大twitter图片280x150px -->
 {%if page_image %}
   <meta name="twitter:image:src" content="{{ page_image }}">
   <meta property="twitter:image" content="{{ page_image }}">
 {%endif %}
 <meta property="twitter:url" content="{{ canonical_url }}">
 
-<!-- Open Graph data -->
+<!-- 给Open Graph data -->
 <meta property="og:title" content="{{ page_title }}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="{{ canonical_url }}" />
