@@ -5,4 +5,4 @@ tagline: nothing
 ---
 nothing
 
-[Go to the Home Page]({{ site.url }}{{ site.baseurl }})
+[返回主页]({{ site.url }}{{ site.baseurl }})
