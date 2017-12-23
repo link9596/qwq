@@ -1,14 +1,9 @@
-title: Link.
-description: 这里是网红Link的BBlog.
-show_downloads: false
+title: Cayman Blog Theme
+description: Cayman Blog Theme is a clean, responsive blogging theme for Jekyll and GitHub Pages, with social/SEO features.
+show_downloads: true
 
-baseurl: "/blog" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
-url: "https://link9596.github.io" # change this to the base hostname & protocol for your site
-
-
-# PAGINATION
-paginate: 
-paginate_path: "blog/page:num"
+baseurl: "/cayman-blog" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
+url: "https://lorepirri.github.io" # change this to the base hostname & protocol for your site
 
 google_analytics:
 # cayman-blog date format
@@ -17,6 +12,10 @@ cayman-blog:
   date_format: "%b %-d, %Y"
 
 theme: # leave it empty
+
+paginate: 5
+paginate_path: "page:num"
+
 
 # social
 author: "Lore Pirri"
