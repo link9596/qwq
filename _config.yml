@@ -18,10 +18,10 @@ paginate_path: "page:num"
 
 
 # social
-author: "Lore Pirri"
+author: "Link"
 image: /thumbnail-jumbo.png
 twitter:
-  username: lorepirri
+  username: link
 #  site:
 facebook:
   #publisher: 1592372034171500
