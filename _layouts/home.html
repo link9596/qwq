@@ -11,11 +11,11 @@ layout: default
   <div>&nbsp;</div>
 
   <ul class="post-list">
-    {% for post in paginator.posts %}
+    {% for post in site.posts %}
       <li>
 
         {% assign date_format = site.cayman-blog.date_format | default: "%b %-d, %Y" %}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <span class="post-meta">{{ post.date | date: date_format }}</span><span class="post-meta">,{% include tags_list.html tags=page.tags tag_count=page.tags.size %}</span>
 
         <h2>
           <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}">{{ post.title | escape }}</a>
@@ -54,6 +54,31 @@ layout: default
   {% endif %}
 </div>
 {% endif %}
+
+
+
+
+
+
+<!--
+  {% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url | replace: '//', '/' }}" class="button" >233
+      <i class="fa fa-chevron-left"></i>
+      {{ site.theme_settings.str_previous_page }}
+    </a>
+    {% endif %}
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url | replace: '//', '/' }}" class="button" >133
+      {{ site.theme_settings.str_next_page }}
+      <i class="fa fa-chevron-right"></i>
+    </a>
+    {% endif %}
+  </div>
+  {% endif %}
+-->
+
 
 
 
