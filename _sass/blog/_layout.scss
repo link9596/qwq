@@ -158,7 +158,18 @@
   font-weight:bold;
 }
   
-.pagegui{
+.cm-c{
   text-align: center;
   display:block;
+}
+.cm-l{
+  float:left;
+  width:33.33%;
+  display:block;
+}
+.cm-r{
+  float:right;
+  width:33.33%;
+  dispaly:block;
+  text-align:right;
 }
