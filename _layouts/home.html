@@ -37,13 +37,13 @@ layout: default
     <span>&laquo; Prev</span>
   {% endif %}
 
- <!-- {% for page in (1..paginator.total_pages) %}
+  <!--{% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
     {% elsif page == 1 %}-->
-     <span> {{ paginator.page }} / {{ paginator.total_pages }} </span>
-    {% else %}
+           <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    <!--{% else %}
     {% endif %}
-  {% endfor %}
+  {% endfor %}-->
 
   {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
