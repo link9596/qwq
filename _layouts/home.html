@@ -37,9 +37,9 @@ layout: default
     <span>&laquo; Prev</span>
   {% endif %}
 
-  {% for page in (1..paginator.total_pages) %}
+ <!-- {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
-    {% elsif page == 1 %}
+    {% elsif page == 1 %}-->
       {{ paginator.page }} / {{ paginator.total_pages }}
     {% else %}
     {% endif %}
