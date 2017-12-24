@@ -19,6 +19,8 @@ layout: default
     {{ content }}
   </div>
 
+    {% include tags_list.html tags=page.tags tag_count=page.tags.size %}
+  
 <hr/>
 <!-- LiveRe -->
 <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjY0Mi85MjAz">
