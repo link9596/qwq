@@ -1,7 +1,7 @@
 {% if include.tag_count > 0 %}
 <footer>
-  <div class="tags">
     {% for tag in include.tags %}
+    <div style="color: #B0BEC5">标签:
     <a class="tag" href="{{site.baseurl}}/tags#{{tag}}">#{{tag}}</a>
     {% endfor %}
   </div>
