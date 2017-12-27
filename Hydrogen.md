@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Billbored
+title: Billboard
 tagline: 公告
 ---
 <article>
