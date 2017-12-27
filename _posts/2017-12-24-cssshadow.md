@@ -50,4 +50,7 @@ title: 用css的blur属性生成阴影
 
 嗯，最重要的就是这一句`filter: blur(10px) brightness(80%) opacity(.8); `。
 
-[1]: https://
+[1]: http://lkopp.ml/usrimg/2017-12-24-1.png
+[2]: http://lkopp.ml/usrimg/2017-12-24-2.png
+[3]: http://lkopp.ml/usrimg/2017-12-24-3.png
+[4]: http://lkopp.ml/usrimg/2017-12-24-4.png
