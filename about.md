@@ -5,6 +5,8 @@ tagline: My friends.
 permalink: /links.html
 ---
 
+<base target=_blank>
+
 <div class="link-chip">
   <img src="http://emlog.club/logo.jpg" class="link-chip-icon">
   <a class="link-chip-title" href="http://emlog.club/">友链博客</a>
