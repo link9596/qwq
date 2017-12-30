@@ -2,7 +2,7 @@
 layout: page
 title: Links
 tagline: My friends.
-permalink: /about.html
+permalink: /links.html
 ---
 
 <div class="link-chip">
