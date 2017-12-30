@@ -15,4 +15,9 @@ permalink: /links.html
   <a class="link-chip-title" href="http://www.huisai.top">蟋蟀程序员</a>
 </div>
 
+<div class="link-chip">
+  <img src="http://www.molerose.com/usr/themes/molerose/images/400-400.jpg" class="link-chip-icon" style="margin-left: -4px">
+  <a class="link-chip-title" href="http://www.molerose.com/">Molerose</a>
+</div>
+
 [返回主页]({{ site.url }}{{ site.baseurl }})
