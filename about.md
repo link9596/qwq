@@ -10,7 +10,7 @@ permalink: /about.html
   <a class="link-chip-title" href="http://emlog.club/">友链博客</a>
 </div>
 
-<a class="link-chip" href="http://lkopp.ml/">
+<div class="link-chip">
   <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
   <a class="link-chip-title" href="http://emlog.club/">demo</a>
 </a>
