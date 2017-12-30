@@ -11,7 +11,7 @@ permalink: /about.html
 </div>
 
 <div class="link-chip">
-  <img src="http://www.huisai.top/usr/files/icon.jpg" class="link-chip-icon" style="float:left"></img>
+  <img src="http://www.huisai.top/usr/files/icon.jpg" class="link-chip-icon" style="float:left">
   <a class="link-chip-title" href="http://www.huisai.top/">蟋蟀程序员</a>
 </div>
 
