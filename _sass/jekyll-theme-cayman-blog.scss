@@ -101,11 +101,11 @@ a {
   }
 
   @include medium {
-    padding: 4rem 4rem;
+    padding: 4rem 4rem 3rem;
   }
 
   @include small {
-    padding: 3.5rem 1rem;
+    padding: 3.5rem 1rem 2rem;
   }
 }
 
