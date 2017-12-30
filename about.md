@@ -11,28 +11,8 @@ permalink: /about.html
 </div>
 
 <div class="link-chip">
-  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
-  <a class="link-chip-title" href="http://emlog.club/">demo</a>
-</div>
-
-<div class="link-chip">
-  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
-  <a class="link-chip-title" href="http://emlog.club/">demo</a>
-</div>
-
-<div class="link-chip">
-  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
-  <a class="link-chip-title" href="http://emlog.club/">demo</a>
-</div>
-
-<div class="link-chip">
-  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
-  <a class="link-chip-title" href="http://emlog.club/">demo</a>
-</div>
-
-<div class="link-chip">
-  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
-  <a class="link-chip-title" href="http://emlog.club/">demo</a>
+  <img src="http://www.huisai.top/usr/files/icon.jpg" class="link-chip-icon">
+  <a class="link-chip-title" href="http://www.huisai.top/">蟋蟀程序员</a>
 </div>
 
 [返回主页]({{ site.url }}{{ site.baseurl }})
