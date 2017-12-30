@@ -13,6 +13,26 @@ permalink: /about.html
 <div class="link-chip">
   <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
   <a class="link-chip-title" href="http://emlog.club/">demo</a>
-</a>
+</div>
+
+<div class="link-chip">
+  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
+  <a class="link-chip-title" href="http://emlog.club/">demo</a>
+</div>
+
+<div class="link-chip">
+  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
+  <a class="link-chip-title" href="http://emlog.club/">demo</a>
+</div>
+
+<div class="link-chip">
+  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
+  <a class="link-chip-title" href="http://emlog.club/">demo</a>
+</div>
+
+<div class="link-chip">
+  <img src="http://lkopp.ml/avatar/avatar.png" class="link-chip-icon">
+  <a class="link-chip-title" href="http://emlog.club/">demo</a>
+</div>
 
 [返回主页]({{ site.url }}{{ site.baseurl }})
