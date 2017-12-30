@@ -1,11 +1,10 @@
 ---
 layout: page
 title: About
-tagline: A few more words about this site
+tagline: My friends.
 permalink: /about.html
-hidden: ture
 ---
 
-Nothing...
+<div class="link-logo">
 
 [返回主页]({{ site.url }}{{ site.baseurl }})
