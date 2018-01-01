@@ -21,7 +21,7 @@ permalink: /links.html
 </div>
 
 <div class="link-chip">
-  <img src="https://ogays.club/" class="link-chip-icon">
+  <img src="https://ogays.club/" class="link-chip-icon" style="margin-left: -4px">
   <a target="_blank" class="link-chip-title" href="http://emlog.club/">共享评测</a>
 </div>
 
