@@ -20,4 +20,9 @@ permalink: /links.html
   <a target="_blank" class="link-chip-title" href="http://www.molerose.com/">Molerose</a>
 </div>
 
+<div class="link-chip">
+  <img src="https://ogays.club/" class="link-chip-icon">
+  <a target="_blank" class="link-chip-title" href="http://emlog.club/">共享评测</a>
+</div>
+
 [返回主页]({{ site.url }}{{ site.baseurl }})
