@@ -1,6 +1,12 @@
 /**
  * Site header
  */
+
+.fade{
+   animation:fade-in-down 0.8s;
+   -webkit-animation:fade-in-down 0.8s; /* Safari and Chrome */
+}
+  
 .site-header {
   border-bottom: 0px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
