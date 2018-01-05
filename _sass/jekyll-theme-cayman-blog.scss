@@ -36,6 +36,11 @@ body {
   -webkit-animation:fade-in-down 0.8s; /* Safari and Chrome */
 }
 
+.fade{
+   animation:fade-in-down 0.8s;
+   -webkit-animation:fade-in-down 0.8s; /* Safari and Chrome */
+}
+  
 @keyframes fade-in-down{
   from{
     opacity:0;-webkit-transform:translateY(30px);transform:translateY(30px)
