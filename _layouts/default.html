@@ -79,6 +79,9 @@
         {% endif %}
       {% endif %}
       <!-- 开始循环输出文章 -->
+      
+      <div class="fade">
+      
       {% if page.layout == 'post' %}
         <h2 class="project-date">
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
@@ -135,6 +138,8 @@
           </span>-->
         {% endif %}
 
+        </div><!--end fade-->
+        
       </footer>
     </section>
 
@@ -158,6 +163,6 @@
           var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(hm, s);})();
       </script>
-    
+      
   </body>
 </html>
