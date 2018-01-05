@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: 假技术
+tags: Skill
 title: 用css的blur属性生成阴影
 ---
 
