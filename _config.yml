@@ -13,6 +13,9 @@ cayman-blog:
 
 theme: # leave it empty
 
+#install emoji
+plugins:
+  - jemoji
 
 paginate: 8
 paginate_path: "page:num"
