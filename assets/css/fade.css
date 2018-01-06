@@ -8,6 +8,7 @@
     -webkit-transform: translateY(0);
   }
 }
+
 @keyframes fade-in-down {
   from {
     opacity: 0;
@@ -17,6 +18,7 @@
     transform: translateY(0);
   }
 }
+
 .fade{
   -webkit-animation: fade-in-down 0.5s;
   animation: fade-in-down 0.5s;
