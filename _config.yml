@@ -23,7 +23,7 @@ paginate_path: "page:num"
 
 # social
 author: "Link"
-image: /thumbnail-jumbo.png
+image: 
 twitter:
   username: link
 #  site:
