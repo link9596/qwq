@@ -3,8 +3,7 @@
  */
 
 .fade{
-   animation:fade-in-down 0.8s;
-   -webkit-animation:fade-in-down 0.8s; /* Safari and Chrome */
+  @include animation(fade-in-down .8s);
 }
   
 .site-header {
