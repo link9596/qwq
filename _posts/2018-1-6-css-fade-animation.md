@@ -53,7 +53,8 @@ to {
 为了使用这个动画，我们需要新写一个css类：
 ```css
 .fade{
-  -webkit-animation: fade-in-down 0.5s;
+  -webkit-animation: fade-in-down 0.5s;
   animation: fade-in-down 0.5s;
 }
 ```
+然后为你的元素加上这个类以体验美妙的加载效果吧！
