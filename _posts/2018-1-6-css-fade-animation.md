@@ -18,7 +18,10 @@ for(var i=0;i<100;i++){
 
 写到一半，我才记起来有css3有`animation`属性，实现起来代码似乎更少，因为现主流机器对css3的支持已经很好，JS动画也是通过改变css实现的，个人觉得，简单的动画还是用 CSS 做，特别复杂的再用 JS，于是弃坑了JS决定写css。
 
-> 新建一个动画，命名为`fade-in`
+> 新建一个动画，命名为`fade-in`，`opacity`(不透明度)从`0~1`
+
+>`translateY`(距离Y轴的坐标)从`30px~0px`，取正值从下方滑入，取负值从上方滑入
+
 ```css
 @keyframes fade-in {
 from {
@@ -29,5 +32,28 @@ to {
   opacity: 1;
     transform: translateY(0);
     }
+}
+```
+
+动画基本制作完成，为了兼容移动端(例如Chrome和safari等)，需要再加一些东西
+```css
+@-webkit-keyframes fade-in {
+  from {
+  opacity: 0;
+    -webkit-transform: translateY(30px);
+      }
+  to {
+  opacity: 1;
+    -webkit-transform: translateY(0);
+     }
+}
+```
+可以看到改变了一些小的地方，代码中加了`-webkit-`，就是为了兼容safari、chrome
+
+为了使用这个动画，我们需要新写一个css类：
+```css
+.fade{
+  -webkit-animation: fade-in-down 0.5s;
+  animation: fade-in-down 0.5s;
 }
 ```
