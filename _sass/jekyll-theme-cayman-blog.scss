@@ -38,7 +38,9 @@ a {
   color: $body-link-color;
   text-decoration: none;
   color: #009688;
-
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-modify: read-write-plaintext-only;
+  
   &:hover {
     text-decoration: underline;
   }
