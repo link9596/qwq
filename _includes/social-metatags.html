@@ -34,8 +34,8 @@
 {%if page_author %}
   <meta name="author" content="{{ page_author }}">
 {%endif %}
-<meta name="description" content="blog,html,css,php,web" />
-<meta name="keywords" content="{{ page_keywords }}" />
+<meta name="description" content="{{ page_description }}" />
+<meta name="keywords" content="html,css,php,blog,web" />
 {%if page.tags.length > 0 %}
   <meta name="keywords" itemprop="tags" content="{{ page.tags | join: ', ' | escape }}"/>
 {%endif %}
