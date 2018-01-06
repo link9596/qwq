@@ -78,9 +78,7 @@
           <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
         {% endif %}
       {% endif %}
-      <!-- 开始循环输出文章 -->
-      
-      <div class="fade">
+      <!-- 循环输出 -->
       
       {% if page.layout == 'post' %}
         <h2 class="project-date">
@@ -97,7 +95,7 @@
       <!-- 结束循环 -->
     </section>
 
-    <section class="main-content">
+    <section class="main-content fade">
 
       {{ content }}
 
