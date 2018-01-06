@@ -10,27 +10,6 @@ html {
  * Remove default margin.
  */
 
-.fade{
-   @include animation(fade-in-down .8s);
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }}
-@keyframes fade-in-down {
-  from {
-    opacity: 0;
-    @include transform(translateY(-$spacing-unit));
-  }
-  to {
-    opacity: 1;
-    @include transform(translateY(0));
-  }}
-
 body {
   margin: 0;
 }
