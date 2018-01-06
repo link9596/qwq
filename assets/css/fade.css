@@ -21,6 +21,6 @@
 
 
 .fade{
-  -webkit-animation: fade-in-down 0.8s;
-  animation: fade-in-down 0.8s;
+  -webkit-animation: fade-in-down 0.5s;
+  animation: fade-in-down 0.5s;
 }
