@@ -4,9 +4,9 @@ title: css3动画之页面滑入效果
 tags: Skill
 ---
 
-一直想加一个页面加载的“淡入+滑入”效果，于是去SegmentFault上找了一些，发现他们都是用Jquery动画实现的，emmm...这种简单动画咱就别依赖第三方框架了吧:flushed:，于是乎决定自己写一个。
+一直想加一个页面加载的“淡入+滑入”效果，于是去SegmentFault上找了一些，发现他们都是用Jquery动画实现的，emmm...这种简单动画咱就别依赖第三方框架了吧:poop:，于是乎决定自己写一个。
 
-为什么我不想用JQ，因为JQ库大小达到了260+KB，引用后肯定会影响加载速度，除非用异步加载，熟悉原生JS的话可以用直接用JS写这可是极好的：
+为什么我不想用JQ，因为JQ库大小达到了260+KB:see_no_evil:，引用后肯定会影响加载速度，除非用异步加载，熟悉原生JS的话可以用直接用JS写这可是极好的：
 
 ```javascript
 var body=document.getElementsByTagName('body')[0];
@@ -57,6 +57,6 @@ to {
   animation: fade-in-down 0.5s;
 }
 ```
-然后把这三段代码封装到一个css文件内引用，然后为你的元素加上这个类以体验美妙的加载效果吧！
+然后把这三段代码封装到一个css文件内引用，然后为你的元素加上这个类以体验美妙的加载效果吧！:trollface:
 
 [查看演示页面:smile:](/demo/2018-1-6-fade-in.html)
