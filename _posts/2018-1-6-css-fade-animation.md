@@ -20,7 +20,7 @@ for(var i=0;i<100;i++){
 
 > 新建一个动画，命名为`fade-in`，`opacity`(不透明度)从`0~1`
 
->`translateY`(距离Y轴的坐标)从`30px~0px`，取正值从下方滑入，取负值从上方滑入
+>`translateY`(距离Y轴的距离)从`30px~0px`，取正值从下方滑入，取负值从上方滑入
 
 ```css
 @keyframes fade-in {
