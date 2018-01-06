@@ -37,14 +37,6 @@ layout: default
     <span class="cm-l"><img src="/theme/leftdis.svg" style="height:28px;"></span>
   {% endif %}
 
-  <!--{% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-    {% elsif page == 1 %}-->
-  
-    <!--{% else %}
-    {% endif %}
-  {% endfor %}-->
-
   {% if paginator.next_page %}
     <a class="cm-r" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="/theme/right.svg" style="height:28px;"></a>
   {% else %}
