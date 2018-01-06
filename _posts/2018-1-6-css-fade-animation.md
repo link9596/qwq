@@ -13,7 +13,21 @@ var body=document.getElementsByTagName('body')[0];
 for(var i=0;i<100;i++){
  var a=0;
  var t=setTimeout("body.style.opacity=a/100;a++;",i*5);
-}
+} //这只实现了页面渐变效果，具体原因看下面
 ```
 
-css3`animation`
+写到一半，我才记起来有css3有`animation`属性，实现起来代码似乎更少，因为现主流机器对css3的支持已经很好，JS动画也是通过改变css实现的，个人觉得，简单的动画还是用 CSS 做，特别复杂的再用 JS，于是弃坑了JS决定写css。
+
+> 新建一个动画，命名为`fade-in`
+```css
+@keyframes fade-in {
+from {
+  opacity: 0;
+    transform: translateY(30px);
+    }
+to {
+  opacity: 1;
+    transform: translateY(0);
+    }
+}
+```
