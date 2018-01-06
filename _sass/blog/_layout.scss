@@ -1,10 +1,6 @@
 /**
  * Site header
  */
-
-.fade{
-  @include animation(fade-in-down .8s);
-}
   
 .site-header {
   border-bottom: 0px solid $grey-color-light;
