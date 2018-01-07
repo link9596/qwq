@@ -20,7 +20,7 @@ for(var i=0;i<100;i++){
 
 > 新建一个动画，命名为`fade-in`，`opacity`(不透明度)从`0~1`
 
->`translateY`(距离Y轴的距离)从`30px~0px`，取正值从下方滑入，取负值从上方滑入
+>`translateY`(离Y轴的距离)从`30px~0px`，取正值从下方滑入，取负值从上方滑入
 
 ```css
 @keyframes fade-in {
@@ -53,10 +53,10 @@ to {
 为了使用这个动画，我们需要新写一个css类：
 ```css
 .fade{
-  -webkit-animation: fade-in-down 0.5s;
-  animation: fade-in-down 0.5s;
+  -webkit-animation: fade-in 0.5s;
+  animation: fade-in 0.5s;
 }
 ```
 然后把这三段代码封装到一个css文件内引用，然后为你的元素加上这个类以体验美妙的加载效果吧！:trollface:
 
-[查看演示页面:smile:](/demo/2018-1-6-fade-in.html)
+[查看演示页面:trollface:](/demo/2018-1-6-fade-in.html)
