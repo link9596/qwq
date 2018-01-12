@@ -34,5 +34,10 @@ permalink: /links.html
 <img src="http://0.gravatar.com/avatar/c3441ce2d52103994bf68f221b331707?s=64&d=mm&r=g" class="link-chip-icon">
 <a target="_blank" class="link-chip-title" href="http://blog.whoit.top/">dyt5AAUI</a>
 </div>
-　
+
+<div class="link-chip">
+<img src="http://www.ashite.com/favicon.ico" class="link-chip-icon">
+<a target="_blank" class="link-chip-title" href="http://www.ashite.com/">凌独小棧</a>
+</div>
+
 [返回主页]({{ site.url }}{{ site.baseurl }})
