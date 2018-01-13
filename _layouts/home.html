@@ -34,19 +34,18 @@ layout: default
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
-    <a class="cm-l" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="color: #E91E63">&lsaquo;</a>
+    <a class="cm-text-left" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="color: #E91E63;text-decoration: none;">&lsaquo;</a>
   {% else %}
-    <span class="cm-l"><img src="/theme/leftdis.svg" style="height:28px;"></span>
+    <span class="cm-text-left" style="color: #F8BBD0">&lsaquo;</span>
   {% endif %}
 
   {% if paginator.next_page %}
-    <a class="cm-r" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="/theme/right.svg" style="height:28px;"></a>
+    <a class="cm-text-right" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="color: #E91E63;text-decoration: none;">&rsaquo;</a>
   {% else %}
-    <span class="cm-r"><img src="/theme/rightdis.svg" style="height:28px;"></span>
+    <span class="cm-text-right">&rsaquo;</span>
   {% endif %}
 </div>
     
-<div class="cm-c">{{paginator.page}}/{{paginator.total_pages}}
-</div>
+<div class="cm-c">{{paginator.page}}/{{paginator.total_pages}}</div>
     
 {% endif %}
