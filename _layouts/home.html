@@ -34,15 +34,15 @@ layout: default
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
-    <a class="cm-text-left" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="color: #E91E63;text-decoration: none;">&lsaquo;</a>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img class="cm-l" src="/theme/left.svg" style="height:28px"></a>
   {% else %}
-    <span class="cm-text-left" style="color: #F8BBD0">&lsaquo;</span>
+    <span class="cm-l"><img src="/theme/leftdis.svg" style="height:28px"></span>
   {% endif %}
 
   {% if paginator.next_page %}
-    <a class="cm-text-right" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="color: #E91E63;text-decoration: none;">&rsaquo;</a>
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img class="cm-r" src="/theme/right.svg" style="height:28px"></a>
   {% else %}
-    <span class="cm-text-right">&rsaquo;</span>
+    <span class="cm-r"><img src="/theme/rightdis.svg"></span>
   {% endif %}
 </div>
     
