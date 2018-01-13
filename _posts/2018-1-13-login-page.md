@@ -9,9 +9,12 @@ tag: Skill
 在这篇文章中，有：
 
 ### #CSS
-- `Material Design Input框`
-- `Material Design 浮动按钮`
-- `Material Design 阴影`
+> `Material Design Input框`
+> `Material Design 浮动按钮`
+> `Material Design 阴影`
 
 ### #JavaScript
-- `JS无需后端实现密码登陆 Beta!`
+> `JS无需后端实现密码登陆 [Beta!]`
+
+首先是实现Material Design风格的输入框，看了一下谷歌的官方MD设计文档，这个倒挺简单，主要就是输入框在focus状态下的动画：
+```
