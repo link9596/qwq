@@ -94,4 +94,4 @@ window.location.href="http://lkopp.ml";
   }
 }
 ```
-注意！此JS登陆功能仅作测试用！
+注意！此JS登陆功能仅作测试或玩耍用！因为密码可以被秒破:joy:
