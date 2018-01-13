@@ -184,7 +184,19 @@
   text-align:right;
 }
 
-
+/*文字布局*/
+.cm-text-left{
+  text-align:left;
+  display:block;
+}
+.cm-text-center{
+  text-align:center;
+  display:block
+}
+.cm-text-right{
+  text-align:right;
+  display:block;
+}
 .link-chip {
   display: inline-block;
   height: 64px;
