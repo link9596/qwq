@@ -7,12 +7,13 @@ tag: Skill
 看哪！我们发现了一些一颗赛艇的Material Design组件！想要占有它并开始使用它？那就快过来抓住它吧！:smirk:
 
 ## #获取
+![You can catch it here](http://admin.lkopp.ml/css/styles.css)
 
-
-在这篇文章中，有：
+在这篇文章中，你会看到：
 
 ### #CSS
 > `Material Design 输入框`
+
 > `Material Design 浮动按钮`
 
 ### #JavaScript
@@ -45,7 +46,7 @@ tag: Skill
 
 ## #浮动按钮
 
-这个需要注意按钮的阴影，这里可能与平时设置的阴影值不大一样，还有就是按钮被点击后的浮动效果：
+这个需要注意按钮的阴影，这里可能与平时设置的阴影值不大一样，还有就是按钮的浮动效果：
 ```css
 .link-button{
   min-width: 88px;
@@ -70,7 +71,7 @@ tag: Skill
 }
 ```
 
-使用时为元素加上`link-button`类即可拥有浮动按钮效果
+使用时为元素加上`link-button`类即可拥有浮动按钮样式
 
 使用实例：
 ```html
@@ -78,7 +79,7 @@ tag: Skill
 ```
 
 
-到现在UI已经弄得差不多了，现在要做一个密码登陆功能，为了方便就直接用Javascript写，需要用JS监听输入框输入的内容并判断，如果两个框输入的结果都与设定的一致，则跳转到指定网页，如果不一致，则弹窗：
+UI已经弄得差不多了，要做一个密码登陆功能进行测试，为了方便就直接用Javascript写，需要用JS监听输入框输入的内容并判断，如果两个框输入的结果都与设定的一致，则跳转到指定网页，如果不一致，则弹窗：
 ```javascript
 function check(){
  var user = "link", password = "95969639";
@@ -93,3 +94,4 @@ window.location.href="http://lkopp.ml";
   }
 }
 ```
+注意！此JS登陆功能仅作测试用！
