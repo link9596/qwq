@@ -21,7 +21,7 @@ tag: Skill
 
 ## #Input框
 
-这个看了一下谷歌的官方MD设计文档，这个倒挺简单，主要就是输入框在focus状态下的动画，这个可以用translateY配合字体大小的变换实现，这里只举了一个类作例子：
+这个看了一下谷歌的官方MD设计文档，倒挺简单，主要就是输入框在focus状态下的动画，可以用translateY配合字体大小的变换实现，这里只举了一个类作例子：
 ```css
 .form-group .form-control:focus + .form-label, .form-group .form-control:valid + .form-label {
   font-size: 12px;/*点击后字体变小*/
