@@ -34,7 +34,7 @@ layout: default
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
-    <a class="cm-l" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="/theme/left.svg" style="height:28px;"></a>
+    <a class="cm-l" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="/theme/left.svg" style="height:28px;">&rsaquo;</a>
   {% else %}
     <span class="cm-l"><img src="/theme/leftdis.svg" style="height:28px;"></span>
   {% endif %}
