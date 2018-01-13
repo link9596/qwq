@@ -18,7 +18,7 @@ theme: # leave it empty
 plugins:
   - jemoji
 
-paginate: 3
+paginate: 8
 paginate_path: "page:num"
 
 
