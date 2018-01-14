@@ -18,6 +18,7 @@ tags: daily
 
 > ## 生活
 > #### [生活中遇到过哪些剧情特别反转的小事？](http://www.zhihu.com/question/22559530)
+> #### [你有哪些经历让你为自己的机智感到折服？](https://www.zhihu.com/question/61664687)
 
 ---
 
@@ -28,3 +29,18 @@ tags: daily
 
 > ## 设计
 > #### [你见过最丑的设计是什么？](https://www.zhihu.com/question/37284137)
+
+---
+
+> ## 二维码 容错
+> #### [二维码在不影响扫码的情况下，哪些部分可以删除？](https://www.zhihu.com/question/27751863)
+
+--- 
+
+> ## WiFi WALN 区别
+> #### [什么时候应该叫 Wi-Fi，什么时候叫 WLAN 呢？](https://www.zhihu.com/question/19821864)
+
+---
+
+> ## 核电站 原理
+> #### [核电站的原理就是烧水吗？](https://www.zhihu.com/question/30460700)
