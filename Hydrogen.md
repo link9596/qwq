@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Billboard
-tagline: 公告
+title: Heart
+tagline: 内心深处
 ---
 
 天空终于放晴，见到了消失了许久的星星。
