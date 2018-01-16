@@ -1,6 +1,6 @@
 ---
 layout: page
-title: :joy:
+title: Billboard
 tagline: Biu~
 ---
 
