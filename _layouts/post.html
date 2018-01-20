@@ -45,6 +45,17 @@ layout: default
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <div id="comment"></div>
   
+  new Valine({
+    el: '#comment' ,
+    notify:false, 
+    verify:false, 
+    appId: 'Gx1NLDzbr59Vr5qAgRKkodRM-gzGzoHsz',
+    appKey: 'BPgyB3A8akTPwcLFEByBeQzV',
+    placeholder: 'just go go',
+    path:window.location.pathname, 
+    avatar:'mm' 
+});
+  
   {% if site.disqus.shortname %}
     {% include disqus_comments.html %}
   {% endif %}
