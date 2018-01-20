@@ -39,6 +39,6 @@ facebook:
 #comm
 valine_comment:
  enable: true
- leancloud_appid: oip6cvm7CO6OeBtyghYeBJJe-gzGzoHsz
- leancloud_appkey: iLS9tFGX3LvOp2HMCH2C49Ch
- placeholder: Just go go
+ leancloud_appid: Gx1NLDzbr59Vr5qAgRKkodRM-gzGzoHsz
+ leancloud_appkey: BPgyB3A8akTPwcLFEByBeQzV
+ placeholder: Talk
