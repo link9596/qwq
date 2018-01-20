@@ -1,9 +1,9 @@
 <script>
- new Valine({
-       av: AV,
-       el: '#comments',
-       app_id: 'Gx1NLDzbr59Vr5qAgRKkodRM-gzGzoHsz',
-       app_key: 'BPgyB3A8akTPwcLFEByBeQzV',
-       placeholder:'233'
-   });
- </script>
+    new Valine({
+        av: AV,
+        el: '#comments',
+        app_id: '{{ site.data.social.valine_comment.leancloud_appid }}',
+        app_key: '{{ site.data.social.valine_comment.leancloud_appkey }}',
+        placeholder:'{{ site.data.social.valine_comment.placeholder }}'
+    });
+</script>
