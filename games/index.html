@@ -1,0 +1,44 @@
+---
+layout: page
+title: Game
+tagline: 你能猜出来吗？
+---
+
+ <head>
+   <link rel=stylesheet href="http://lkopp.ml/assets/css/fade.css">
+   <link rel="stylesheet" type="text/css" href="http://admin.lkopp.ml/css/default.css">
+   <link rel="stylesheet" type="text/css" href="http://admin.lkopp.ml/css/styles.css">
+   <script src="http://admin.lkopp.ml/js/game.js"></script>
+   <meta http-equiv="Cache-control" content="no-cache">
+   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+   <meta charset="utf-8">
+   <link rel="shortcut icon" type="image/x-icon" href="http://linker.ml/img/favicon.ico" media="screen"/>
+ </head>
+
+ <style>
+.h1,.h2,.h3,.h4,.lead,body,h1,h2,h3,h4{
+  font-family:RobotoDraft,Roboto,"Helvetica Neue",Helvetica,"Segoe UI","Microsoft YaHei",arial,sans-serif;font-weight:300;width:100%;
+}
+
+.center{
+  margin: auto;
+}
+
+ </style>
+
+
+	<body>
+		<div class="panel-lite" style="max-width: 300px;">
+			<div class="form-group">
+				<form id="form1" name="form1" method="post" action="" >
+					<input type="text" name="username" class="form-control" required="required" onkeydown=KeyDown()/>
+					<label class="form-label">答案</label>
+					<br/>
+					<br/>
+			</div>
+			<input class="link-button" type="button" name="login" value="提交" onclick="check();"/>
+			<input class="link-button" type="reset" value="重置" />
+				</form>
+			</div>
+		</div>
+ </body>
