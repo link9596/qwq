@@ -22,6 +22,7 @@ layout: default
     {% include tags_list.html tags=page.tags tag_count=page.tags.size %}
 
 <hr/>
+{% comment %}  
 <!-- LiveRe -->
 <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjY0Mi85MjAz">
   <script type="text/javascript">
@@ -40,7 +41,8 @@ layout: default
 <noscript> 为正常使用评论功能请激活JavaScript</noscript>
 </div>
 <!-- end LiveRe -->
-
+{% endcomment %}
+  
   {% if site.data.social.valine_comment.enable  == true %}
   <div id="comments"></div>
   {% include valine_comments.html %}
