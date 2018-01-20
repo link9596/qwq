@@ -44,8 +44,8 @@ layout: default
 {% endcomment %}
   
   {% if site.data.social.valine_comment.enable  == true %}
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script src="/comment/av-min.js"></script>
+  <script src="/comment/Valine.min.js"></script>
   <div id="comments"></div>
   {% include valine_comments.html %}
   {% endif %}
