@@ -19,8 +19,8 @@ layout: default
     {{ content }}
   </div>
 
-    {% include tags_list.html tags=page.tags tag_count=page.tags.size %}
-  
+    {% include tags_list.html tags=page.tags tag_count=page.tags.size %}
+
 <hr/>
 <!-- LiveRe -->
 <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjY0Mi85MjAz">
@@ -41,12 +41,12 @@ layout: default
 </div>
 <!-- end LiveRe -->
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  <div id="comment"></div>
-  
-  {% include valine_comments.html %}
-  
+  {% if site.data.social.valine_comment.enable and page.comments == true %}
+  <div id="comments"></div>
+  {% endif %}
+  {% include scripts.html %}
+
+
   {% if site.disqus.shortname %}
     {% include disqus_comments.html %}
   {% endif %}
