@@ -34,3 +34,11 @@ facebook:
   app_id: 1798910940422432 # cayman-blog
   #authors: lorepirri
 #  admins:
+
+
+#comm
+valine_comment:
+ enable: true
+ leancloud_appid: oip6cvm7CO6OeBtyghYeBJJe-gzGzoHsz
+ leancloud_appkey: iLS9tFGX3LvOp2HMCH2C49Ch
+ placeholder: Just go go
