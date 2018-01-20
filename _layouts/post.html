@@ -43,6 +43,7 @@ layout: default
 
   {% if site.data.social.valine_comment.enable  == true %}
   <div id="comments"></div>
+  {% include valine_comment.html %}
   {% endif %}
   {% include scripts.html %}
 
