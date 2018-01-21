@@ -5,7 +5,7 @@
 .site-header {
   border-bottom: 0px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
-  background-color: #3F51B5;
+  background-color: #E91E63;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 5px 8px 0 rgba(0, 0, 0, .14), 0 1px 14px 0 rgba(0, 0, 0, .12);
 
   // Positioning context for the mobile navigation icon
@@ -35,7 +35,7 @@
 .site-nav {
   float: right;
   line-height: $base-line-height * $base-font-size * 2.25;
-  background-color: #3F51B5;
+  background-color: transparent;
 
   .nav-trigger {
       display: none;
