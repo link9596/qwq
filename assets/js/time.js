@@ -6,7 +6,7 @@ ajax()
     }else{ // ie
       xhr = new ActiveObject("Microsoft")
     }
-    xhr.open("get","location.href");
+    xhr.open("get","href");
     xhr.send(null);
     xhr.onreadystatechange = function(){
       var time = null,
