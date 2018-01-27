@@ -102,7 +102,7 @@
 
         <span class="site-footer-owner">Originate from <a href="">link</a>.</span>
         <span class="site-footer-credits">This page was made by<a href=""> H₂</a>.</span><br>
-        <span class="site-footer-credits" style="font-size:12px">Already 168 days.</span>
+        <span class="site-footer-credits" style="font-size:12px">Already <span id="sitetime"></span> days.</span>
         {% comment %} Gh icon 
         <span class="my-span-icon">
           <a href="{{ site.github.owner_url }}" aria-label="{{ site.github.owner_name }}'s GitHub" title="{{ site.github.owner_name }}'s GitHub">
@@ -151,6 +151,7 @@
       </script>
     {% endif %}{% endcomment %}
     
+      <script src="assets/js/time.js"></script>
       <script>
        var _hmt = _hmt || [];
         (function() {
