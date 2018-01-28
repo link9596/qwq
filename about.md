@@ -6,7 +6,7 @@ permalink: /links.html
 ---
 
 {% for f in site.data.friends %}
-  <a class="k-friend" href="{{f.url}}" target="_blank">
+  <a class="k-friend" href="{{f.url}}" target="_blank"></a>
    {% endfor %}
 
 <div class="link-chip">
