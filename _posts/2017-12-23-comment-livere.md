@@ -17,4 +17,4 @@ tags: [Hydrogen]
 
 ![livere-city-get](/usrimg/2017-12-23-livere-city-get.png)
 
-LiveRe提供两种服务：City（平民版）和Premium（氪金版），两种服务在管理权限方面有些许不同，要是简单的个人博客City版足够了，当然你选择氪金也可以（逃
+LiveRe提供两种服务：City（平民版）和Premium（氪金版），两种服务在管理权限方面有些许不同，要是简单的个人博客City版足够了，当然你选择氪金也可以（逃。
