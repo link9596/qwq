@@ -27,7 +27,7 @@ permalink: /links.html
 </div>
 
 <div class="link-chip">
-<img src=" https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1514795263&di=fe0250bafa079e945203fbf61684a4c9&src=http://cdnimg103.lizhi.fm/audio_cover/2014/11/22/16021180753166727_320x320.jpg" class="link-chip-icon">
+<img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1514795263&di=fe0250bafa079e945203fbf61684a4c9&src=http://cdnimg103.lizhi.fm/audio_cover/2014/11/22/16021180753166727_320x320.jpg" class="link-chip-icon">
 <a target="_blank" class="link-chip-title" href="http://www.qiuxiaodu.club/">仇小杜Blog</a>
 </div>
 
