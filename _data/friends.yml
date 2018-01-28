@@ -1,8 +1,34 @@
-- name: Link
-  image: /avatar/avatar.png
-  url: http://lkopp.ml
-  describe: 哈哈哈
-- name: MDUI
-  image: 
-  url: https://www.mdui.org/
-  describe: 一套用于开发 Material Design 网页的前端框架
+- name: 友链博客
+  image: http://emlog.club/logo.jpg
+  url: http://emlog.club/
+  describe: 友链
+
+- name: 蟋蟀程序员
+  image: http://www.huisai.top/usr/files/icon.jpg
+  url: http://www.huisai.top/
+  describe: 蟋蟀程序员
+
+- name: Molerose
+  image: http://www.molerose.com/usr/themes/molerose/images/400-400.jpg
+  url: http://www.molerose.com/
+  describe: Molerose
+
+- name: 仇小杜Blog
+  image: https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1514795263&di=fe0250bafa079e945203fbf61684a4c9&src=http://cdnimg103.lizhi.fm/audio_cover/2014/11/22/16021180753166727_320x320.jpg
+  url: http://www.qiuxiaodu.club/
+  describe: 仇小杜Blog
+
+- name: 共享评测
+  image: /avatar/default.png
+  url: https://ogays.club
+  describe: 共享评测
+
+- name: dyt5AAUI
+  image: http://0.gravatar.com/avatar/c3441ce2d52103994bf68f221b331707?s=64&d=mm&r=g
+  url: http://blog.whoit.top/
+  describe: dyt5AAUI
+
+- name: 凌独小棧
+  image: http://www.ashite.com/favicon.ico
+  url: http://www.ashite.com/
+  describe: 凌独小棧
