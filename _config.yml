@@ -2,7 +2,7 @@ title: Link
 description: Can you Catch ME? 
 keywords: blog,css,html,php
 show_downloads: false
-show_comment: true
+show_comment: false
 
 baseurl: "" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
 url: "http://lkopp.ml" # change this to the base hostname & protocol for your site
