@@ -5,6 +5,10 @@ tagline: My friends.
 permalink: /links.html
 ---
 
+{% for f in site.data.friends %}
+  <a class="k-friend" href="{{f.url}}" target="_blank">
+   {% endfor %}
+
 <div class="link-chip">
 <img src="http://emlog.club/logo.jpg" class="link-chip-icon">
 <a target="_blank" class="link-chip-title" href="http://emlog.club/">友链博客</a>
