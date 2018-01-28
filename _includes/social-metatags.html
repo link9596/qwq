@@ -35,12 +35,11 @@
   <meta name="author" content="{{ page_author }}">
 {%endif %}
 <meta name="description" content="{{ page_description }}" />
-<meta name="keywords" content="html,css,php,blog,web" />
 {%if page.tags.length > 0 %}
   <meta name="keywords" itemprop="tags" content="{{ page.tags | join: ', ' | escape }}"/>
 {%endif %}
 {%if page.keywords %}
-  <meta name="keywords" itemprop="keywords" content="{{ page.keywords | escape  }}">
+  <meta name="keywords" itemprop="keywords" content="{{ site.keywords | escape }}">
 {%endif %}
 {%if page.categories.length > 0 %}
   <meta name="keywords" itemprop="categories" content="{{ page.categories | join: ', ' | escape  }}">
