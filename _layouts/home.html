@@ -1,84 +1,51 @@
-<!DOCTYPE HTML>
+---
+layout: default
+---
 
- <head>
+<div>
 
-   <link rel=stylesheet href="http://linker.ml/style.css">
-   <script src="k.js"></script>
-   <meta http-equiv="Cache-control" content="no-cache">
-   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-   <meta charset="utf-8">
-   <link rel="shortcut icon" type="image/x-icon" href="http://linker.ml/img/favicon.ico" media="screen"/>
-</head>
-<title>H₂ 每日一文</title>
-<body>
+  {{ content }}
 
+  <!--<h2></h2>-->
 
- <div class="mdp bg">
+  <div>&nbsp;</div>
 
-  <div class="title">
-每日一文，在此偶遇
-  </div>
-  <div class="s-top" id="yiyan">
-  </div>
-   <script>
-var body=document.getElementsByTagName('body')[0];
-for(var i=0;i<100;i++){
-var a=0;
-var t=setTimeout("body.style.opacity=a/100;a++;",i*5);
-}
+  <ul class="post-list">
+     {% for post in paginator.posts %}
+      <li>
 
-window.onload=function()
+        {% assign date_format = site.cayman-blog.date_format | default: "%b %-d, %Y" %}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
 
-{
-    var xmlhttp;
-    if (window.XMLHttpRequest)
-    {
-        //  给IE7+, 火狐, Chrome, O嘭, Safari
-        xmlhttp=new XMLHttpRequest();
-    }
-    else
-    {
-        // 给IE6, IE5的
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function()
-    {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-            document.getElementById("yiyan").innerHTML=xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET","https://api.lwl12.com/hitokoto/main/get",true);
-    xmlhttp.send();
-}
-   </script>
-   <div id="sc">
-   </div>
-  </div>
- <div style="margin:15px">
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}">{{ post.title | escape }}</a>
+        </h2>
 
-  {% for post in paginator.posts %}
-  <div class="cmdp">
-   <div class="stitle">
-   {% assign date_format = site.cayman-blog.date_format | default: "%b %-d, %Y" %}
-    <h2>
-    <div id="title">{{ post.title | escape }}
-    </div>
-    </h2>
-   </div>
-   <div class="sg" id="author">{{ post.date | date: date_format }}
-   </div>
-   <div class="s-bot" id="content">{{ post.excerpt | markdownify | truncatewords: 30 }}
-   </div>
-  </div>
-  {% endfor %}
+        <span>{{ post.excerpt | markdownify | truncatewords: 30 }}</span>
 
- </body>
- <div class="footers">
-  <div class="footext-l">
-H₂ 每日一文，在此偶遇 <br>
-&copy;Copyright link 2017.
-  </div>
- </div>
-</body>
-<script src="https://lkins.ml/coco"></script>
+      </li>
+
+    {% endfor %}
+
+  </ul>
+
+</div>
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a  class="cm-l" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="/theme/left.svg" style="height:28px"></a>
+  {% else %}
+    <span class="cm-l"><img src="/theme/leftdis.svg" style="height:28px"></span>
+  {% endif %}
+
+  {% if paginator.next_page %}
+    <a class="cm-r" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="/theme/right.svg" style="height:28px"></a>
+  {% else %}
+    <span class="cm-r"><img src="/theme/rightdis.svg" style="height:28px"></span>
+  {% endif %}
+</div>
+
+<div class="cm-c">{{paginator.page}}/{{paginator.total_pages}}</div>
+
+{% endif %}
