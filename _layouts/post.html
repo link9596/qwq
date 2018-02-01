@@ -48,9 +48,9 @@ layout: default
   {% endif %}
   
   {% if site.data.social.valine_comment.enable  == true %}
-  <script src="/comment/av-min.js"></script>
+  <script src="/comment/av-min.js" data-no-instant></script>
   <script src="/comment/Valine.min.js"></script>
-  <div id="comments" data-no-instant></div>
+  <div id="comments"></div>
   {% include comments.html %}
   {% endif %}
   {% include scripts.html %}
