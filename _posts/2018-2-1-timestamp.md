@@ -18,7 +18,7 @@ var timestamp = (new Date()).valueOf();
 ```
 
 ```javascript
-var timestamp = new Date().getTime()；
+var timestamp = new Date().getTime();
 //精确到毫秒
 //输出为1517457493101
 ```
