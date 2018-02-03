@@ -108,3 +108,27 @@ alert( (((curDate.getTime() / 1000) - 1514020000 ) / 86400 )) );
 ```javascript
 alert( parseInt((((curDate.getTime() / 1000) - 1514020000 ) / 86400 )) );
 ```
+
+获取到的数据也可以不用以时间戳的形式输出：
+
+```javascript
+alert( curDate.getFullYear() );
+//当前所在年份
+
+alert( curDate.getMonth() );
+//当前所在月份
+
+alert( curDate.getDate() );
+//天数
+
+alert( curDate.getHours() );
+//小时
+
+alert( curDate.getMinutes() );
+//分钟
+
+alert( curDate.getSeconds() );
+//还有秒 = =
+```
+
+还有更多玩法等你探索呐:satisfied:
