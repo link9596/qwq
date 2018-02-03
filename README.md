@@ -1,4 +1,4 @@
 # Material Design Blog Theme For Jekyll.
-> Based on Caymanpage
+> Based on HydrogenPage
 
 Powered by link.
