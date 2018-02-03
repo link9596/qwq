@@ -7,3 +7,5 @@ title: 年终总结
 
 ## 没啥好看的！
 ![funny](http://lkopp.ml/exp/funnyangry.png)
+
+好了还是祝各位新年♂快乐！
