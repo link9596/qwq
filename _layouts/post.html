@@ -50,6 +50,17 @@ layout: default
   {% if site.data.social.valine_comment.enable  == true %}
   <script src="/comment/av-min.js" data-no-instant></script>
   <script src="/comment/Valine.min.js" data-no-instant></script>
+  <script data-no-instant>
+  InstantClick.on('change', function() {
+  _hmt.push(['_trackPageview', location.pathname + location.search]);
+  var script=document.createElement ("script");
+  script.type="text/javascript";
+  script.src="/comment/av-min.js";
+  script.async="async";   //看具体情况
+  document.getElementsByTagName("head")[0].appendChild(script);
+  });
+  InstantClick.init('mousedown');
+  </script>
   <div id="comments"></div>
   {% include comments.html %}
   {% endif %}
