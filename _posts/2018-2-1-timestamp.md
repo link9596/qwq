@@ -43,7 +43,7 @@ var timestamp = new Date().getTime();
 
 ![期待无比的眼神.png](http://lkopp.ml/usrimg/2017-12-24-1.png)
 
-可到哪里获取网络时间戳捏？又需要找一个api吗？
+可到哪里获取网络时间戳捏？又要找一个api吗？ (逃。。。
 
 完全不用，浏览器向服务器发起请求的时候，有一个响应头，里面就藏着我们想要的东西嘿嘿:sunglasses:
 
