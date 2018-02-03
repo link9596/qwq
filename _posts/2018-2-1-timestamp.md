@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 捕捉响应头里的时间戳
+tags: Skill
 ---
 
 Javascript获取当前时间戳有三种方法，有两种可以精确到毫秒，另外一种可以精确到秒，具体如下
