@@ -18,6 +18,11 @@
   url: http://www.qiuxiaodu.club/
   describe: 仇小杜Blog
 
+- name: Troy's Blog
+  image: https://static.itroy.cc/image/avatar/troy.png 
+  url: https://itroy.cc
+  describe: Troy的星球
+  
 - name: 共享评测
   image: /avatar/default.png
   url: https://ogays.club
