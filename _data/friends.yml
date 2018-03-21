@@ -1,6 +1,6 @@
-- name: 友链博客
-  image: http://asscw.com/logo.jpg
-  url: http://asscw.com
+- name: 空位招友链
+  image: /avatar/default.png
+  url: 
   describe: 友链
 
 - name: 蟋蟀程序员
