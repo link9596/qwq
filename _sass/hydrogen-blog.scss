@@ -29,7 +29,7 @@
 @font-face
 {
     font-family: mdFont;
-    src: url(http://cdn.bootcss.com/mdui/0.4.0/fonts/roboto/Roboto-Regular.woff);
+    src: url(https://cdn.bootcss.com/mdui/0.4.0/fonts/roboto/Roboto-Regular.woff);
 }
 
 body {
@@ -101,7 +101,7 @@ a {
   text-align: center;
   margin-top: 0px;
   background-color: $header-bg-color;
-  background: url("http://lkopp.ml/theme/bg-5.png") no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size:cover; max-width:100%; margin: auto;text-align: center;margin-bottom:20px;
+  background: url("https://lkopp.ml/theme/bg-5.png") no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size:cover; max-width:100%; margin: auto;text-align: center;margin-bottom:20px;
   /*background-image: linear-gradient(120deg, $header-bg-color-secondary, $header-bg-color);*/
 
   @include large {
