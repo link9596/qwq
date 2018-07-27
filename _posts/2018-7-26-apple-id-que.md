@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Apple ID安全问题遗忘解决方案
-tag: 瞎聊
+tag: 碎碎念
 ---
 
 前几天在App Store买东西的时候，付款的时候提示需要我验证安全提示问题，??!!
