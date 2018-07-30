@@ -13,3 +13,13 @@ permalink: /links.html
 {% endfor %}
 
 [返回主页]({{ site.url }}{{ site.baseurl }})
+
+<hr/>
+
+  {% if site.data.social.valine_comment.enable  == true %}
+  <script src="/comment/av-min.js"></script>
+  <script src="/comment/Valine.min.js"></script>
+  <div id="comments"></div>
+  {% include comments.html %}
+  {% endif %}
+  {% include scripts.html %}
