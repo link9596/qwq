@@ -1,17 +1,12 @@
-- name: 空位招友链
-  image: /avatar/default.png
-  url: 
-  describe: 友链
+- name: 凌独小棧
+  image: http://www.ashite.com/favicon.ico
+  url: http://www.ashite.com/
+  describe: 凌独小棧
 
 - name: 蟋蟀程序员
   image: http://www.huisai.top/usr/files/icon.jpg
   url: http://www.huisai.top/
   describe: 蟋蟀程序员
-
-- name: Molerose
-  image: http://www.molerose.com/usr/themes/molerose/images/400-400.jpg
-  url: http://www.molerose.com/
-  describe: Molerose
 
 - name: 仇小杜Blog
   image: http://t.cn/R8HLcYQ
@@ -27,8 +22,3 @@
   image: http://0.gravatar.com/avatar/c3441ce2d52103994bf68f221b331707?s=64&d=mm&r=g
   url: http://blog.whoit.top/
   describe: dyt5AAUI
-
-- name: 凌独小棧
-  image: http://www.ashite.com/favicon.ico
-  url: http://www.ashite.com/
-  describe: 凌独小棧
