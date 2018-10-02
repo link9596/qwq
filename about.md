@@ -48,6 +48,6 @@ Github: [link9596](https://github.com/link9596)
 
 <center>扫下方付款二维码即可向我投喂!</center>
 
-</img style="margin:auto" src="https://lkopp.ml/pay/pay.png">
+<img style="margin:auto" src="https://lkopp.ml/pay/pay.png">
 
 ![wechat](https://lkopp.ml/pay/wechat.png)
