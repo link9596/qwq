@@ -25,7 +25,7 @@ Github: [link9596](https://github.com/link9596)
 
 本站使用主题: Hydrogen
 
-由Link Pages强力驱动.(手动滑稽)
+由**Link Pages**强力驱动.(手动滑稽)
 
 
 很远的地方有一台冰冷的机器
