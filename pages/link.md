@@ -5,13 +5,6 @@ tagline: My friends.
 permalink: /links.html
 ---
 
-{% for f in site.data.friends %}
-<div class="link-chip">
- <img src="{{f.image}}" class="link-chip-icon">
- <a target="_blank" class="link-chip-title" href="{{f.url}}">{{f.name}}</a>
-</div>
-{% endfor %}
-
 ## #友链申请
 
 可以在下方留言板评论即可申请本站友链! quq~
@@ -30,7 +23,14 @@ permalink: /links.html
 
 喜欢更接近日常一点的博客，欢迎各位博主添加友链! 
 
-(๑￫ܫ￩)
+(* /ω＼*)
+
+{% for f in site.data.friends %}
+<div class="link-chip">
+ <img src="{{f.image}}" class="link-chip-icon">
+ <a target="_blank" class="link-chip-title" href="{{f.url}}">{{f.name}}</a>
+</div>
+{% endfor %}
 
 [返回主页]({{ site.url }}{{ site.baseurl }})
 
