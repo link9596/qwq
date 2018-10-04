@@ -21,7 +21,8 @@
 - name: 北关漫步
   image: http://t.cn/Eht5Xm4
   url: https://mbg17.com/
-  describe: 418556858@qq.com 北关漫步 
+  describe: 北关漫步
+  dc: 418556858@qq.com
 
 - name: 晓月斋
   image: https://cndssl.darkhat.xyz//blog/typecho/avater.jpg
