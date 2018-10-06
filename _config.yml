@@ -10,7 +10,7 @@ url: "https://lkopp.ml" # change this to the base hostname & protocol for your s
 google_analytics:
 # cayman-blog date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
-cayman-blog:
+hydrogen-blog:
   date_format: "%b %-d, %Y"
 
 theme: # leave it empty
@@ -24,14 +24,14 @@ paginate_path: "page:num"
 
 
 # social
-author: "Link"
+author: ""
 image: 
 twitter:
-  username: link
+  username: 
 #  site:
 facebook:
-  #publisher: 1592372034171500
-  #profile_id: 1809805629
-  app_id: 1798910940422432 # cayman-blog
-  #authors: lorepirri
+  #publisher: null
+  #profile_id: null
+  app_id: null
+  #authors: null
 #  admins:
