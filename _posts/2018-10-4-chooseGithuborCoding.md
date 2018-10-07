@@ -22,7 +22,7 @@ tag: 瞎聊
 
 在我入坑Coding不久后，这家伙竟然推出了PHP动态页面托管服务!!!还送数据库!!完全免费，当时我就惊了，为了同行竞争使出这个杀手锏也确实不容易
 
-![体验极棒.jpg](https://lkopp.ml/usrimg/2018-10-4-chooseGithuborCoding.png)
+![体验极棒.jpg](https://atlinker.cn/usrimg/2018-10-4-chooseGithuborCoding.png)
 
 **可是**，好景不长，这项服务推出后便受到滥用，还有些图谋不轨的小老弟试图利用这个做出攻击行为...
 
