@@ -42,4 +42,4 @@ tags: 碎碎念
 
 好了好了,不说了,学习去了.  (逃...
 
-![funnycry](http://lkopp.ml/exp/funnycry.png)
+![funnycry](http://atlinker.cn/exp/funnycry.png)
