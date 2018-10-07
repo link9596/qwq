@@ -5,7 +5,7 @@ show_downloads: false
 show_comment: false
 
 baseurl: "" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
-url: "https://lkopp.ml" # change this to the base hostname & protocol for your site
+url: "https://atlinker.cn" # change this to the base hostname & protocol for your site
 
 google_analytics:
 # cayman-blog date format
