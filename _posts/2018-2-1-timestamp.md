@@ -41,7 +41,7 @@ var timestamp = new Date().getTime();
 
 这个简单，只需要获取网络上的时间戳就行了。
 
-![期待无比的眼神.png](http://lkopp.ml/usrimg/2017-12-24-1.png)
+![期待无比的眼神.png](http://atlinker.cn/usrimg/2017-12-24-1.png)
 
 可到哪里获取网络时间戳捏？又得找一个api吗？ (逃。。。
 
