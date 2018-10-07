@@ -49,6 +49,6 @@ Github: [link9596](https://github.com/link9596)
 
 <center>扫下方付款二维码即可向我投喂!</center>
 
-<img align="center" style="display:table-cell" src="https://lkopp.ml/pay/pay.png">
+<img align="center" style="display:table-cell" src="https://atlinker.cn/pay/pay.png">
 
-![wechat](https://lkopp.ml/pay/wechat.png)
+![wechat](https://atlinker.cn/pay/wechat.png)
