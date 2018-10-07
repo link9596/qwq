@@ -1,5 +1,5 @@
 - name: 凌独小棧
-  image: http://ilunp.com/favicon.ico
+  image: /avatar/default.png
   url: http://ilunp.com/
   describe: 凌独小棧
 
@@ -25,7 +25,7 @@
   dc: 418556858@qq.com
 
 - name: 晓月斋
-  image: https://cndssl.darkhat.xyz//blog/typecho/avater.jpg
+  image: http://t.cn/EhEPrq4
   url: https://www.darkhat.xyz
   describe: 一个菜鸟的技术交流博客O_O
 
