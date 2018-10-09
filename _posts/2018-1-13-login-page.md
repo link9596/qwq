@@ -96,4 +96,4 @@ window.location.href="http://lkopp.ml";
 ```
 注意！此JS登陆功能仅作测试或玩耍用
 
-[页面演示](https://emoji.atlinker.cn)
+[页面演示](https://admin.atlinker.cn)
