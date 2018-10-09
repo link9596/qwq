@@ -40,4 +40,8 @@
   describe: 见字如晤
   mail: yiveco@qq.com
 
--name: Rst.WL网络小组
+- name: Rst.WL网络小组
+  image: https://neictop-1256272185.cos.ap-guangzhou.myqcloud.com/tx.png
+  url: https://neic.top
+  describe: 一个无聊网络工程师的日常分享
+  
