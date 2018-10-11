@@ -4,7 +4,7 @@
   describe: 凌独小棧
 
 - name: 蟋蟀程序员
-  image: http://www.huisai.top/usr/files/icon.jpg
+  image: /avatar/avatar.png
   url: http://www.huisai.top/
   describe: 蟋蟀程序员
 
