@@ -7,7 +7,7 @@ tag: Skill
 看哪！我们发现了一些一颗赛艇的Material Design组件！想要占有它并开始使用它？那就快过来抓住它吧！:smirk:
 
 ## #获取
-[You can catch it here](http://admin.lkopp.ml/css/styles.css)
+[You can catch it here](http://admin.atlinker.cn/css/styles.css)
 
 在这篇文章中，你会看到：
 
