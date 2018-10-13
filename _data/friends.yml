@@ -4,8 +4,8 @@
   describe: 歪小棧
 
 - name: 酚酞小韬韬
-  image: /avatar/default.png
-  url: http://link.gearhostpreview.com/
+  image: http://link.gearhostpreview.com/usr/themes/Attention/images/logo.jpg
+  url: http://link.gearhostpreview.com
   describe: 酚酞小韬韬
 
 - name: Troy's Blog
