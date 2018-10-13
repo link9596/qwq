@@ -13,9 +13,9 @@ permalink: /links.html
 
 > 名称: Link
 >
-> 链接: https://lkopp.ml
+> 链接: https://atlinker.cn
 >
-> 头像: https://lkopp.ml/avatar/avatar.png
+> 头像: https://atlinker.cn/avatar/avatar.png
 >
 > 描述: Just 4 Fun
 
