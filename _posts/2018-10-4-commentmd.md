@@ -67,17 +67,17 @@ tags: 瞎聊
 
 你甚至可以在评论时添加表情#（手动滑稽）
 ```
-![在评论框添加该代码即可显示滑稽表情](/exp/funny.png)
+![滑稽表情](/exp/funny.png)
 显示效果如下
 ```
 ![](/exp/funny.png)
 ```
-![在评论框添加该代码即可显示滑稽表情](/exp/funnycry.png)
+![滑稽表情](/exp/funnycry.png)
 显示效果如下
 ```
 ![](/exp/funnycry.png)
 ```
-![在评论框添加该代码即可显示滑稽表情](/exp/funnyangry.png)
+![滑稽表情](/exp/funnyangry.png)
 显示效果如下
 ```
 ![](/exp/funnyangry.png)
