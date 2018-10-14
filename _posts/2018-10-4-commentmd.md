@@ -40,8 +40,10 @@ tags: 瞎聊
 ## #链接
 常用链接方法
 
+```markdown
 文字链接 [链接名称](http://链接网址)
 网址链接 <http://链接网址>
+```
 
 ### #高级链接技巧
 ```markdown
@@ -50,6 +52,34 @@ tags: 瞎聊
 这个链接用 yahoo 作为网址变量 [Yahoo!][yahoo].
 ```
 然后在文档的结尾为变量赋值（网址）
-
+```markdown
   [1]: http://www.google.com/
   [yahoo]: http://www.yahoo.com/
+```
+
+## #插入图片
+
+```markdown
+![图片描述](https://图片链接)
+```
+
+## #拓展内容
+
+你甚至可以在评论时添加表情#（手动滑稽）
+```
+![在评论框添加该代码即可显示滑稽表情](/exp/funny.png)
+显示效果如下
+```
+![](/exp/funny.png)
+```
+![在评论框添加该代码即可显示滑稽表情](/exp/funnycry.png)
+显示效果如下
+```
+![](/exp/funnycry.png)
+```
+![在评论框添加该代码即可显示滑稽表情](/exp/funnyangry.png)
+显示效果如下
+```
+![](/exp/funnyangry.png)
+
+本站目前仅支持这几个表情，后续可能会添加，你们当然你也可以使用其他表情图片链接来玩耍
