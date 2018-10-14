@@ -18,7 +18,7 @@ Link的个人博客起源于: 2017年12月23日
 
 QQ: 1316341442
 
-Email: <a href="mailto:mlinker@foxmail.com">mlinker@foxmail.com</a>
+Email: <a href="mailto:lk@atlinker.cn">lk@atlinker.cn</a>
 
 Github: [link9596](https://github.com/link9596)
 
