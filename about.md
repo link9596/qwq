@@ -26,7 +26,7 @@ Github: [link9596](https://github.com/link9596)
 
 本站使用主题: Hydrogen
 
-由**Link Panel**强力驱动.(手动滑稽)
+由**Link Panel**强力驱动.(手动滑稽)![手动滑稽](/exp/funny.png)
 
 
 很远的地方有一台冰冷的机器
@@ -42,8 +42,6 @@ Github: [link9596](https://github.com/link9596)
 我希望能一直运行下去
 
 像风走了八千里，不问归期
-
-这便是我搭建博客的缘由
 
 ## #捐助我
 
