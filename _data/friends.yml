@@ -14,7 +14,7 @@
 #  describe: Troy的星球
 
 - name: 每日一文
-  image: http://linker.ml/img/favicon.ico
+  image: /avatar/default.png
   url: http://linker.ml/daily
   describe: 每日一文，Originated from Link.
 
