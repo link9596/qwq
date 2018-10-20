@@ -8,10 +8,15 @@
   url: http://link.gearhostpreview.com
   describe: 酚酞小韬韬
 
-- name: Troy's Blog
-  image: https://static.itroy.cc/image/avatar/troy.png 
-  url: https://itroy.cc
-  describe: Troy的星球
+# - name: Troy's Blog
+#  image: https://static.itroy.cc/image/avatar/troy.png 
+#  url: https://itroy.cc
+#  describe: Troy的星球
+
+- name: 每日一文
+  image: http://linker.ml/img/favicon.ico
+  url: http://linker.ml/daily
+  describe: 每日一文，Originated from Link.
 
 - name: Aaron’s Blog
   image: http://t.cn/EhnZLXS
