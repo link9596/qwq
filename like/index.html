@@ -47,6 +47,7 @@ ajax()
         console.log(xhr.getAllResponseHeaders())
         curDate = new Date(time);
         document.getElementById("sitetime").innerHTML = (parseInt((((curDate.getTime() / 1000) - 1509206400 ) / 86400 )));
+        document.getElementById("sitetime2").innerHTML = (parseInt((((curDate.getTime() / 1000) - 1509206400 ) / 86400 )));
       }
     }
   }
@@ -55,7 +56,7 @@ ajax()
 <title>Happy birthday</title>
 <body>
    <div class="fade">
-      <h1 style="color: #999999;text-align:center;" id="title"></h1>
+      <h1 style="color: #999999;text-align:center;" id="">甜甜的第<span id="sitetime2"></span>天</h1>
       <div class="fade">
         <h6 style="color: #999999;text-align:center" id="author"></h6>
           <div class="fade">
