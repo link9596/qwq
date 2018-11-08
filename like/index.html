@@ -1,1 +1,79 @@
-y
+<!DOCTYPE HTML>
+ <head>
+   <link rel=stylesheet href="https://atlinker.cn/assets/css/fade.css">
+   <meta http-equiv="Cache-control" content="no-cache">
+   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+   <meta charset="utf-8">
+   <link rel="shortcut icon" type="image/x-icon" href="https://atlinker.cn/img/like.ico" media="screen"/>
+ </head>
+
+ <style>
+@-webkit-keyframes fade-in-down {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+     }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    }
+}
+.h1,.h2,.h3,.h4,.lead,body,h1,h2,h3,h4{
+  font-family:RobotoDraft,Roboto,"Helvetica Neue",Helvetica,"Segoe UI","Microsoft YaHei",arial,sans-serif;font-weight:300;
+}
+@media (min-width: 767px) {
+body{
+ padding-left:200px;
+ padding-right:200px;
+  }
+</style>
+<script>
+ajax()
+  function ajax(option){
+    var xhr = null;
+    if(window.XMLHttpRequest){
+      xhr = new window.XMLHttpRequest();
+    }else{ // ie
+      xhr = new ActiveObject("Microsoft")
+    }
+    xhr.open("get","location.href");
+    xhr.send(null);
+    xhr.onreadystatechange = function(){
+      var time = null,
+          curDate = null;
+      if(xhr.readyState===2){
+        // Get time
+        time = xhr.getResponseHeader("Date");
+        console.log(xhr.getAllResponseHeaders())
+        curDate = new Date(time);
+        document.getElementById("sitetime").innerHTML = (parseInt((((curDate.getTime() / 1000) - 1509206400 ) / 86400 )));
+      }
+    }
+  }
+</script>
+
+<title>文。</title>
+<body>
+   <div class="fade">
+      <h1 style="color: #999999;text-align:center;" id="title"></h1>
+      <div class="fade">
+        <h6 style="color: #999999;text-align:center" id="author"></h6>
+          <div class="fade">
+          <h2 style="color: #999999;margin-left:20px;margin-right:20px;line-height:45px;" id="content"></h2>
+            <div class="fade">
+            <h6 style="color: #999999;text-align:center">每日一图.</h6>
+            <img style="width:98%" src="http://api.dujin.org/bing/1920.php"/>
+            <span style="text-align:center;display: block;"><a style="color: #999999;text-align:center;font-size: 20px;" id="more" href="/daily/wallpaper.html">更多图片</a></span>
+            <span style="color:#999999;text-align:center;display: block;">
+             <a style="color: #999999;text-align:center;font-size: 12px;" href="http://linker.ml/daily/about.html">关于</a>
+             |
+             <a style="color: #999999;text-align:center;font-size: 12px;" href="http://linker.ml/daily/ss.html">源</a>
+             |
+             <a style="color: #999999;text-align:center;font-size: 12px;" href="http://linker.ml/daily/donate.html">捐赠</a>
+            </span>
+             <h6 style="color: #999999;text-align:center">© 2018 Link, Funny.</h6>
+             <span style="color:#999999;font-size:10px;text-align:center;display: block;font-weight:bold;">Already <span style="text-align:center" id="sitetime"></span> days.</span>
+             </div>
+           </div>
+     </div>
+</body>
