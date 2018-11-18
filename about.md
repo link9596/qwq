@@ -70,6 +70,6 @@ Github: [link9596](https://github.com/link9596)
     <td> {{ d.money }} </td>
     <td> {{ d.time }} </td>
   </tr>
- {% endfor %}
+ {% endfor %}{{ allmoney }}
 </table>
 
