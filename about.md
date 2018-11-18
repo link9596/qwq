@@ -51,10 +51,10 @@ Github: [link9596](https://github.com/link9596)
 
 ![wechat](https://atlinker.cn/pay/wechat.png)
 
-<table width="100%">
+<table>
   <tr>
-    <th width="40%">捐助人</th>
-    <th width="30%">金额</th>
+    <th width="20%">捐助人</th>
+    <th width="20%">金额</th>
     <th width="50%">时间</th>
   </tr>
  {% for d in site.data.donate %}
