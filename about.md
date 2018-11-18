@@ -51,8 +51,15 @@ Github: [link9596](https://github.com/link9596)
 
 ![wechat](https://atlinker.cn/pay/wechat.png)
 
+
+
+ <p ：<b>元</b></p>
+
+ <p><b>总金额： {{allmoney}}元</b></p>
+
+| Name | Academy | score | 
+| - | :-: | :-: |
 {% for d in site.data.donate %}
 {% capture allmoney = 0 %}{{ allmoney | plus: d.money }}{% endcapture %}
- <p {{ d.name }}：<b>{{ d.money }}元</b></p>
+| {{ d.name }} | {{ d.money }} | 90 | 
 {% endfor %}
- <p><b>总金额： {{allmoney}}元</b></p>
