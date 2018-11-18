@@ -64,6 +64,6 @@ Github: [link9596](https://github.com/link9596)
     <td> {{ d.money }} </td>
     <td> {{ d.time }} </td>
   </tr>
- {% endfor %}<p><b>总金额： {{ allmoney }}元</b></p>
+ {% endfor %}<p><b>总金额： <span style="#009688">{{ allmoney }}</span>元</b></p>
 </table>
 
