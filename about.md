@@ -51,10 +51,6 @@ Github: [link9596](https://github.com/link9596)
 
 ![wechat](https://atlinker.cn/pay/wechat.png)
 
-
-
- <p ：<b>元</b></p>
-
  <p><b>总金额： {{ allmoney }}元</b></p>
 
 <table>
