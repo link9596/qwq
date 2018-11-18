@@ -54,7 +54,7 @@ Github: [link9596](https://github.com/link9596)
 <table>
   <tr>
     <th width="15%">捐助人</th>
-    <th width="20%">金额</th>
+    <th width="15%">金额</th>
     <th width="30%">时间</th>
   </tr>
  {% for d in site.data.donate %}
