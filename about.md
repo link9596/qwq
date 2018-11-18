@@ -51,7 +51,7 @@ Github: [link9596](https://github.com/link9596)
 
 ![wechat](https://atlinker.cn/pay/wechat.png)
 
-<table>
+<table width="100%">
   <tr>
     <th width="40%">捐助人</th>
     <th width="30%">金额</th>
