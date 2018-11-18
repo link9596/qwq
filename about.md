@@ -55,14 +55,14 @@ Github: [link9596](https://github.com/link9596)
   <tr>
     <th width="10%">捐助人</th>
     <th width="20%">金额</th>
-    <th width="30%">时间</th>
+    <th align="center" width="30%">时间</th>
   </tr>
  {% for d in site.data.donate %}
 {% capture allmoney = 0 %}{{ allmoney | plus: d.money }}{% endcapture %}
   <tr>
     <td> {{ d.name }} </td>
     <td> {{ d.money }} </td>
-    <td> {{ d.time }} </td>
+    <td align="center"> {{ d.time }} </td>
   </tr>
  {% endfor %}<p><b>总金额： <span style="color:#E91E63">{{ allmoney }}</span> 元</b></p>
 </table>
