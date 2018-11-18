@@ -56,10 +56,10 @@ Github: [link9596](https://github.com/link9596)
  <p ：<b>元</b></p>
 
  <p><b>总金额： {{allmoney}}元</b></p>
+| Name | Academy | score | 
+| - | :-: | :-: |
 
 {% for d in site.data.donate %}
 {% capture allmoney = 0 %}{{ allmoney | plus: d.money }}{% endcapture %}
-| Name | Academy | score | 
-| - | :-: | :-: |
 | {{ d.name }} | {{ d.money }} | 90 | 
 {% endfor %}
