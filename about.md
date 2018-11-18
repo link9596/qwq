@@ -50,3 +50,9 @@ Github: [link9596](https://github.com/link9596)
 <img align="center" style="display:table-cell" src="https://atlinker.cn/pay/pay.png">
 
 ![wechat](https://atlinker.cn/pay/wechat.png)
+
+{% for d in site.data.donate %}
+{% capture allmoney = 0 %}{{ allmoney | plus: d.money }}{% endcapture %}
+ <p {{ d.name }}：<b>{{ d.money }}元</b></p>
+{% endfor %}
+ <p><b>总金额： {{allmoney}}元</b></p>
