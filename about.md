@@ -55,7 +55,7 @@ Github: [link9596](https://github.com/link9596)
 
  <p ：<b>元</b></p>
 
- <p><b>总金额： {{allmoney}}元</b></p>
+ <p><b>总金额： {{ allmoney }}元</b></p>
 
 <table>
   <tr>
