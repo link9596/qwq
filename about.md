@@ -55,7 +55,7 @@ Github: [link9596](https://github.com/link9596)
   <tr>
     <th width="20%">捐助人</th>
     <th width="20%">金额</th>
-    <th width="60%">时间</th>
+    <th width="80%">时间</th>
   </tr>
  {% for d in site.data.donate %}
 {% capture allmoney = 0 %}{{ allmoney | plus: d.money }}{% endcapture %}
