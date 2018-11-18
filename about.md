@@ -51,8 +51,6 @@ Github: [link9596](https://github.com/link9596)
 
 ![wechat](https://atlinker.cn/pay/wechat.png)
 
- <p><b>总金额： {{ allmoney }}元</b></p>
-
 <table>
   <tr>
     <th width="10%">捐助人</th>
@@ -66,6 +64,6 @@ Github: [link9596](https://github.com/link9596)
     <td> {{ d.money }} </td>
     <td> {{ d.time }} </td>
   </tr>
- {% endfor %}{{ allmoney }}
+ {% endfor %}<p><b>总金额： {{ allmoney }}元</b></p>
 </table>
 
