@@ -53,7 +53,7 @@ Github: [link9596](https://github.com/link9596)
 
 ![apay](https://atlinker.cn/pay/apay.png)
 
-<table style="table-layout:fixed;word-wrap:break-word;">
+<table style="width：100%;table-layout:fixed;word-wrap:break-word;">
   <tr>
     <th width="10%">捐助人</th>
     <th width="10%">金额</th>
