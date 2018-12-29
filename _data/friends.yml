@@ -49,6 +49,11 @@
   image: https://down.tstrs.me/favicon-32×32-next.png
   url: https://tstrs.me
   describe: SatyLeo的自留地。
+  
+- name: OMG's Blog
+  image: https://ohmyga.net/headimg.png
+  url: https://ohmyga.net/
+  describe: 一个毫无技术含量的萌新的博客
 
 - name: 博客大全
   image: /avatar/default.png
