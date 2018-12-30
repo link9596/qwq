@@ -4,7 +4,7 @@ title: Hola hidrógeno!
 tags: Hydrogen
 ---
 
-Welcome to Hydrogen!<br>This is you first post.If you saw this post, your blog has been successfully deployed.So enjoy the fun of writing now!
+Welcome to Hydrogen!<br>This is your first post.If you saw this post, your blog has been successfully deployed.So enjoy the fun of writing now!
 
 > Hello Hydrogen!
 >
