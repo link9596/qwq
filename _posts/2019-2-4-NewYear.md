@@ -11,3 +11,5 @@ tags: 瞎聊
 ![apay](https://atlinker.cn/pay/apay.png)
 
 疯狂暗示.jpg
+
+哈哈哈哈哈哈哈![](/exp/funny.png)
