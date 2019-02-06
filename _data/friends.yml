@@ -59,6 +59,11 @@
   image: https://ohmyga.net/headimg.png
   url: https://ohmyga.net/
   describe: 一个毫无技术含量的萌新的博客
+  
+- name: Ojhdt’s Blog
+  image: https://ojhdt.club/icon.png
+  url: https://ojhdt.club/
+  describe: 隐约雷鸣，阴霾天空
 
 - name: 博客大全
   image: /avatar/default.png
