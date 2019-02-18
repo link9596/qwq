@@ -36,11 +36,11 @@
 
 - name: HQ站|Yarn
   image: https://api.paugram.com/gravatar/?email=3025317494@qq.com
-  url: http://miku233.cn
+  url: http://sebxjx.cn
   describe: 生如夏花之绚烂，死如秋叶之静美
 
 - name: Hi,Scvoet!
-  image: http://q1.qlogo.cn/g?b=qq&nk=3053638521&s=400
+  image: http://q1.qlogo.cn/g?b=qq&nk=3053638521&s=640
   url: https://blog.scvoet.me
   describe: 每个人心中都有一团火，路过的人只看到烟。
   mail: yiveco@qq.com
