@@ -13,6 +13,14 @@ layout: default
 
   <ul class="post-list">
      {% for post in paginator.posts %}
+    
+    {* for post in site.posts *}
+    {* if post.stickie != true *}
+        {* continue *}
+    {* endif *}
+    <div>置顶文章细节</div>
+{* endfor *}
+    
       <li>
 
         {% assign date_format = site.hydrogen-blog.date_format | default: "%b %-d, %Y" %}
