@@ -12,5 +12,8 @@ tags: Hydrogen
 
 她是一个简洁有力的Jekyll主题
 
-![主题预览](/img/2019-2-20-theme-1.png)
+![主题预览](/usrimg/2019-2-20-theme-1.png)
 
+接触过静态博客的dalao都知道，经营一个静态博客是个技术活，几乎每天都得与代码打交道
+
+>　**Hydrogen**将**Liquid**物尽其用，
