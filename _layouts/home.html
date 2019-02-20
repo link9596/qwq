@@ -12,14 +12,15 @@ layout: default
   <div>&nbsp;</div>
 
   <ul class="post-list">
-     {% for post in paginator.posts %}
     
-    {* for post in site.posts *}
-    {* if post.stickie != true *}
-        {* continue *}
-    {* endif *}
+        {% for post in site.posts %}
+    {% if post.stickie != true %}
+        {% continue %}
+    {% endif %}
     <div>置顶文章细节</div>
-{* endfor *}
+{% endfor %}
+    
+     {% for post in paginator.posts %}
     
       <li>
 
