@@ -31,3 +31,7 @@ Hydrogen是我倾注许多心血打造的主题，如果您喜欢~您的Star将�
 <iframe src="https://ghbtns.com/github-btn.html?user=link9596&repo=hydrogen&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
 您的赞助将是我工作的动力~
+
+![wechat](https://atlinker.cn/pay/wechat.png)
+
+![pay](https://atlinker.cn/pay/apay.png)
