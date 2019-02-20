@@ -26,7 +26,7 @@ tags: Hydrogen
 
 ## #竭尽全力
 
-Hydrogen是我倾注许多心血打造的主题，如果您喜欢~您的Star将是对我的认可~:+1:
+Hydrogen是我倾注许多心血打造的主题，如果您喜欢\~您的Star将是对我的认可~:+1:
 
 <iframe src="https://ghbtns.com/github-btn.html?user=link9596&repo=hydrogen&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
