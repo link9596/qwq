@@ -13,7 +13,7 @@ layout: default
 
   <ul class="post-list">
     
-{% if paginator.page = 1 %}
+{% if paginator.page != 1 %}
   {% for post in site.posts %}
       {% if post.stickie != true %}
         {% continue %}
