@@ -2,7 +2,7 @@
 layout: post
 title: Hydrogen主题发布
 tags: Hydrogen
-stickie: true
+stickie: 
 ---
 
 不咕了，昨晚猿宵节(程序猿通宵肝代码的节日)肝了一晚上总算把主题写完了233
