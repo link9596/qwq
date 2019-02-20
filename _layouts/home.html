@@ -13,7 +13,8 @@ layout: default
 
   <ul class="post-list">
     
-{% for post in paginator.posts %}
+{% if paginator.page = 1 %}
+  {% for post in site.posts %}
       {% if post.stickie != true %}
         {% continue %}
       {% endif %}
@@ -30,7 +31,8 @@ layout: default
         <span>{{ post.excerpt | markdownify | truncatewords: 30 }}</span>
 
       </li>
-{% endfor %}
+  {% endfor %}
+{% endif %}
     
   {% for post in paginator.posts %}
     {% if post.stickie == true %}
