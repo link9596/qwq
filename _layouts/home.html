@@ -14,8 +14,8 @@ layout: default
   <ul class="post-list">
     
         {% for post in site.posts %}
-    {% if post.stickie != true %}
-        {% continue %}
+    {% if post.stickie == true %}
+        {% continue %}{{ post.date | date: date_format }}
     {% endif %}
     <div>置顶文章细节</div>
 {% endfor %}
