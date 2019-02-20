@@ -32,7 +32,7 @@ Hydrogen是我倾注许多心血打造的主题，如果您喜欢\~您的Star将
 
 您的赞助将是我工作的动力~:relaxed:
 
-> 未匿名捐助者将写入支持者名单~谢谢大家支持~:laughing:
+> 捐助者将写入支持者名单~谢谢大家支持~:laughing:
 
 <table style="width：100%;table-layout:fixed;word-wrap:break-word;">
   <tr>
