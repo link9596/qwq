@@ -13,14 +13,14 @@ layout: default
 
   <ul class="post-list">
     
-        {% for post in site.posts %}
-    {% if post.stickie != true %}
+{% for post in site.posts %}
+      {% if post.stickie != true %}
         {% continue %}
-    {% endif %}
+      {% endif %}
     <li>
 
         {% assign date_format = site.hydrogen-blog.date_format | default: "%b %-d, %Y" %}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <span class="post-meta">{{ post.date | date: date_format }}</span> <span>置顶</span>
 
         <h2>
           <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}">{{ post.title | escape }}</a>
@@ -29,13 +29,11 @@ layout: default
         <span>{{ post.excerpt | markdownify | truncatewords: 30 }}</span>
 
       </li>
-
 {% endfor %}
     
-     {% for post in paginator.posts %}
-    
+  {% for post in paginator.posts %}
     {% if post.stickie == true %}
-    {% continue %}
+      {% continue %}
     {% endif %}
     
       <li>
