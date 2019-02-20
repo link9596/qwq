@@ -17,10 +17,26 @@ layout: default
     {% if post.stickie != true %}
         {% continue %}
     {% endif %}
-    <div>{{ post.title | escape }}</div>
+    <li>
+
+        {% assign date_format = site.hydrogen-blog.date_format | default: "%b %-d, %Y" %}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}">{{ post.title | escape }}</a>
+        </h2>
+
+        <span>{{ post.excerpt | markdownify | truncatewords: 30 }}</span>
+
+      </li>
+
 {% endfor %}
     
      {% for post in paginator.posts %}
+    
+    {% if post.stickie == true %}
+    {% continue %}
+    {% endif %}
     
       <li>
 
