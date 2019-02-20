@@ -25,6 +25,14 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background:#F44336;
+  color: #fff;
+}
+::-moz-selection {
+  background:#F44336;
+  color: #fff;
+}
 
 @font-face
 {
