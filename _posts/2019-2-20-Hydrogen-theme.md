@@ -14,6 +14,20 @@ tags: Hydrogen
 
 ![主题预览](/usrimg/2019-2-20-theme-1.png)
 
-接触过静态博客的dalao都知道，经营一个静态博客是个技术活
+接触过静态博客的dalao都知道，经营一个静态博客是个技术活~
 
->　**Hydrogen**将**Liquid**物尽其用，将主题配置项尽可能地简化，只需要修改几个简单的配置文件，就能轻松让你的博客跑起来
+>　**Hydrogen**将**Liquid**物尽其用，将主题配置项尽可能地简化，只需要修改几个简单的配置文件，就能轻松让你的博客跑起来，带给你纯粹的写作体验
+
+### #自适应
+
+> 无论在你的iPhone或者是ipad、iMac上浏览主题，她都能够将最完美的排版渲染好呈现在你的面前
+
+![iphone](/usrimg/2019-2-20-theme-2.png)
+
+## #竭尽全力
+
+Hydrogen是我倾注许多心血打造的主题，如果您喜欢~您的Star将是对我的认可~
+
+<iframe src="https://ghbtns.com/github-btn.html?user=link9596&repo=hydrogen&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+
+您的赞助将是我工作的动力~
