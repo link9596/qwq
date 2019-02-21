@@ -53,7 +53,7 @@
 - name: 可乐加点冰
   image: https://cokewithice.com/avatars.jpg
   url: http://cokewithice.com/
-  describe: 以梦为马，随心而行。
+  describe: All for one，one for all.
   
 - name: OMG's Blog
   image: https://ohmyga.net/headimg.png
@@ -68,6 +68,12 @@
 - name: FH云彩博客
   url: https://www.yuncaioo.com
   image: https://secure.gravatar.com/avatar/bc4535a185bc4da4ae8d2e805a99b9dd?s=128&d=mm&r=g
+  describe: FH云彩博客
+  
+- name: 崇宫苟道
+  url: https://lzh441.cn/
+  image: https://cdn.v2ex.com/gravatar/d3329dd2621a8d50a20593a953f01175?s=640
+  describe: 崇宫苟道
 
 - name: 博客大全
   image: /avatar/default.png
