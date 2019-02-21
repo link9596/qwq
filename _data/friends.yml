@@ -75,6 +75,11 @@
   image: https://cdn.v2ex.com/gravatar/d3329dd2621a8d50a20593a953f01175?s=640
   describe: 崇宫苟道
 
+- name: 轻惋导航
+  image: https://www.chainwon.com/static/logo.png
+  url: https://www.chainwon.com/
+  describe: 这个导航将会有无限的可能！
+
 - name: 博客大全
   image: /avatar/default.png
   url: http://daohang.lusongsong.com/
