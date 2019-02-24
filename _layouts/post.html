@@ -16,7 +16,12 @@ layout: default
   </header> -->
 
   <script>
-  document.getElementsByTagName('img')[0].className += 'link';
+  window.onload=function(){
+    var imgs=document.getElementsByTagName('img');
+    for(var i=0;i<imgs.length;i++){
+        imgs[i].className='link';
+    }
+}
   </script>
   
   <div itemprop="articleBody">
