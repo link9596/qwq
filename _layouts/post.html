@@ -24,6 +24,9 @@ layout: default
         imgs[i].className='lightbox';
     }
 }
+    $('.img').wrap(function(){
+        return '<a class="lightbox" href="' + this.src + '" title="' + this.alt + '"></a>';
+    })
   </script>
   
   <div itemprop="articleBody">
