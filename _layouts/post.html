@@ -24,9 +24,17 @@ layout: default
         imgs[i].className='lightbox';
     }
 }
-    $('.img').wrap(function(){
-        return '<a class="lightbox" href="' + this.src + '" title="' + this.alt + '"></a>';
-    })
+   var img=document.getElementsByTagName("img");
+   for(var i=0;i<img.length;i++){
+    img[i].id="img"+i;
+    var img1=document.getElementById("img"+i);
+    var a=document.createElement("a");
+    //获取当前元素的父元素进行替换
+    img1.parentNode.replaceChild(a,img1);
+    a.href=img1.src;
+    a.appendChild(img1);
+   }
+
   </script>
   
   <div itemprop="articleBody">
