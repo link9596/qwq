@@ -56,13 +56,13 @@
   describe: All for one，one for all.
   
 - name: OMG's Blog
-  image: https://ohmyga.net/headimg.png
-  url: https://ohmyga.net/
+  image: https://ohmyga.cn/headimg.png
+  url: https://ohmyga.cn/
   describe: 一个毫无技术含量的萌新的博客
   
 - name: Ojhdt’s Blog
-  image: https://ojhdt.club/icon.png
-  url: https://ojhdt.club/
+  image: https://blog.ojhdt.com/icon.png
+  url: https://blog.ojhdt.com/
   describe: 隐约雷鸣，阴霾天空
  
 - name: FH云彩博客
