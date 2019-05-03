@@ -123,7 +123,7 @@ $(document).ready(function() {
   var po = document.createElement('script');
   po.type = 'text/javascript';
   po.async = true;
-  po.src = 'https://apis.google.com/js/plusone.js';
+  po.src = '';
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(po, s);
 
