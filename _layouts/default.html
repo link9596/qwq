@@ -151,18 +151,24 @@
       </script>
     {% endif %}{% endcomment %}
 
-<div id="sb" onClick="show('sb','nb')" style="position: fixed;bottom: 15px;left:-50px"><img src="http://linker.ml/img/funny.png"/></div>
-<script>
-function show(num)
+<div id="sb" onClick="show('sb','nb')" style="position: fixed;bottom: 15px;left:-50px"><img src="http://linker.ml/img/funny.png"/><div id="nb" class="bubble"></div></div>
+
+	<script>
+function show(num,a)
 {
      var box = document.getElementById(num);
+	 var message = document.getElementById(a);
      if(box.style.left != "-50px")
      {
      box.style.left = "-50px";
+	 message.style.padding = "0px";
+	 message.innerHTML = '';
      }
      else
      {
      box.style.left = "10px"; 
+	 message.innerHTML = '我爱你！没毛病';
+	 message.style.padding = "15px";
      }
 }
 </script>
