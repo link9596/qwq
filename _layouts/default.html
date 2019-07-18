@@ -151,14 +151,21 @@
       </script>
     {% endif %}{% endcomment %}
 
+<div id="sb" onClick="show('sb','nb')" style="position: fixed;bottom: 15px;left:-50px"><img src="http://linker.ml/img/funny.png"/></div>
 <script>
-function hj(){
-hjDiv.style.left="-82px";
- }
+function show(num)
+{
+     var box = document.getElementById(num);
+     if(box.style.left != "-50px")
+     {
+     box.style.left = "-50px";
+     }
+     else
+     {
+     box.style.left = "10px"; 
+     }
+}
 </script>
-<div id="hjDiv" onclick="hj()" style="position: fixed;bottom: 15px;left:-50px">
-<img src="https://link9596.github.io/funny/img/funny.png"/>
-</div>
     
       <script>
        var _hmt = _hmt || [];
