@@ -48,6 +48,12 @@ body {
   color: $body-text-color;
 }
 
+@media (max-width: 767px) {
+.sb{
+dasplay: none;
+ }
+}
+
 a {
   color: $body-link-color;
   text-decoration: none;
