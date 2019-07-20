@@ -98,7 +98,7 @@
 
     <section class="main-content fade">
 
-      {{ content }}
+      {{ content }}{% for post in site.posts %}{{paginator.total_posts}}{% endfor %}
 
       <footer class="site-footer">
         <span class="site-footer-owner">Originate from <a href="">link</a>.</span>
