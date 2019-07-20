@@ -1,4 +1,4 @@
-document.getElementById("new").innerHTML="1.1.0 Beta";
+document.getElementById("new").innerHTML="1.1.0 正式版";
 x=document.getElementById("update");
   var up=x.innerHTML;
   if(up<1.1){
