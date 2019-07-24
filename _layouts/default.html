@@ -151,37 +151,20 @@
         ga('send', 'pageview');
       </script>
     {% endif %}{% endcomment %}
-  <div class="translateX">
-    <div class="fill"><div class="funny" id="sb" onClick="show('sb','nb')" style="position: fixed;bottom: 15px;left:-50px"><img style="transform: rotateY(180deg)" src="/theme/funny.png"/><div id="nb" class="bubble"></div></div></div></div>
-<style>
-	.translateX:hover .fill {
-  -webkit-transform: translateX(45px);
-  transform: translateX(45px);
-}
-	</style>
-	  
-	  {% comment %}
-	<script>
-function show(num,a)
-{
-     var box = document.getElementById(num);
-     var message = document.getElementById(a);
-     if(box.style.left != "-50px")
-     {
-     box.style.left = "-50px";
-	 message.style.padding = "0px";
-	 message.innerHTML = '';
-     }
-     else
-     {
-     box.style.left = "10px"; 
-	 message.innerHTML = "WDNMD真就白给啊！";
-	 message.style.padding = "15px";
-	 message.style.display = "inherit";
-     }
-}
-</script>
-    {% endcomment %}
+<div class="card">
+  <div class="box translateX">
+    <div class="fill">
+      <img style="transform: rotateY(180deg)" src="https://atlinker.cn/theme/funny.png"/>
+      <div class="cardA">
+        <div class="boxA translateA">
+          <div class="fillA">
+            <div id="nb" class="bubble">wdnmd真就白给啊</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       <script>
        var _hmt = _hmt || [];
         (function() {
