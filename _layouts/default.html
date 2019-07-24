@@ -151,8 +151,16 @@
         ga('send', 'pageview');
       </script>
     {% endif %}{% endcomment %}
-<div class="funny" id="sb" onClick="show('sb','nb')" style="position: fixed;bottom: 15px;left:-50px"><img style="transform: rotateY(180deg)" src="/theme/funny.png"/><div id="nb" class="bubble"></div></div>
-
+  <div class="translateX">
+    <div class="fill"><div class="funny" id="sb" onClick="show('sb','nb')" style="position: fixed;bottom: 15px;left:-50px"><img style="transform: rotateY(180deg)" src="/theme/funny.png"/><div id="nb" class="bubble"></div></div></div></div>
+<style>
+	.translateX:hover .fill {
+  -webkit-transform: translateX(45px);
+  transform: translateX(45px);
+}
+	</style>
+	  
+	  {% comment %}
 	<script>
 function show(num,a)
 {
@@ -173,7 +181,7 @@ function show(num,a)
      }
 }
 </script>
-    
+    {% endcomment %}
       <script>
        var _hmt = _hmt || [];
         (function() {
