@@ -253,7 +253,7 @@
   vertical-align: middle;
   margin-bottom: -5px;
 }
-
+/*
 .bubble{
   -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
           box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
@@ -268,4 +268,54 @@
   background:#888888;
   display:none;
 }
+*/
+.card .box {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  position: fixed;bottom: 15px;left:-50px
+}
+.card .box .fill {
+  width: 100px;
+  height: 100px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
 
+.translateX:hover .fill {
+  -webkit-transform: translateX(50px);
+  transform: translateX(50px);
+  position: fixed;bottom: 15px;left:-50px;
+}
+
+.cardA .boxA {
+  width: 150px;
+  height: 80px;
+  cursor: pointer;
+  position: fixed;bottom: 15px;left:-50px
+}
+.cardA .boxA .fillA {
+  width: 150px;
+  height: 80px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.translateA:hover .fillA {
+  -webkit-transform: translateX(50px);
+  transform: translateX(390px);
+  position: fixed;bottom: 15px;left:-50px;
+}
+
+.bubble{
+  -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+          box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+  word-break: break-all;
+  position: fixed;
+  left:-233px;
+  max-width:233px;
+  border-radius:10px;
+  padding:15px;
+  color:#fff;
+  background:#888888;
+  }
