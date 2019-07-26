@@ -8,7 +8,6 @@ baseurl: "" # change this to the subpath of your site, e.g. /blog. Leave it empt
 url: "https://atlinker.cn" # change this to the base hostname & protocol for your site
 
 google_analytics:
-# cayman-blog date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 hydrogen-blog:
   date_format: "%b %-d, %Y"
@@ -23,6 +22,7 @@ paginate: 8
 paginate_path: "page:num"
 
 theme_color: 546E7A
+background: /theme/bkg1.png
 
 # social
 author: "Link"
