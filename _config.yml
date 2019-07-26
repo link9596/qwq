@@ -21,7 +21,7 @@ plugins:
 paginate: 8
 paginate_path: "page:num"
 
-theme_color: 546E7A
+theme_color: FF5252
 background: /theme/bkg1.png
 
 # social
