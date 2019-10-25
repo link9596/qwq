@@ -29,9 +29,9 @@
   url: https://www.darkhat.xyz
   describe: 一个菜鸟的技术交流博客O_O
 
-- name: Healing博客
-  image: https://cdn.newxsy.com/banner.jpg
-  url: http://www.puse.me/
+- name: PuseBlog
+  image: https://cdn.newxsy.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191012031235.jpg
+  url: https://inim.im/
   describe: 日常学习纪录，分享技术经验
 
 - name: HQ站|Yarn
@@ -92,7 +92,7 @@
 
 - name: 萌新 ‘s blog
   url: https://blog.51qwj.xyz
-  image: https://blog.51qwj.xyz/wp-content/uploads/2019/08/QQ图片20190807204502.jpg
+  image: https://q1.qlogo.cn/g?b=qq&nk=3309939798&s=100
   describe: 萌新的摸鱼小窝
   
 - name: 轻惋导航
