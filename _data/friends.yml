@@ -105,6 +105,11 @@
   url: https://fly6022.fun/
   describe: 自己的感受，比道理重要
   
+- name: CairBin
+  image: https://i.loli.ma/pic/aaa7252099aed2af0eac1b15687d4a23.png
+  url: https://cairbin.top
+  describe:  To be or not to be…
+  
 - name: 轻惋导航
   image: https://www.chainwon.com/static/logo.png
   url: https://www.chainwon.com/
@@ -114,3 +119,4 @@
   image: /avatar/default.png
   url: http://daohang.lusongsong.com/
   describe: 博客大全
+
