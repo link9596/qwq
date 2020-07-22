@@ -25,7 +25,7 @@
   mail: abslant@foxmail.com
 
 - name: 晓月斋
-  image: http://t.cn/EhEPrq4
+  image: https://s2.ax1x.com/2019/01/03/FoI8HA.jpg
   url: https://www.darkhat.xyz
   describe: 一个菜鸟的技术交流博客O_O
 
@@ -34,16 +34,16 @@
   url: https://inim.im/
   describe: 日常学习纪录，分享技术经验
 
-- name: HQ站|Yarn
-  image: https://api.paugram.com/gravatar/?email=3025317494@qq.com
-  url: http://sebxjx.cn
-  describe: 生如夏花之绚烂，死如秋叶之静美
+# - name: HQ站|Yarn
+# image: https://api.paugram.com/gravatar/?email=3025317494@qq.com
+# url: http://sebxjx.cn
+# describe: 生如夏花之绚烂，死如秋叶之静美
 
-- name: Hi,Scvoet!
-  image: http://q1.qlogo.cn/g?b=qq&nk=3053638521&s=640
-  url: https://scvoet.me
-  describe: 每个人心中都有一团火，路过的人只看到烟。
-  mail: yiveco@qq.com
+# - name: Hi,Scvoet!
+# image: http://q1.qlogo.cn/g?b=qq&nk=3053638521&s=640
+# url: https://scvoet.me
+# describe: 每个人心中都有一团火，路过的人只看到烟。
+# mail: yiveco@qq.com
   
 - name: TSTR
   image: https://photo-1252237247.cos.ap-shanghai.myqcloud.com/20190710001836.webp
@@ -51,12 +51,12 @@
   describe: SatyLeo的自留地。
   
 - name: Eltrac's Track
-  image: http://guhub.cn/avatar.jpeg
+  image: https://cdn.jsdelivr.net/gh/BigCoke233/image-hosting/avatars/avatar.jpg
   url: https://guhub.cn/
   describe: All for one，one for all.
   
 - name: OMG's Blog
-  image: https://ohmyga.cn/headimg.png
+  image: https://gravatar.loli.net/avatar/3b95a3b4174bd20abe94e4654addc770?s=300
   url: https://ohmyga.cn/
   describe: 一个毫无技术含量的萌新的博客
   
@@ -75,10 +75,10 @@
   image: https://cdn.v2ex.com/gravatar/d3329dd2621a8d50a20593a953f01175?s=640
   describe: 崇宫苟道
  
-- name: RK-碎言
-  url: https://suiyan.top/
-  image: https://suiyan.top/ph/tx.png
-  describe: 云烟随雁去 谁人识得君
+# - name: RK-碎言
+# url: https://suiyan.top/
+# image: https://suiyan.top/ph/tx.png
+# describe: 云烟随雁去 谁人识得君
 
 - name: 星球彦
   url: https://storeweb.cn/
@@ -90,20 +90,20 @@
   url: https://dwd.moe/
   describe: 依旧是，偏爱枕惊鸿二字入梦的时节，烛火惺忪却可与她漫聊彻夜。
 
-- name: 萌新 ‘s blog
-  url: https://www.moex.club
-  image: https://q1.qlogo.cn/g?b=qq&nk=3309939798&s=100
-  describe: 萌新的摸鱼小窝
+# - name: 萌新 ‘s blog
+# url: https://www.moex.club
+# image: https://q1.qlogo.cn/g?b=qq&nk=3309939798&s=100
+# describe: 萌新的摸鱼小窝
   
 - name: Mashirl’s Blog
   url: https://www.mashirl.cn
   image: https://i.loli.net/2019/11/27/Kd7BbxWCYAMTt6h.jpg
   describe: 予 世界温柔以待 惟愿 时光静好
   
-- name: fly6022‘s Blog
-  image: https://fly6022.fun/images/avatar.png
-  url: https://fly6022.fun/
-  describe: 自己的感受，比道理重要
+# - name: fly6022‘s Blog
+# image: https://fly6022.fun/images/avatar.png
+# url: https://fly6022.fun/
+# describe: 自己的感受，比道理重要
   
 - name: CairBin
   image: https://i.loli.ma/pic/aaa7252099aed2af0eac1b15687d4a23.png
@@ -116,7 +116,7 @@
   describe: 世界，你好。
 
 - name: 轻惋导航
-  image: https://www.chainwon.com/static/logo.png
+  image: /avatar/default.png
   url: https://www.chainwon.com/
   describe: 这个导航将会有无限的可能！
 
