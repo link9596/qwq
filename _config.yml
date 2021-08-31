@@ -22,7 +22,7 @@ paginate: 8
 paginate_path: "page:num"
 
 theme_color: FF5252
-background: /theme/bkg1.png
+background: /theme/bkgcat.png
 
 # social
 author: "Link"
