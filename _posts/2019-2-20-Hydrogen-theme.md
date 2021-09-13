@@ -15,7 +15,7 @@ stickie: true
 
 :point_right:[项目地址](https://github.com/link9596/hydrogen)
 
-<a class="lightbox">![主题预览](/usrimg/2019-2-20-theme-1.png)</a>
+<a href="/usrimg/2019-2-20-theme-1.png" class="lightbox">![主题预览](/usrimg/2019-2-20-theme-1.png)</a>
 
 接触过静态博客的dalao都知道，经营一个静态博客是个技术活~
 
