@@ -61,9 +61,11 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
+
+.line a{text-decoration: none;position:relative;cursor:pointer;color:#009688;display:inline-block;Z-index:1}.line a:before{content:"";position:absolute;width:0;right:0;bottom:0;height:2px;background:#90CAF9;-webkit-transition:width .3s ease;transition:width .3s ease}.line a:hover:before{width:100%;left:0;right:auto}
 
 .btn {
   display: inline-block;
@@ -183,6 +185,33 @@ a {
   @include small {
     font-size: 0.75rem;
   }
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .3s, opacity 1s;
+}
+.ripple:active:after {
+  transform: scale(0, 0);
+  opacity: .2;
+  transition: 0s;
 }
 
 .main-content {
