@@ -90,10 +90,10 @@
   url: https://dwd.moe/
   describe: 依旧是，偏爱枕惊鸿二字入梦的时节，烛火惺忪却可与她漫聊彻夜。
 
- - name: 萌新 ‘s blog
- url: https://www.xinmoe.cn
- image: https://q1.qlogo.cn/g?b=qq&nk=3309939798&s=100
- describe: 萌新的摸鱼小窝
+- name: 萌新 ‘s blog
+  url: https://www.xinmoe.cn
+  image: https://q1.qlogo.cn/g?b=qq&nk=3309939798&s=100
+  describe: 萌新的摸鱼小窝
   
 - name: Mashirl’s Blog
   url: https://www.mashirl.cn
