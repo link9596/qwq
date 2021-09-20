@@ -30,7 +30,7 @@
   describe: 一个菜鸟的技术交流博客O_O
 
 - name: PuseBlog
-  image: https://cdn.newxsy.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191012031235.jpg
+  image: /avatar/default.png
   url: https://inim.im/
   describe: 日常学习纪录，分享技术经验
 
@@ -111,7 +111,7 @@
   describe:  To be or not to be…
   
 - name: WhatZ的小破窝
-  image: https://high-cn-01.cdn.bilnn.com/get/whatzblog/2020/7/3/17312b3b8fafff46
+  image: /avatar/default.png
   url: https://b.cupmoexpz.tk/
   describe: 世界，你好。
 
