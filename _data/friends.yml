@@ -100,10 +100,10 @@
   image: https://cdn.jsdelivr.net/gh/Mashirl/Blog/source/images/avatar.jpg
   describe: 予 世界温柔以待 惟愿 时光静好
   
-# - name: fly6022‘s Blog
-# image: https://fly6022.fun/images/avatar.png
-# url: https://fly6022.fun/
-# describe: 自己的感受，比道理重要
+- name: fly6022‘s Blog
+  image: https://fly6022.fun/images/avatar.png
+  url: https://fly6022.fun/
+  describe: 自己的感受，比道理重要
   
 - name: CairBin
   image: https://cairbin.gitee.io/cair_img/img/bloglogo.png
