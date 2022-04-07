@@ -63,6 +63,8 @@ layout: default
 <noscript> 为正常使用评论功能请激活JavaScript</noscript>
 </div>
 <!-- end LiveRe -->
+<script src="/comment/av-min.js"></script>
+  <script src="/comment/Valine.min.js"></script>
 {% endcomment %}
 
   {% if site.show_comment %}
@@ -70,8 +72,7 @@ layout: default
   {% endif %}
   
   {% if site.data.social.valine_comment.enable  == true %}
-  <script src="/comment/av-min.js"></script>
-  <script src="/comment/Valine.min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <div id="comments"></div>
   {% include comments.html %}
   {% endif %}
