@@ -14,29 +14,7 @@ layout: default
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
       {% endif %}</p>
   </header> -->
-  {% comment %}
-<script src="https://link9596.github.io/Simple-lightbox/dist/simpleLightbox.js"></script>
-   <script src="https://link9596.github.io/Simple-lightbox/js/index.js"></script>
-  <script>
-  window.onload=function(){
-    var imgs=document.getElementsByTagName('img');
-    for(var i=0;i<imgs.length;i++){
-        imgs[i].className='lightbox';
-    }
-}
-   var img=document.getElementsByTagName("img");
-   for(var i=0;i<img.length;i++){
-    img[i].id="img"+i;
-    var img1=document.getElementById("img"+i);
-    var a=document.createElement("a");
-    //获取当前元素的父元素进行替换
-    img1.parentNode.replaceChild(a,img1);
-    a.href=img1.src;
-    a.appendChild(img1);
-   }
 
-  </script>
-  {% endcomment %}
   <div itemprop="articleBody">
     {{ content }}
   </div>
