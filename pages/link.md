@@ -40,7 +40,7 @@ permalink: /links.html
 
   {% if site.data.social.valine_comment.enable  == true %}
   <script src="/comment/av-min.js"></script>
-  <script src="/comment/Valine.min.js"></script>
+  <script src="/comment/valine.js"></script>
   <div id="comments"></div>
   {% include comments.html %}
   {% endif %}
