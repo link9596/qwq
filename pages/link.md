@@ -43,5 +43,6 @@ permalink: /links.html
   <script src="/comment/valine.js"></script>
   <div id="comments"></div>
   {% include comments.html %}
+  {% include emoji.html %}
   {% endif %}
   {% include scripts.html %}
