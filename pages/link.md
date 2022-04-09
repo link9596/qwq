@@ -42,6 +42,6 @@ permalink: /links.html
   <script src="/comment/av-min.js"></script>
   <script src="/comment/valine.js"></script>
   <div id="comments"></div>
-  {% include comments.html %}
+  {% include new_comments.html %}
   {% endif %}
   {% include scripts.html %}
