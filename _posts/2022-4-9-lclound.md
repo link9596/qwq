@@ -8,14 +8,14 @@ tags: skill
 
 前几周一直被这个评论问题困扰了好久，因为近期我都没动过博客源码，而问题突然出现肯定是Leancloud出了问题，我以为是某个节点无法访问了，想必Leancloud过几天应该会自行恢复吧，然后......就~~咕咕咕~~
 
-然鹅到了今天，评论还是没有恢复，仍然报错
+然鹅到了今天，评论还是没有恢复，仍然报错![](/exp/neutral.gif)
 
 ```
 Code -1: Request has been terminated
 Possible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc.
 ```
 
-好吧，该排查一下是哪里的问题了
+好吧，该排查一下是哪里的问题了![](/exp/razz.gif)
 
 按照国际惯例，我们摁一下F12
 
@@ -33,7 +33,7 @@ Possible causes: the network is offline, Origin is not allowed by Access-Control
 
 ![国内域名](/usrimg/2022-4-9-lcloud3.png)
 
-果然给我换了...
+![](/exp/surprised.gif)果然给我换了...
 
 而那个旧接口`api.lncld.net`，我记得在我安装插件的时候没有写过这个地址，所以推测应该在av-min.js里写死了，打开av-min.js搜索一下这个地址
 
@@ -50,6 +50,6 @@ Possible causes: the network is offline, Origin is not allowed by Access-Control
 >
 > 3. 在av-min.js里将其替换
 
-大功告成。
+大功告成![](/exp/yeah.gif)
 
 另外在github里我看到了开发人员也注意到了这个问题，所以他们更新了`av-min.js`文件，这样一来用新版Valine的hxd应该不会出现这个问题，用老款的hxd可以用这个方案解决。
