@@ -2,6 +2,7 @@
     new Valine({
         avatar: 'retro',
         el: '#comments',
+        path: window.location.pathname,
         appId: '{{ site.data.social.valine_comment.leancloud_appid }}',
         appKey: '{{ site.data.social.valine_comment.leancloud_appkey }}',
         placeholder:'{{ site.data.social.valine_comment.placeholder }}',
