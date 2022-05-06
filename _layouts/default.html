@@ -204,6 +204,14 @@
       </script>
 <script src="https://demo.atlinker.cn/usr/themes/Protium/assets/js/click.js" data-no-instant></script>    
 <script>
+InstantClick.on('change', function (isInitialLoad) {
+valine.init(option);
+            if (isInitialLoad === false) {
+                if (typeof Prism !== 'undefined') Prism.highlightAll(true, null);
+            if (typeof _hmt !== 'undefined') 
+   _hmt.push(['_trackPageview', location.pathname + location.search]);//统计
+            }
+        });
 InstantClick.init();
 new Valine();
     </script>
