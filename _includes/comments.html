@@ -1,5 +1,5 @@
 <script>
-    var valine = new Valine({
+    var option = {
         avatar: 'retro',
         el: '#comments',
         path: window.location.pathname,
@@ -41,5 +41,6 @@
         "funnycry":"funnycry.png",
         "funnyangry":"funnyangry.png",
     }
-    });
+    };
+var valine = new Valine(option);
 </script>
