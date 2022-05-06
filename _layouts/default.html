@@ -207,13 +207,14 @@
 InstantClick.on('change', function (isInitialLoad) {
 valine.init(option);
             if (isInitialLoad === false) {
+valine.init(option);
                 if (typeof Prism !== 'undefined') Prism.highlightAll(true, null);
             if (typeof _hmt !== 'undefined') 
    _hmt.push(['_trackPageview', location.pathname + location.search]);//统计
             }
         });
 InstantClick.init();
-new Valine();
+valine.init(option);
     </script>
   </body>
 </html>
