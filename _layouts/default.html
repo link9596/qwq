@@ -170,6 +170,7 @@
     </div>
   </div>
 </div>
+
 <script>
 var codeblocks = document.getElementsByTagName("pre")
 //循环每个pre代码块，并添加 复制代码
@@ -177,12 +178,12 @@ var codeblocks = document.getElementsByTagName("pre")
 for (var i = 0; i < codeblocks.length; i++) {
 //显示 复制代码 按钮
 currentCode = codeblocks[i]
-currentCode.style = "position: absolute;"
+currentCode.style = "position: relative;"
 var copy = document.createElement("div")
-copy.style = "position: relative;right: 4px;\
+copy.style = "position: absolute;right: 4px;\
 top: 4px;background-color: white;padding: 2px 8px;\
 margin: 8px;border-radius: 4px;cursor: pointer;\
-z-index: 1;\
+z-index: 9999;\
 box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);"
 copy.innerHTML = "复制"
 currentCode.appendChild(copy)
@@ -229,6 +230,7 @@ for (var i = 0; i < codeblocks.length; i++) {
 }(i);
 }
 </script>
+
       <script>
        var _hmt = _hmt || [];
         (function() {
