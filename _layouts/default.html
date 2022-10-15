@@ -196,7 +196,7 @@ for (var i = 0; i < codeblocks.length; i++) {
 !function (i) {
     //鼠标移到代码块，就显示按钮
     codeblocks[i].onmouseover = function () {
-        codeblocks[i].childNodes[1].style.opacity='1'
+        codeblocks[i].childNodes[1].style.opacity='100%'
     }
 
     //执行 复制代码 功能
@@ -226,7 +226,7 @@ for (var i = 0; i < codeblocks.length; i++) {
 !function (i) {
     //鼠标从代码块移开 则不显示复制代码按钮
     codeblocks[i].onmouseout = function () {
-        codeblocks[i].childNodes[1].style.opacity='0'
+        codeblocks[i].childNodes[1].style.opacity='0%'
     }
 }(i);
 }
