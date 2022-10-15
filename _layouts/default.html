@@ -211,7 +211,7 @@ for (var i = 0; i < codeblocks.length; i++) {
         selection.addRange(range);
         document.execCommand('copy');
         setTimeout(function () { codeblocks[i].childNodes[1].style.color = "transparent"; }, 500);
-        setTimeout(function () { codeblocks[i].childNodes[1].style.color = ""; }, 500);
+        //setTimeout(function () { codeblocks[i].childNodes[1].style.color = ""; }, 500);
         codeblocks[i].childNodes[1].style.width = "72px";
         codeblocks[i].childNodes[1].innerHTML = "复制成功"
         setTimeout(function () {
