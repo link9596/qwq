@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Billboard
-tagline: Biu~
+tagline: 这或许是个留言板 Biu~
 song: t
+comment: true
 ---
 
 >“<br>
