@@ -180,8 +180,8 @@ for (var i = 0; i < codeblocks.length; i++) {
 currentCode = codeblocks[i]
 currentCode.style = "position: relative;"
 var copy = document.createElement("div")
-copy.style = "width:50px;float:left;position: sticky;left: 0px;\
-top: 4px;background-color: white;padding:2px 8px;padding-bottom: -2px;\
+copy.style = "width:48px;float:left;position: sticky;left: 0px;\
+top: 4px;background-color: white;padding:2px 8px;padding-bottom: -4px;\
 margin-top: 5px;border-radius: 4px;cursor: pointer;\
 z-index: 1;\
 box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);-webkit-transition: all .4s, -webkit-transform .4s ease;transition: all .4s, transform .4s ease;"
@@ -210,11 +210,11 @@ for (var i = 0; i < codeblocks.length; i++) {
         if (selection.rangeCount > 0) selection.removeAllRanges();
         selection.addRange(range);
         document.execCommand('copy');
-        codeblocks[i].childNodes[1].style.width = "64px";
+        codeblocks[i].childNodes[1].style.width = "72px";
         codeblocks[i].childNodes[1].innerHTML = "复制成功"
         setTimeout(function () {
             codeblocks[i].childNodes[1].innerHTML = "复制";
-            codeblocks[i].childNodes[1].style.width = "50px";
+            codeblocks[i].childNodes[1].style.width = "48px";
         }, 1000);
         //清除选择区
         if (selection.rangeCount > 0) selection.removeAllRanges(); 0
