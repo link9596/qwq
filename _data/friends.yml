@@ -24,15 +24,15 @@
   describe: 相册
   mail: lk@atlinker.cn
 
-- name: 晓月斋
-  image: https://s2.ax1x.com/2019/01/03/FoI8HA.jpg
-  url: https://www.darkhat.xyz
-  describe: 一个菜鸟的技术交流博客O_O
+# - name: 晓月斋
+#  image: https://s2.ax1x.com/2019/01/03/FoI8HA.jpg
+#  url: https://www.darkhat.xyz
+#  describe: 一个菜鸟的技术交流博客O_O
 
-- name: PuseBlog
-  image: /avatar/default.png
-  url: https://inim.im/
-  describe: 日常学习纪录，分享技术经验
+# - name: PuseBlog
+#  image: /avatar/default.png
+#  url: https://inim.im/
+#  describe: 日常学习纪录，分享技术经验
 
 # - name: HQ站|Yarn
 # image: https://api.paugram.com/gravatar/?email=3025317494@qq.com
@@ -51,7 +51,7 @@
   describe: SatyLeo的自留地。
   
 - name: Eltrac's Track
-  image: https://cdn.jsdelivr.net/gh/BigCoke233/image-hosting/avatars/avatar.jpg
+  image: https://avatars.githubusercontent.com/u/45323514?v=4
   url: https://guhub.cn/
   describe: All for one，one for all.
   
@@ -64,11 +64,6 @@
   image: https://gravatar.loli.net/avatar/af6911b4de2f5a357fa796a66e202272?d=mp&v=1.3.9
   url: https://blog.ojhdt.com/
   describe: 隐约雷鸣，阴霾天空
- 
-- name: FH云彩博客
-  url: https://yuncaioo.com/
-  image: https://secure.gravatar.com/avatar/bc4535a185bc4da4ae8d2e805a99b9dd?s=128&d=mm&r=g
-  describe: FH云彩博客
   
 - name: 崇宫苟道
   url: https://lzh441.cn/
@@ -101,7 +96,7 @@
   describe: 予 世界温柔以待 惟愿 时光静好
   
 - name: fly6022‘s Blog
-  image: https://fly6022.fun/images/avatar.png
+  image: https://cdn.luogu.com.cn/upload/usericon/473298.png
   url: https://fly6022.fun/
   describe: 自己的感受，比道理重要
   
@@ -109,11 +104,6 @@
   image: https://cairbin.gitee.io/cair_img/img/bloglogo.png
   url: https://cairbin.top
   describe:  To be or not to be…
-  
-- name: WhatZ的小破窝
-  image: /avatar/default.png
-  url: https://b.cupmoexpz.tk/
-  describe: 世界，你好。
 
 - name: 7gugu’s Blog
   image: https://7gugu.com/wp-content/uploads/2021/07/favicon.png
