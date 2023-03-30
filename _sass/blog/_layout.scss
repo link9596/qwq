@@ -236,7 +236,6 @@
   display:block;
 }
 .link-chip {
-  width:100%;
   overflow: hidden;
   display: inline-block;
   border-style: solid;
@@ -263,8 +262,13 @@
   will-change: box-shadow;
 }
 
+.link-chip-div{
+display: inline-block;
+width:100%
+}
+
 @media (min-width: 767px) {
-.link-chip{
+.link-chip-div{
 width: 49%;
  }
 }
