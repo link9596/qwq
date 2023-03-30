@@ -31,7 +31,7 @@ permalink: /links.html
 <div><a href="{{f.url}}" target="_blank" class="link-chip ripple">
  <img alt="{{f.describe}}" src="{{f.image}}" class="link-chip-icon"/>
  <span title="{{f.describe}}" class="link-chip-title">{{f.name}}</span>
- <p style="margin-top:-30px" class="link-chip-dc">{{f.describe}}</p></a></div>
+ <p class="link-chip-dc">{{f.describe}}</p></a></div>
 {% endfor %}
 
 [返回主页]({{ site.url }}{{ site.baseurl }})
