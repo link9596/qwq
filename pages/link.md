@@ -28,11 +28,11 @@ permalink: /links.html
 (* /ω＼*)
 
 {% for f in site.data.friends %}
-<div href="{{f.url}}" class="link-chip ripple">
+<a href="{{f.url}}" target="_blank" class="link-chip ripple">
  <img alt="{{f.describe}}" src="{{f.image}}" class="link-chip-icon">
- <a title="{{f.describe}}" target="_blank" class="link-chip-title" href="{{f.url}}">{{f.name}}</a>
- <div class="link-chip-dc">{{f.describe}}</div>
-</div>
+ <span title="{{f.describe}}" class="link-chip-title">{{f.name}}</span>
+ <p class="link-chip-dc">{{f.describe}}</p>
+</a>
 {% endfor %}
 
 [返回主页]({{ site.url }}{{ site.baseurl }})
