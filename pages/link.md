@@ -31,6 +31,7 @@ permalink: /links.html
 <div class="link-chip">
  <img alt="{{f.describe}}" src="{{f.image}}" class="link-chip-icon">
  <a title="{{f.describe}}" target="_blank" class="link-chip-title" href="{{f.url}}">{{f.name}}</a>
+ <div class="link-chip-dc">{{f.describe}}</div>
 </div>
 {% endfor %}
 
