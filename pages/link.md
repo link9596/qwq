@@ -28,7 +28,7 @@ permalink: /links.html
 (* /ω＼*)
 
 {% for f in site.data.friends %}
-<div style="display: inline-block"><a href="{{f.url}}" target="_blank" class="link-chip ripple">
+<div class="link-chip"><a href="{{f.url}}" target="_blank" class="link-chip ripple">
  <img alt="{{f.describe}}" src="{{f.image}}" class="link-chip-icon"/>
  <span title="{{f.describe}}" class="link-chip-title">{{f.name}}</span>
  <p class="link-chip-dc">{{f.describe}}</p></a></div>
