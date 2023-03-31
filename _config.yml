@@ -1,4 +1,4 @@
-title: ${random.int[10,20]}
+title: ${random.int(3)}
 description: 轻舟已过万重山.
 keywords: blog,css,html,php
 show_downloads: false
