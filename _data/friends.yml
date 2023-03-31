@@ -7,6 +7,7 @@
   image: https://i.loli.net/2021/09/17/TvdxnjYVDZclL7t.jpg
   url: http://bykickyyy.xyz
   describe: 自律已有成果，勤练带来力量。
+  skin: /theme/skin/skin3.png
 
 # - name: Troy's Blog
 #  image: https://static.itroy.cc/image/avatar/troy.png 
@@ -17,12 +18,14 @@
   image: /avatar/default.png
   url: https://daily.atlinker.cn/daily
   describe: 人生左手是月亮，右手是六便士。
+  skin: /theme/skin/skin1.png
 
 - name: 菲林小铺
   image: https://demo.atlinker.cn/PHOTO/usr/themes/Story/film.png
   url: https://film.atlinker.cn
   describe: 俺滴相册
   mail: lk@atlinker.cn
+  skin: /theme/skin/skin2.png
 
 # - name: 晓月斋
 #  image: https://s2.ax1x.com/2019/01/03/FoI8HA.jpg
@@ -49,21 +52,25 @@
   image: https://static.tstrs.me/20190716233935.jpg
   url: https://tstrs.me
   describe: SatyLeo的自留地。
+  skin: /theme/skin/skin4.png
   
 - name: Eltrac's Track
   image: https://avatars.githubusercontent.com/u/45323514?v=4
   url: https://guhub.cn/
   describe: All for one，one for all.
+  skin: /theme/skin/skin5.png
   
 - name: OMG's Blog
   image: https://gravatar.loli.net/avatar/3b95a3b4174bd20abe94e4654addc770?s=300
   url: https://ohmyga.cn/
   describe: 一个毫无技术含量的萌新的博客。
+  skin: /theme/skin/skin6.png
   
 - name: Ojhdt’s Blog
   image: https://gravatar.loli.net/avatar/af6911b4de2f5a357fa796a66e202272?d=mp&v=1.3.9
   url: https://blog.ojhdt.com/
   describe: 隐约雷鸣，阴霾天空。
+  skin: /theme/skin/skin7.png
   
 # - name: 崇宫苟道
 #  url: https://lzh441.cn/
@@ -79,16 +86,19 @@
   url: https://storeweb.cn/
   image: https://upload.storeweb.cn/upload/member/avatar/1/6899da3aabb91d5b6720bfd3e7ea101d.jpg
   describe: 一个精致的博客社交网站。
+  skin: /theme/skin/skin8.png
   
 - name: Bhao
   image: https://q1.qlogo.cn/g?b=qq&nk=657997987&s=100
   url: https://dwd.moe/
   describe: 依旧是，偏爱枕惊鸿二字入梦的时节，烛火惺忪却可与她漫聊彻夜。
+  skin: /theme/skin/skin9.png
 
 - name: 萌新 ‘s blog
   url: https://www.xinmoe.cn
   image: https://q1.qlogo.cn/g?b=qq&nk=3309939798&s=100
   describe: 萌新的摸鱼小窝
+  skin: /theme/skin/skin4.png
   
 # - name: Mashirl’s Blog
 #  url: https://www.mashirl.cn
@@ -99,16 +109,19 @@
   image: https://cdn.luogu.com.cn/upload/usericon/473298.png
   url: https://fly6022.fun/
   describe: 自己的感受，比道理重要。
+  skin: /theme/skin/skin3.png
   
 - name: CairBin
   image: https://cairbin.gitee.io/cair_img/img/bloglogo.png
   url: https://cairbin.top
   describe:  To be or not to be…
+  skin: /theme/skin/skin6.png
 
 - name: 7gugu’s Blog
   image: https://7gugu.com/wp-content/uploads/2021/07/favicon.png
   url: https://www.7gugu.com
   describe: 一只鸽子的Code Space
+  skin: /theme/skin/skin5.png
 
 # - name: 轻惋导航
 #  image: /avatar/default.png
@@ -119,3 +132,4 @@
   image: /avatar/default.png
   url: http://daohang.lusongsong.com/
   describe: 博客大全
+  skin: /theme/skin/skin8.png
