@@ -55,6 +55,10 @@ body {
   color: $body-text-color;
 }
 
+strong{
+  font-family: "txtbold", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 @media (max-width: 767px) {
 .funny{
 display: none;
