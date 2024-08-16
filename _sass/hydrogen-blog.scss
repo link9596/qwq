@@ -59,10 +59,13 @@ body {
 body{background-color:#121212}
 hr{background:#1c1c1c !important}
 blockquote{border-left: 0.3rem solid #2a333c !important}
-.site-footer{border-top:solid 1px #121212}
+.site-footer{border-top:solid 1px #121212 !important}
 .link-chip{background-color:#1b1e1f}
-.link-chip-title{background-color:#bababa}
-
+.link-chip-title{color:#bababa}
+.v[data-class="v"] .vwarp .vheader .vinput .vh{boder-bottom: 1px dashed #2c2c2c !important}
+.vquote{boder-left: 1px dashed #2c2c2c !important}
+.vbtn{background:#212121 !important}
+.main-content pre{border:solid 1px #1e2225 !important}
 }
 
 strong{
