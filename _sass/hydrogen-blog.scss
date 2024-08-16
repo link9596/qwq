@@ -69,6 +69,12 @@ blockquote{border-left: 0.3rem solid #2a333c !important}
 .main-content pre{border:solid 0px !important;border-radius: 0 !important;background:#1b1e21!important}
 .main-content code{background:#1b1e21 !important}
 .copybtn{background:#151515 !important}
+
+@media screen and (max-width:38rem){
+.trigger{
+background:#151515 !important
+  }
+ }
 }
 
 strong{
