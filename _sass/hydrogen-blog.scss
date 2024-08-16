@@ -55,6 +55,11 @@ body {
   color: $body-text-color;
 }
 
+@media (prefers-color-scheme: dark){
+.body{back-ground:#121212}
+blockquote{border-left: 0.3rem solid #2a333c}
+}
+
 strong{
   letter-spacing: 0.5px;
   font-family: "txtbold", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
