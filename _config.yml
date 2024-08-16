@@ -22,7 +22,7 @@ paginate: 8
 paginate_path: "page:num"
 
 theme_color: "rgba(0,0,0, .5)" #ff5252
-background: /theme/street.png
+background: /theme/bkg2.png
 
 # social
 author: "Link"
