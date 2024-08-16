@@ -57,7 +57,12 @@ body {
 
 @media (prefers-color-scheme: dark){
 body{background-color:#121212}
-blockquote{border-left: 0.3rem solid #2a333c}
+hr{background:#1c1c1c !important}
+blockquote{border-left: 0.3rem solid #2a333c !important}
+.site-footer{border-top:solid 1px #121212}
+.link-chip{background-color:#1b1e1f}
+.link-chip-title{background-color:#bababa}
+
 }
 
 strong{
