@@ -80,7 +80,7 @@ blockquote{border-left: 0.3rem solid #2a333c !important}
   }
 
 /*小屏*/
-@media screen and (max-width:38rem){
+@media screen and (max-width:767px){
 .trigger{
 background:#151515 !important
   }
@@ -556,6 +556,6 @@ margin: 10px;
         background-size: cover;
         max-width: 100%;
         margin: -100px 0 0 -16px;}
-@media screen and (max-width:38rem){
+@media screen and (max-width:767px){
 .footerbkg{background: url("/theme/footerM-day.png") no-repeat center}
   }
