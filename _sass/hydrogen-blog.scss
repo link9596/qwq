@@ -71,10 +71,17 @@ blockquote{border-left: 0.3rem solid #2a333c !important}
 .main-content code{background:#1b1e21 !important}
 .copybtn{background:#151515 !important}
 
+/*页脚图片*/
+.footerbkg{background: url("/theme/footer-night.png") no-repeat center}
+
+/*小屏*/
 @media screen and (max-width:38rem){
 .trigger{
 background:#151515 !important
   }
+
+.footerbkg{background: url("/theme/footerM-night.png") no-repeat center}
+
  }
 }
 
@@ -528,3 +535,9 @@ margin: 10px;
   } // social-icons
 
 }
+
+/*默认页脚背景*/
+.footerbkg{background: url("/theme/footer-day.png") no-repeat center}
+@media screen and (max-width:38rem){
+.footerbkg{background: url("/theme/footerM-day.png") no-repeat center}
+  }
