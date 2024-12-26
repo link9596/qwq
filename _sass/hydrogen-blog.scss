@@ -72,7 +72,7 @@ blockquote{border-left: 0.3rem solid #2a333c !important}
 .copybtn{background:#151515 !important}
 
 /*页脚图片*/
-.footerbkg{background: url("/theme/footer-night.png") no-repeat center}
+.footerbkg{background: url("/theme/footer-night.png") !important}
 
 /*小屏*/
 @media screen and (max-width:38rem){
@@ -80,7 +80,7 @@ blockquote{border-left: 0.3rem solid #2a333c !important}
 background:#151515 !important
   }
 
-.footerbkg{background: url("/theme/footerM-night.png") no-repeat center}
+.footerbkg{background: url("/theme/footerM-night.png") !important}
 
  }
 }
