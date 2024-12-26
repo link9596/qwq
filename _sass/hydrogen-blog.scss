@@ -73,6 +73,9 @@ blockquote{border-left: 0.3rem solid #2a333c !important}
 
 /*页脚图片*/
 .footerbkg{background: url("/theme/footer-night.png") !important;
+  height:250px;
+  width:100%;
+  margin: -150px 0 0 0px;
   -webkit-background-size: cover !important;
   -moz-background-size: cover !important;
   -o-background-size: cover !important;
@@ -86,6 +89,9 @@ background:#151515 !important
   }
 
 .footerbkg{background: url("/theme/footerM-night.png") !important;
+  height:200px;
+  width:100%;
+  margin: -137px 0 0 0px;
   -webkit-background-size: cover !important;
   -moz-background-size: cover !important;
   -o-background-size: cover !important;
@@ -549,22 +555,27 @@ margin: 10px;
 /*默认页脚背景*/
 .footerbkg{background: url("/theme/footer-day.png") no-repeat center;
         height:250px;
-        width:100%;}
+        width:100%;
+        margin: -150px 0 0 0px;
+}
 
 .footerdiv{
-z-index: -10;
+        z-index: -10;
         position: absolute;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        max-width: 100%;
-        margin: -150px 0 0 0px;
 }
 
 @media screen and (max-width:767px){
 .footerbkg{background: url("/theme/footerM-day.png") no-repeat center;
         height:200px;
         width:100%;
-}
-  }
+        margin: -137px 0 0 0px;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; 
+   }
+ }
