@@ -8,7 +8,7 @@ permalink: /about.html
 
 # 时光窗
 
-Link的个人博客起源于: 2017年12月23日
+「Link」起源于: 2017年12月23日
 
 如今已稳如老狗地运行<span id="sitetime2"></span>天
 
