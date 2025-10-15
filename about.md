@@ -10,7 +10,7 @@ permalink: /about.html
 
 「Link」起源于: 2017年12月23日
 
-如今已稳如老狗地运行<span id="sitetime2"></span>天
+如今已~~写作~~ 碎碎念<span id="sitetime2"></span>天
 
 ## #Catch me
 
