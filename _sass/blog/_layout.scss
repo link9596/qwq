@@ -39,7 +39,7 @@
   backdrop-filter: saturate(180%) blur(20px);
   // Positioning context for the mobile navigation icon
   position: fixed;
-  width: 100%;
+  //width: 100%;
   z-index: 5;
   border-radius: 50px;
   left: 0;
@@ -91,6 +91,11 @@
       margin-right: 20px;
     }
   }
+
+  @include media-query($on-palm) {
+    width: 95%;
+	}
+	
 /***
   @include media-query($on-palm) {
     position: absolute;
