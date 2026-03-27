@@ -4,6 +4,7 @@ title: Billboard
 tagline: 这或许是个留言板 Biu~
 song: t
 vc: t
+icon: /theme/icon/billboard.svg
 ---
 
 >“<br>
