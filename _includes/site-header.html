@@ -27,7 +27,7 @@
             {% if my_page.title %}
               {% if my_page.title contains "404" %}
               {% else %}
-                <a class="page-link" href="{{ my_page.url | relative_url }}"><img src="{{ my_page.icon | escape }}"></a>
+                <a class="page-link" href="{{ my_page.url | relative_url }}"><img style="margin: 0px 10px -5px;" src="{{ my_page.icon | escape }}"></a>
               {% endif %}
             {% endif %}
           {% endfor %}
