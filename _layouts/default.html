@@ -267,12 +267,43 @@ for (var i = 0; i < codeblocks.length; i++) {
       </script>
             {% if site.PJAX %}
 <script src="/assets/js/instantclick.min.js" data-no-instant></script>
-<script data-no-instant>
-    function initValine() {
-        var container = document.querySelector('#vcomments');
-        if (!container) return;
-        container.innerHTML = '';
-new Valine({
+    <script data-no-instant>
+        // 全局标志，确保 LeanCloud SDK 环境只初始化一次
+        let leancloudReady = false;
+
+        // 安全初始化 Valine 的函数
+        function initValine() {
+            const container = document.getElementById('vcomments');
+            if (!container) {
+                // 当前页面没有评论容器，直接返回
+                return;
+            }
+
+            // 检查 Valine 是否已加载
+            if (typeof Valine === 'undefined') {
+                console.warn('Valine 未加载，稍后重试');
+                setTimeout(initValine, 200);
+                return;
+            }
+
+            // 如果 LeanCloud SDK 尚未准备就绪，等待或尝试修复
+            if (!leancloudReady) {
+                // 检查 AV 对象是否存在（LeanCloud SDK 暴露的全局对象）
+                if (typeof AV === 'undefined') {
+                    console.warn('LeanCloud SDK 未加载，稍后重试');
+                    setTimeout(initValine, 200);
+                    return;
+                }
+                // 标记 SDK 已准备，后续不再重新初始化
+                leancloudReady = true;
+            }
+
+            // 清空容器，防止重复渲染
+            container.innerHTML = '';
+
+            try {
+                // 创建新的 Valine 实例，此时 SDK 已存在，不会再重复定义属性
+                   new Valine({
         avatar: 'retro',
         el: '#comments',
         avatar_cdn: 'https://gravatar.loli.net/avatar/',
@@ -335,13 +366,30 @@ new Valine({
         "funnyangry":"funnyangry.png",
     }
     });
-    }
+            } catch (err) {
+                console.error('Valine 初始化失败', err);
+            }
+        }
 
-    InstantClick.on('change', function(isInitialLoad) {
-        initValine(); // 每次切换都重新初始化评论
-    });
-    InstantClick.init();
-</script>
+        // 处理 instantClick 的 change 事件
+        InstantClick.on('change', function(isInitialLoad) {
+            // 安全操作折叠菜单（示例：如果存在 id="fold" 的元素）
+            const foldEl = document.getElementById('fold');
+            if (foldEl) foldEl.style.height = '0px';
+
+            // 页面切换后，重新初始化 Valine
+            // 加一个微小延迟，确保 instantClick 完全替换 DOM
+            setTimeout(initValine, 30);
+        });
+
+        // 启动 instantClick
+        InstantClick.init();
+
+        // 页面首次加载时也初始化一次（因为 change 事件也会在首次加载时触发，但为防止某些边缘情况，额外调用一次也无妨）
+        // 注意：如果 change 事件在首次加载时已触发，这里可能会调用两次，但 initValine 内部有清空容器逻辑，不会重复渲染
+        // 为避免可能的重复，可以不加，但加上更保险
+        // initValine(); // 可选，InstantClick.init() 后 change 事件会立即触发一次，通常不需要
+    </script>
       {% endif %}
   </body>
 </html>
