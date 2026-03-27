@@ -85,10 +85,14 @@
     /*color: $text-color;*/
     color: #ffffff;
     line-height: $base-line-height;
+	border-radius: 50px;
+    background-color: rgba(200, 200, 200, 0.05);
+    border: 1px solid rgba(200, 200, 200, 0.05);
+    padding: 5px 10px;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
-      margin-right: 20px;
+      //margin-right: 20px;
     }
   }
 
