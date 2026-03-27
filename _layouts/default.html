@@ -267,43 +267,63 @@ for (var i = 0; i < codeblocks.length; i++) {
       </script>
             {% if site.PJAX %}
 <script src="/assets/js/instantclick.min.js" data-no-instant></script>
-    <script data-no-instant>
-        // 全局标志，确保 LeanCloud SDK 环境只初始化一次
-        let leancloudReady = false;
+<script data-no-instant>
+        // 全局标志，记录 LeanCloud SDK 是否已经初始化过（避免重复定义属性）
+        let sdkInitialized = false;
 
-        // 安全初始化 Valine 的函数
+        // 首次完整初始化（包括等待 SDK 就绪，并创建 Valine 实例）
         function initValine() {
             const container = document.getElementById('vcomments');
-            if (!container) {
-                // 当前页面没有评论容器，直接返回
-                return;
-            }
+            if (!container) return;
 
-            // 检查 Valine 是否已加载
+            // 确保 Valine 和 LeanCloud SDK 可用
             if (typeof Valine === 'undefined') {
                 console.warn('Valine 未加载，稍后重试');
                 setTimeout(initValine, 200);
                 return;
             }
-
-            // 如果 LeanCloud SDK 尚未准备就绪，等待或尝试修复
-            if (!leancloudReady) {
-                // 检查 AV 对象是否存在（LeanCloud SDK 暴露的全局对象）
-                if (typeof AV === 'undefined') {
-                    console.warn('LeanCloud SDK 未加载，稍后重试');
-                    setTimeout(initValine, 200);
-                    return;
-                }
-                // 标记 SDK 已准备，后续不再重新初始化
-                leancloudReady = true;
+            if (typeof AV === 'undefined') {
+                console.warn('LeanCloud SDK 未加载，稍后重试');
+                setTimeout(initValine, 200);
+                return;
             }
 
-            // 清空容器，防止重复渲染
+            // 标记 SDK 已初始化，后续切换不再重新执行这部分
+            sdkInitialized = true;
+
+            // 清空容器
             container.innerHTML = '';
 
             try {
-                // 创建新的 Valine 实例，此时 SDK 已存在，不会再重复定义属性
-                   new Valine({
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'YOUR_APP_ID',        // 替换为你的 App ID
+                    appKey: 'YOUR_APP_KEY',      // 替换为你的 App Key
+                    path: window.location.pathname,
+                    placeholder: '说点什么吧...',
+                    // 其他配置...
+                });
+            } catch (err) {
+                console.error('Valine 初始化失败', err);
+            }
+        }
+
+        // 仅重新渲染 Valine 实例（不重复初始化 SDK）
+        function reRenderValine() {
+            const container = document.getElementById('vcomments');
+            if (!container) return;
+
+            // 如果 SDK 还没初始化过，不应该调用此函数，但为了安全，可以回退到完整初始化
+            if (!sdkInitialized) {
+                initValine();
+                return;
+            }
+
+            // 清空容器
+            container.innerHTML = '';
+
+            try {
+                new Valine({
         avatar: 'retro',
         el: '#comments',
         avatar_cdn: 'https://gravatar.loli.net/avatar/',
@@ -367,28 +387,28 @@ for (var i = 0; i < codeblocks.length; i++) {
     }
     });
             } catch (err) {
-                console.error('Valine 初始化失败', err);
+                console.error('Valine 重新渲染失败', err);
             }
         }
 
-        // 处理 instantClick 的 change 事件
+        // 监听 instantClick 的 change 事件
         InstantClick.on('change', function(isInitialLoad) {
-            // 安全操作折叠菜单（示例：如果存在 id="fold" 的元素）
+            // 安全处理折叠菜单（示例：如果存在 id="fold" 的元素）
             const foldEl = document.getElementById('fold');
             if (foldEl) foldEl.style.height = '0px';
 
-            // 页面切换后，重新初始化 Valine
-            // 加一个微小延迟，确保 instantClick 完全替换 DOM
-            setTimeout(initValine, 30);
+            if (isInitialLoad) {
+                // 首次加载：完整初始化（包括 SDK 准备和 Valine 渲染）
+                initValine();
+            } else {
+                // PJAX 切换后：仅重新渲染 Valine 实例，不再重新定义 SDK 属性
+                // 加微小延迟，确保 DOM 替换完成
+                setTimeout(reRenderValine, 30);
+            }
         });
 
         // 启动 instantClick
         InstantClick.init();
-
-        // 页面首次加载时也初始化一次（因为 change 事件也会在首次加载时触发，但为防止某些边缘情况，额外调用一次也无妨）
-        // 注意：如果 change 事件在首次加载时已触发，这里可能会调用两次，但 initValine 内部有清空容器逻辑，不会重复渲染
-        // 为避免可能的重复，可以不加，但加上更保险
-        // initValine(); // 可选，InstantClick.init() 后 change 事件会立即触发一次，通常不需要
     </script>
       {% endif %}
   </body>
