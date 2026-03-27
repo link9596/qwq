@@ -4,6 +4,7 @@ title: about
 tagline: 关于我 ~
 sitetime: display
 permalink: /about.html
+icon: /theme/icon/about.svg
 ---
 
 # 时光窗
