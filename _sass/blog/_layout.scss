@@ -81,6 +81,15 @@
     display: none;
   }
 
+  .site-nav .page-link:before {
+    display: none;//取消pglink下划线
+}
+
+  .site-nav .page-link:hover {
+  background-color: rgba(220,220,220,0.15);
+}
+
+	
   .page-link {
     /*color: $text-color;*/
     color: #ffffff;
