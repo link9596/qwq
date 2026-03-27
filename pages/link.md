@@ -3,6 +3,7 @@ layout: page
 title: Links
 tagline: My friends.
 permalink: /links.html
+icon: /theme/icon/links.svg
 ---
 
 ## #友链申请
