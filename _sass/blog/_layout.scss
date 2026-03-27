@@ -98,7 +98,7 @@
 
   @include media-query($on-palm) {
 	  .site-header {
-    width: 95%;
+    width: 95% !important;
 	}
 }
 	
