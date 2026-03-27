@@ -41,6 +41,12 @@
   position: fixed;
   width: 100%;
   z-index: 5;
+  border-radius: 50px;
+  left: 0;
+  right: 0;
+  max-width: 495px;
+  margin: 10px auto;
+  border: 1px solid rgba(200, 200, 200, 0.05);
 }
 
 .site-title {
