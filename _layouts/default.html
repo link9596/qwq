@@ -267,63 +267,107 @@ for (var i = 0; i < codeblocks.length; i++) {
       </script>
             {% if site.PJAX %}
 <script src="/assets/js/instantclick.min.js" data-no-instant></script>
-<script data-no-instant>
+    <script data-no-instant>
         // 全局标志，记录 LeanCloud SDK 是否已经初始化过（避免重复定义属性）
         let sdkInitialized = false;
+        // 记录 Valine 是否已加载（避免重复加载）
+        let valineLoaded = false;
+        // 当前等待加载 Valine 的待执行回调
+        let pendingInit = null;
 
-        // 首次完整初始化（包括等待 SDK 就绪，并创建 Valine 实例）
+        // 动态加载 Valine 脚本（如果尚未加载）
+        function loadValine(callback) {
+            if (valineLoaded) {
+                callback && callback();
+                return;
+            }
+            if (typeof Valine !== 'undefined') {
+                valineLoaded = true;
+                callback && callback();
+                return;
+            }
+            // 避免重复加载
+            if (pendingInit) {
+                // 如果已经在加载中，将回调加入队列
+                const oldCallback = pendingInit;
+                pendingInit = function() {
+                    oldCallback && oldCallback();
+                    callback && callback();
+                };
+                return;
+            }
+            pendingInit = callback;
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js';
+            script.onload = function() {
+                valineLoaded = true;
+                if (pendingInit) {
+                    const cb = pendingInit;
+                    pendingInit = null;
+                    cb();
+                }
+            };
+            script.onerror = function() {
+                console.error('Valine 脚本加载失败');
+                pendingInit = null;
+            };
+            document.head.appendChild(script);
+        }
+
+        // 首次完整初始化（包括等待 Valine 就绪，并创建 Valine 实例）
         function initValine() {
             const container = document.getElementById('vcomments');
             if (!container) return;
 
-            // 确保 Valine 和 LeanCloud SDK 可用
-            if (typeof Valine === 'undefined') {
-                console.warn('Valine 未加载，稍后重试');
-                setTimeout(initValine, 200);
-                return;
-            }
-            if (typeof AV === 'undefined') {
-                console.warn('LeanCloud SDK 未加载，稍后重试');
-                setTimeout(initValine, 200);
-                return;
-            }
+            // 确保 Valine 已加载
+            loadValine(function() {
+                // 检查 LeanCloud SDK 是否可用（Valine 依赖）
+                if (typeof AV === 'undefined') {
+                    console.warn('LeanCloud SDK 未加载，稍后重试');
+                    setTimeout(initValine, 200);
+                    return;
+                }
 
-            // 标记 SDK 已初始化，后续切换不再重新执行这部分
-            sdkInitialized = true;
+                // 标记 SDK 已初始化，后续切换不再重新执行这部分（仅当首次完整初始化时）
+                if (!sdkInitialized) {
+                    sdkInitialized = true;
+                }
 
-            // 清空容器
-            container.innerHTML = '';
+                // 清空容器
+                container.innerHTML = '';
 
-            try {
-                new Valine({
-                    el: '#vcomments',
-                    appId: 'YOUR_APP_ID',        // 替换为你的 App ID
-                    appKey: 'YOUR_APP_KEY',      // 替换为你的 App Key
-                    path: window.location.pathname,
-                    placeholder: '说点什么吧...',
-                    // 其他配置...
-                });
-            } catch (err) {
-                console.error('Valine 初始化失败', err);
-            }
+                try {
+                    new Valine({
+                        el: '#vcomments',
+                        appId: 'YOUR_APP_ID',        // 替换为你的 App ID
+                        appKey: 'YOUR_APP_KEY',      // 替换为你的 App Key
+                        path: window.location.pathname,
+                        placeholder: '说点什么吧...',
+                        // 其他配置...
+                    });
+                } catch (err) {
+                    console.error('Valine 初始化失败', err);
+                }
+            });
         }
 
-        // 仅重新渲染 Valine 实例（不重复初始化 SDK）
+        // 仅重新渲染 Valine 实例（不重复初始化 SDK，但确保 Valine 已加载）
         function reRenderValine() {
             const container = document.getElementById('vcomments');
             if (!container) return;
 
-            // 如果 SDK 还没初始化过，不应该调用此函数，但为了安全，可以回退到完整初始化
-            if (!sdkInitialized) {
-                initValine();
-                return;
-            }
+            loadValine(function() {
+                // 如果 SDK 还没初始化过，回退到完整初始化（但这种情况不应该发生）
+                if (!sdkInitialized) {
+                    initValine();
+                    return;
+                }
 
-            // 清空容器
-            container.innerHTML = '';
+                // 清空容器
+                container.innerHTML = '';
 
-            try {
-                new Valine({
+                try {
+                   new Valine({
         avatar: 'retro',
         el: '#comments',
         avatar_cdn: 'https://gravatar.loli.net/avatar/',
@@ -386,22 +430,26 @@ for (var i = 0; i < codeblocks.length; i++) {
         "funnyangry":"funnyangry.png",
     }
     });
-            } catch (err) {
-                console.error('Valine 重新渲染失败', err);
-            }
+                } catch (err) {
+                    console.error('Valine 重新渲染失败', err);
+                }
+            });
         }
 
         // 监听 instantClick 的 change 事件
         InstantClick.on('change', function(isInitialLoad) {
-            // 安全处理折叠菜单（示例：如果存在 id="fold" 的元素）
-            const foldEl = document.getElementById('fold');
-            if (foldEl) foldEl.style.height = '0px';
+            // 检查当前页面是否有评论区容器
+            const hasComments = document.getElementById('vcomments') !== null;
+            if (!hasComments) {
+                // 没有评论区，无需初始化
+                return;
+            }
 
             if (isInitialLoad) {
-                // 首次加载：完整初始化（包括 SDK 准备和 Valine 渲染）
+                // 首次加载：完整初始化（包括加载 Valine 和创建实例）
                 initValine();
             } else {
-                // PJAX 切换后：仅重新渲染 Valine 实例，不再重新定义 SDK 属性
+                // PJAX 切换后：仅重新渲染 Valine 实例（Valine 可能已经加载）
                 // 加微小延迟，确保 DOM 替换完成
                 setTimeout(reRenderValine, 30);
             }
