@@ -90,6 +90,7 @@
     border: 1px solid rgba(200, 200, 200, 0.05);
     padding: 5px 10px;
 	margin-top: 9px;
+	transition: background-color 0.3s ease;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
@@ -417,4 +418,5 @@ width: 49.66%;
 
   .site-nav .page-link:hover {
   background-color: rgba(220,220,220,0.15);
+	  
 }
