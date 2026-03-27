@@ -17,6 +17,7 @@ theme: # leave it empty
 #install emoji
 plugins:
   - jemoji
+PJAX: true #启用PJAX，会与评论系统冲突（如不用评论系统建议开启）
 
 paginate: 8
 paginate_path: "page:num"
