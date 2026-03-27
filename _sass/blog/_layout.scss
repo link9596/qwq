@@ -45,6 +45,7 @@
   left: 0;
   right: 0;
   max-width: 495px;
+  width: 95%;
   margin: 10px auto;
   border: 1px solid rgba(200, 200, 200, 0.05);
 }
@@ -95,12 +96,6 @@
       margin-right: 2px;
     }
   }
-
-  @include media-query($on-palm) {
-	  .site-header {
-    width: 95% !important;
-	}
-}
 	
 /***
   @include media-query($on-palm) {
