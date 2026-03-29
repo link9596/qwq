@@ -51,14 +51,7 @@ layout: default
   {% if site.data.social.valine_comment.enable  == true %}
   <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
   <div id="waline"></div>
-    <script type="module" data-no-instant>
-    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
-    init({
-      el: '#waline',
-      serverURL: 'https://social.atlinker.cn',
-    });
-  </script>
   {% comment %}
   <script src="/comment/av-min.js" data-no-instant></script>
   <script src="/comment/valine.js" data-no-instant></script>
