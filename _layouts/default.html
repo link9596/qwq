@@ -268,24 +268,31 @@ for (var i = 0; i < codeblocks.length; i++) {
             {% if site.PJAX %}
 <script src="/assets/js/instantclick.min.js" data-no-instant></script>
     <script data-no-instant>
-          // 2. 定义 Waline 的初始化函数
     function initWaline() {
-        // 先检查 Waline 容器是否存在，避免报错
-        const walineContainer = document.querySelector('#waline');
-        if (walineContainer) {
+        const container = document.querySelector('#waline');
+        // 确保 Waline 存在且容器存在
+        if (container && typeof Waline !== 'undefined') {
+            // 使用 new 关键字进行实例化
             new Waline({
                 el: '#waline',
-                serverURL: 'https://social.atlinker.cn',
+                serverURL: '你的Waline服务端地址',
+                path: window.location.pathname,
+                // ... 其他配置
             });
         }
     }
 
-    // 3. 监听 instantClick 的 change 事件，在页面切换后重新初始化 Waline
-    InstantClick.on('change', function() {
-        initWaline();
-    });
-        // 启动 instantClick
+    // 监听 instantClick 的 change 事件
+    if (typeof InstantClick !== 'undefined') {
+        InstantClick.on('change', function() {
+            // 延迟一小会儿，确保新页面的 DOM 已经就绪
+            setTimeout(initWaline, 50);
+        });
         InstantClick.init();
+    } else {
+        // 普通页面加载的降级方案
+        document.addEventListener('DOMContentLoaded', initWaline);
+    }
     </script>
       {% endif %}
   </body>
