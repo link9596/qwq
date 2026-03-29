@@ -1,2 +1,9 @@
 <script src="https://unpkg.com/@waline/client@v3/dist/waline.js" data-no-instant></script>
+    <script type="module" data-no-instant>
+    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
+    init({
+      el: '#waline',
+      serverURL: 'https://social.atlinker.cn',
+    });
+  </script>
