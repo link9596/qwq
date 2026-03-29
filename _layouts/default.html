@@ -213,70 +213,133 @@
       {% endif %}
 
 <script>
-// 确保只初始化一次，或在 instantclick 切换后重新初始化
-function initCodeCopy() {
-  // 为每个未处理过的 pre 添加复制按钮
-  const codeblocks = document.querySelectorAll('pre:not(.has-copy-btn)');
-  
-  codeblocks.forEach(pre => {
-    // 标记已处理
-    pre.classList.add('has-copy-btn');
-    pre.style.position = 'relative';
-    
-    // 创建按钮
-    const btn = document.createElement('div');
-    btn.className = 'copybtn ripple';
-    btn.innerHTML = '复制';
-    btn.style.opacity = '0';
-    pre.appendChild(btn);
-    
-    // 鼠标悬停显示按钮
-    pre.addEventListener('mouseenter', () => btn.style.opacity = '1');
-    pre.addEventListener('mouseleave', () => btn.style.opacity = '0');
-  });
-  
-  // 使用事件委托处理复制点击（避免重复绑定）
-  if (!window._copyDelegateRegistered) {
-    document.body.addEventListener('click', (e) => {
-      const btn = e.target.closest('.copybtn');
-      if (!btn) return;
-      
-      const pre = btn.parentElement;
-      if (!pre || pre.tagName !== 'PRE') return;
-      
-      // 获取代码内容（pre 的第一个子节点通常是 code 或文本）
-      const codeElement = pre.querySelector('code') || pre;
-      const textToCopy = codeElement.innerText;
-      
-      // 复制操作
-      const textarea = document.createElement('textarea');
-      textarea.value = textToCopy;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      
-      // 视觉反馈
-      btn.innerHTML = '复制成功';
-      btn.style.width = '72px';
-      setTimeout(() => {
-        btn.innerHTML = '复制';
-        btn.style.width = '';
-      }, 1000);
+(function() {
+    // 防止重复初始化
+    if (window._copyCodeFinal) return;
+    window._copyCodeFinal = true;
+
+    // ---------- 辅助函数：为单个 pre 添加复制按钮 ----------
+    function addCopyButtonToPre(pre) {
+        if (pre.hasAttribute('data-copy-btn-added')) return;
+        pre.setAttribute('data-copy-btn-added', 'true');
+        pre.style.position = 'relative';
+
+        const btn = document.createElement('div');
+        btn.className = 'copybtn ripple';
+        btn.textContent = '复制';
+        btn.style.opacity = '0';
+        btn.style.transition = 'opacity 0.2s';
+        btn.style.cursor = 'pointer';
+        pre.appendChild(btn);
+    }
+
+    // ---------- 为页面中所有尚未添加按钮的 pre 添加按钮 ----------
+    function addCopyButtonsToAllPres() {
+        document.querySelectorAll('pre:not([data-copy-btn-added])').forEach(addCopyButtonToPre);
+    }
+
+    // ---------- 获取纯净的代码文本（排除按钮文字） ----------
+    function getPureCodeFromPre(pre) {
+        const clone = pre.cloneNode(true);
+        clone.querySelectorAll('.copybtn').forEach(btn => btn.remove());
+        const code = clone.querySelector('code');
+        return code ? code.innerText : clone.innerText;
+    }
+
+    // ---------- 复制核心（带降级） ----------
+    async function copyCode(text, btn) {
+        // 现代 Clipboard API
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showCopySuccess(btn);
+                return;
+            } catch (err) {
+                console.warn('Clipboard API 失败，降级到 execCommand', err);
+            }
+        }
+        // 降级方案
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        const success = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        if (success) {
+            showCopySuccess(btn);
+        } else {
+            btn.textContent = '复制失败';
+            setTimeout(() => btn.textContent = '复制', 1000);
+        }
+    }
+
+    function showCopySuccess(btn) {
+        const original = btn.textContent;
+        btn.textContent = '复制成功';
+        setTimeout(() => {
+            btn.textContent = original;
+        }, 1000);
+    }
+
+    // ---------- 事件委托（绑定在 document 上，永远存在） ----------
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.copybtn');
+        if (!btn) return;
+        const pre = btn.closest('pre');
+        if (!pre) return;
+
+        const pureText = getPureCodeFromPre(pre);
+        copyCode(pureText, btn);
     });
-    window._copyDelegateRegistered = true;
-  }
-}
 
-// 页面首次加载执行
-initCodeCopy();
+    // 鼠标悬浮显示/隐藏按钮（事件委托）
+    document.addEventListener('mouseenter', (e) => {
+        const pre = e.target.closest('pre');
+        if (pre) {
+            const btn = pre.querySelector('.copybtn');
+            if (btn) btn.style.opacity = '1';
+        }
+    }, true);
+    document.addEventListener('mouseleave', (e) => {
+        const pre = e.target.closest('pre');
+        if (pre) {
+            const btn = pre.querySelector('.copybtn');
+            if (btn) btn.style.opacity = '0';
+        }
+    }, true);
 
-// 如果使用 instantclick，监听其页面切换完成事件
-if (typeof InstantClick !== 'undefined') {
-  InstantClick.on('change', () => {
-    initCodeCopy();
-  });
-}
+    // ---------- 初始化：为现有 pre 添加按钮 ----------
+    addCopyButtonsToAllPres();
+
+    // ---------- 使用 MutationObserver 监听未来新增的 pre ----------
+    const observer = new MutationObserver((mutations) => {
+        let needUpdate = false;
+        for (const mutation of mutations) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length) {
+                for (const node of mutation.addedNodes) {
+                    if (node.nodeType === 1) { // 元素节点
+                        if (node.matches && node.matches('pre')) {
+                            addCopyButtonToPre(node);
+                        } else if (node.querySelectorAll) {
+                            node.querySelectorAll('pre:not([data-copy-btn-added])').forEach(addCopyButtonToPre);
+                        }
+                    }
+                }
+            }
+        }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // 可选：如果 instantclick 存在，也可以保留 change 回调作为双保险
+    if (typeof InstantClick !== 'undefined') {
+        InstantClick.on('change', function() {
+            // 再次扫描（MutationObserver 通常已经处理，但作为后备）
+            addCopyButtonsToAllPres();
+        });
+    }
+})();
 </script>
 
       <script>
