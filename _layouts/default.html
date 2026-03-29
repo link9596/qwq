@@ -213,64 +213,137 @@
       {% endif %}
 
 <script>
- // 防止重复执行
- window.codeCopyInited = window.codeCopyInited || false;
- function initCodeCopy() {
-   // 先清除旧事件与旧按钮，避免重复
-   document.querySelectorAll('.copybtn').forEach(btn => btn.remove());
-   var codeblocks = document.getElementsByTagName("pre");
-   for (var i = 0; i < codeblocks.length; i++) {
-     var currentCode = codeblocks[i];
-     currentCode.style.position = "relative";
-     // 创建复制按钮
-     var copy = document.createElement("div");
-     copy.className = "copybtn ripple";
-     copy.innerHTML = "复制";
-     copy.style.opacity = "0";
-     copy.style.transition = "opacity 0.2s"; // 顺滑一点
-     currentCode.appendChild(copy);
-     // 鼠标移入显示
-     currentCode.addEventListener('mouseover', function () {
-       this.querySelector('.copybtn').style.opacity = '1';
-     });
-     // 鼠标移出隐藏
-     currentCode.addEventListener('mouseout', function () {
-       this.querySelector('.copybtn').style.opacity = '0';
-     });
-     // 复制逻辑（稳定选择器，不依赖 childNodes 索引）
-     copy.addEventListener('click', function () {
-       var pre = this.closest('pre');
-       var codeContent = pre.querySelector('code') || pre.firstChild;
-       const range = document.createRange();
-       range.selectNodeContents(codeContent);
-       const selection = window.getSelection();
-       selection.removeAllRanges();
-       selection.addRange(range);
-       try {
-         document.execCommand('copy');
-         // 复制成功提示
-         this.style.color = "transparent";
-         this.style.width = "72px";
-         var btn = this;
-         setTimeout(() => { btn.innerHTML = "复制成功"; btn.style.color = ""; }, 300);
-         setTimeout(() => {
-           btn.style.color = "transparent";
-           setTimeout(() => { btn.style.color = ""; }, 300);
-           btn.innerHTML = "复制";
-           btn.style.width = "46px";
-         }, 1000);
-       } catch (e) {}
-       selection.removeAllRanges();
-     });
-   }
- }
- // InstantClick 专用：页面切换后重新初始化
- document.addEventListener('DOMContentLoaded', function () {
-   initCodeCopy();
- });
- // 兼容 InstantClick 切换页面事件
- document.addEventListener("instantclick:page", initCodeCopy);
- document.addEventListener("instantclick:ready", initCodeCopy);
+(function() {
+    if (window._copyCodeWithWidth) return;
+    window._copyCodeWithWidth = true;
+
+    // 为单个 pre 添加复制按钮
+    function addCopyButtonToPre(pre) {
+        if (pre.hasAttribute('data-copy-btn-added')) return;
+        pre.setAttribute('data-copy-btn-added', 'true');
+        pre.style.position = 'relative';
+
+        const btn = document.createElement('div');
+        btn.className = 'copybtn ripple';
+        btn.textContent = '复制';
+        btn.style.opacity = '0';
+        btn.style.transition = 'opacity 0.2s, width 0.2s'; // 加宽度过渡动画
+        btn.style.cursor = 'pointer';
+        btn.style.width = '46px';          // 默认宽度（你原来设置的）
+        btn.style.textAlign = 'center';
+        pre.appendChild(btn);
+    }
+
+    // 为所有未处理的 pre 添加按钮
+    function addCopyButtonsToAllPres() {
+        document.querySelectorAll('pre:not([data-copy-btn-added])').forEach(addCopyButtonToPre);
+    }
+
+    // 获取纯净代码文本（排除按钮文字）
+    function getPureCodeFromPre(pre) {
+        const clone = pre.cloneNode(true);
+        clone.querySelectorAll('.copybtn').forEach(btn => btn.remove());
+        const code = clone.querySelector('code');
+        return code ? code.innerText : clone.innerText;
+    }
+
+    // 复制成功后的视觉反馈（包含宽度变化）
+    function showCopySuccess(btn) {
+        const originalText = btn.textContent;
+        const originalWidth = btn.style.width; // 保存原宽度（可能是 '46px' 或未设置）
+        btn.textContent = '复制成功';
+        btn.style.width = '72px';
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.width = originalWidth || '46px'; // 恢复原宽度
+        }, 1000);
+    }
+
+    // 复制核心（带降级）
+    async function copyCode(text, btn) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showCopySuccess(btn);
+                return;
+            } catch (err) {
+                console.warn('Clipboard API 失败，降级到 execCommand', err);
+            }
+        }
+        // 降级方案
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        const success = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        if (success) {
+            showCopySuccess(btn);
+        } else {
+            btn.textContent = '复制失败';
+            setTimeout(() => {
+                btn.textContent = '复制';
+                btn.style.width = '46px';
+            }, 1000);
+        }
+    }
+
+    // 事件委托：点击复制
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.copybtn');
+        if (!btn) return;
+        const pre = btn.closest('pre');
+        if (!pre) return;
+        const pureText = getPureCodeFromPre(pre);
+        copyCode(pureText, btn);
+    });
+
+    // 鼠标悬浮显示/隐藏按钮（事件委托）
+    document.addEventListener('mouseenter', (e) => {
+        const pre = e.target.closest('pre');
+        if (pre) {
+            const btn = pre.querySelector('.copybtn');
+            if (btn) btn.style.opacity = '1';
+        }
+    }, true);
+    document.addEventListener('mouseleave', (e) => {
+        const pre = e.target.closest('pre');
+        if (pre) {
+            const btn = pre.querySelector('.copybtn');
+            if (btn) btn.style.opacity = '0';
+        }
+    }, true);
+
+    // 初始化现有 pre
+    addCopyButtonsToAllPres();
+
+    // MutationObserver 监听未来新增的 pre
+    const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length) {
+                for (const node of mutation.addedNodes) {
+                    if (node.nodeType === 1) {
+                        if (node.matches && node.matches('pre')) {
+                            addCopyButtonToPre(node);
+                        } else if (node.querySelectorAll) {
+                            node.querySelectorAll('pre:not([data-copy-btn-added])').forEach(addCopyButtonToPre);
+                        }
+                    }
+                }
+            }
+        }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // 兼容 instantclick（双保险）
+    if (typeof InstantClick !== 'undefined') {
+        InstantClick.on('change', function() {
+            addCopyButtonsToAllPres();
+        });
+    }
+})();
  </script>
 
       <script>
