@@ -213,63 +213,69 @@
       {% endif %}
 
 <script>
-var codeblocks = document.getElementsByTagName("pre");
-//循环每个pre代码块，并添加 复制代码
-
-for (var i = 0; i < codeblocks.length; i++) {
-//显示 复制代码 按钮
-currentCode = codeblocks[i];
-currentCode.style = "position: relative;";
-var copy = document.createElement("div");
-copy.className = "copybtn ripple";
-copy.innerHTML = "复制";
-currentCode.appendChild(copy);
-//让所有 "复制"按钮 全部隐藏
-copy.style.opacity = "0";
+// 确保只初始化一次，或在 instantclick 切换后重新初始化
+function initCodeCopy() {
+  // 为每个未处理过的 pre 添加复制按钮
+  const codeblocks = document.querySelectorAll('pre:not(.has-copy-btn)');
+  
+  codeblocks.forEach(pre => {
+    // 标记已处理
+    pre.classList.add('has-copy-btn');
+    pre.style.position = 'relative';
+    
+    // 创建按钮
+    const btn = document.createElement('div');
+    btn.className = 'copybtn ripple';
+    btn.innerHTML = '复制';
+    btn.style.opacity = '0';
+    pre.appendChild(btn);
+    
+    // 鼠标悬停显示按钮
+    pre.addEventListener('mouseenter', () => btn.style.opacity = '1');
+    pre.addEventListener('mouseleave', () => btn.style.opacity = '0');
+  });
+  
+  // 使用事件委托处理复制点击（避免重复绑定）
+  if (!window._copyDelegateRegistered) {
+    document.body.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copybtn');
+      if (!btn) return;
+      
+      const pre = btn.parentElement;
+      if (!pre || pre.tagName !== 'PRE') return;
+      
+      // 获取代码内容（pre 的第一个子节点通常是 code 或文本）
+      const codeElement = pre.querySelector('code') || pre;
+      const textToCopy = codeElement.innerText;
+      
+      // 复制操作
+      const textarea = document.createElement('textarea');
+      textarea.value = textToCopy;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      
+      // 视觉反馈
+      btn.innerHTML = '复制成功';
+      btn.style.width = '72px';
+      setTimeout(() => {
+        btn.innerHTML = '复制';
+        btn.style.width = '';
+      }, 1000);
+    });
+    window._copyDelegateRegistered = true;
+  }
 }
 
-for (var i = 0; i < codeblocks.length; i++) {
+// 页面首次加载执行
+initCodeCopy();
 
-!function (i) {
-    //鼠标移到代码块，就显示按钮
-    codeblocks[i].onmouseover = function () {
-        codeblocks[i].childNodes[1].style.opacity='1'
-    }
-
-    //执行 复制代码 功能
-    function copyArticle(event) {
-        const range = document.createRange();
-
-        //范围是 code，不包括刚才创建的div
-        range.selectNode(codeblocks[i].childNodes[0]);
-
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) selection.removeAllRanges();
-        selection.addRange(range);
-        document.execCommand('copy');
-        codeblocks[i].childNodes[1].style.color = "transparent";
-        setTimeout(function () { codeblocks[i].childNodes[1].style.color = ""; }, 300);
-        codeblocks[i].childNodes[1].style.width = "72px";
-        setTimeout(function () { codeblocks[i].childNodes[1].innerHTML = "复制成功"; }, 300);
-        setTimeout(function () {
-            codeblocks[i].childNodes[1].style.color = "transparent";
-            setTimeout(function () { codeblocks[i].childNodes[1].style.color = ""; }, 300);
-            codeblocks[i].childNodes[1].innerHTML = "复制";
-            codeblocks[i].childNodes[1].style.width = "46px";
-        }, 1000);
-        //清除选择区
-        if (selection.rangeCount > 0) selection.removeAllRanges(); 0
-    }
-    codeblocks[i].childNodes[1].addEventListener('click', copyArticle, false);
-
-}(i);
-
-!function (i) {
-    //鼠标从代码块移开 则不显示复制代码按钮
-    codeblocks[i].onmouseout = function () {
-        codeblocks[i].childNodes[1].style.opacity='0'
-    }
-}(i);
+// 如果使用 instantclick，监听其页面切换完成事件
+if (typeof InstantClick !== 'undefined') {
+  InstantClick.on('change', () => {
+    initCodeCopy();
+  });
 }
 </script>
 
