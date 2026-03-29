@@ -194,6 +194,7 @@
                 el: '#waline',
                 imageUploader: false,
                 search: false,
+                placeholder: 'Talkk!',
                 serverURL: 'https://social.atlinker.cn',
                 path: window.location.pathname,
             });
@@ -236,7 +237,7 @@
         document.querySelectorAll('pre:not([data-copy-btn-added])').forEach(addCopyButtonToPre);
     }
 
-    // 获取纯净代码文本（排除按钮文字）
+    // 获取代码文本（排除按钮文字）
     function getPureCodeFromPre(pre) {
         const clone = pre.cloneNode(true);
         clone.querySelectorAll('.copybtn').forEach(btn => btn.remove());
@@ -244,7 +245,7 @@
         return code ? code.innerText : clone.innerText;
     }
 
-    // 复制成功后的视觉反馈（包含宽度变化）
+    // 复制成功动画
     function showCopySuccess(btn) {
         const originalText = btn.textContent;
         const originalWidth = btn.style.width; // 保存原宽度（可能是 '46px' 或未设置）
@@ -256,7 +257,7 @@
         }, 1000);
     }
 
-    // 复制核心（带降级）
+    // 复制功能
     async function copyCode(text, btn) {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             try {
@@ -267,7 +268,7 @@
                 console.warn('Clipboard API 失败，降级到 execCommand', err);
             }
         }
-        // 降级方案
+        // 备用方案
         const textarea = document.createElement('textarea');
         textarea.value = text;
         textarea.style.position = 'fixed';
@@ -334,7 +335,7 @@
     });
     observer.observe(document.body, { childList: true, subtree: true });
 
-    // 兼容 instantclick（双保险）
+    // 兼容 instantclick
     if (typeof InstantClick !== 'undefined') {
         InstantClick.on('change', function() {
             addCopyButtonsToAllPres();
