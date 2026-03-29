@@ -39,5 +39,4 @@ vc: t
 
 [返回主页]({{ site.url }}{{ site.baseurl }})
 
-<hr/>
   {% include scripts.html %}
