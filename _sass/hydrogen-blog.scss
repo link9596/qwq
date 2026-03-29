@@ -125,6 +125,12 @@ a {
 
 .line a{text-decoration: none;position:relative;cursor:pointer;color:#009688;display:inline-block;Z-index:1}.line a:before{content:"";position:absolute;width:0;right:0;bottom:0;height:2px;background:#90CAF9;-webkit-transition:width .3s ease;transition:width .3s ease}.line a:hover:before{width:100%;left:0;right:auto}
 
+#instantclick-bar {
+    background: #ffffff;
+    height: 2px;
+    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.9);
+}
+
 .btn {
   display: inline-block;
   margin-bottom: 1rem;
