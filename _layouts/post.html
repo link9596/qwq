@@ -49,10 +49,14 @@ layout: default
   123333
   {% endif %}
   {% if site.data.social.valine_comment.enable  == true %}
+  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+  <div id="waline"></div>
+  {% comment %}
   <script src="/comment/av-min.js" data-no-instant></script>
   <script src="/comment/valine.js" data-no-instant></script>
   <div id="comments"></div>
-  {% include new_comments.html %}
+  {% endcomment %}
+  {% include waline.html %}
   {% endif %}
   {% include scripts.html %}
 
