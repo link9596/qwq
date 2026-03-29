@@ -177,6 +177,41 @@
   </div>
 </div>
 
+            {% if site.PJAX %}
+<script src="/assets/js/instantclick.min.js" data-no-instant></script>
+<script data-no-instant type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+    let walineInstance = null;
+
+    function initWaline() {
+        const container = document.querySelector('#waline');
+        if (container) {
+            // 如果已存在实例，先销毁
+            if (walineInstance && typeof walineInstance.destroy === 'function') {
+                walineInstance.destroy();
+            }
+            walineInstance = init({
+                el: '#waline',
+                imageUploader: false,
+                search: false,
+                serverURL: 'https://social.atlinker.cn',
+                path: window.location.pathname,
+            });
+        }
+    }
+
+    if (typeof InstantClick !== 'undefined') {
+        InstantClick.on('change', function() {
+            setTimeout(initWaline, 50);
+        });
+        InstantClick.init();
+    } else {
+        document.addEventListener('DOMContentLoaded', initWaline);
+    }
+</script>
+      {% endif %}
+
 <script data-no-instant>
 var codeblocks = document.getElementsByTagName("pre");
 //循环每个pre代码块，并添加 复制代码
@@ -265,39 +300,6 @@ for (var i = 0; i < codeblocks.length; i++) {
     }
   }
       </script>
-            {% if site.PJAX %}
-<script src="/assets/js/instantclick.min.js" data-no-instant></script>
-<script data-no-instant type="module">
-    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
-    let walineInstance = null;
-
-    function initWaline() {
-        const container = document.querySelector('#waline');
-        if (container) {
-            // 如果已存在实例，先销毁
-            if (walineInstance && typeof walineInstance.destroy === 'function') {
-                walineInstance.destroy();
-            }
-            walineInstance = init({
-                el: '#waline',
-                imageUploader: false,
-                search: false,
-                serverURL: 'https://social.atlinker.cn',
-                path: window.location.pathname,
-            });
-        }
-    }
-
-    if (typeof InstantClick !== 'undefined') {
-        InstantClick.on('change', function() {
-            setTimeout(initWaline, 50);
-        });
-        InstantClick.init();
-    } else {
-        document.addEventListener('DOMContentLoaded', initWaline);
-    }
-</script>
-      {% endif %}
   </body>
 </html>
