@@ -4,6 +4,7 @@ title: Links
 tagline: My friends.
 permalink: /links.html
 icon: /theme/icon/links.svg
+vc: t
 ---
 
 ## #友链申请
@@ -39,11 +40,4 @@ icon: /theme/icon/links.svg
 [返回主页]({{ site.url }}{{ site.baseurl }})
 
 <hr/>
-
-  {% if site.data.social.valine_comment.enable  == true %}
-  <script src="/comment/av-min.js"></script>
-  <script src="/comment/valine.js"></script>
-  <div id="comments"></div>
-  {% include new_comments.html %}
-  {% endif %}
   {% include scripts.html %}
