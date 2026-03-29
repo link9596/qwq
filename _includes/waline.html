@@ -1,8 +1,7 @@
-  <script type="module" data-no-instant>
-    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.umd.js';
-
-    init({
-      el: '#waline',
-      serverURL: 'https://social.atlinker.cn',
-    });
+<script src="https://unpkg.com/@waline/client@v2/dist/waline.js" data-no-instant></script>
+<script data-no-instant>
+new Waline({
+                el: '#waline',
+                serverURL: 'https://social.atlinker.cn',
+            });
   </script>
