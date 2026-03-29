@@ -275,12 +275,14 @@ for (var i = 0; i < codeblocks.length; i++) {
     function initWaline() {
         const container = document.querySelector('#waline');
         if (container) {
-            // 如果已存在实例，可先销毁（视 Waline API 而定）
+            // 如果已存在实例，先销毁
             if (walineInstance && typeof walineInstance.destroy === 'function') {
                 walineInstance.destroy();
             }
             walineInstance = init({
                 el: '#waline',
+                imageUploader: 'false',
+                search: 'false',
                 serverURL: 'https://social.atlinker.cn',
                 path: window.location.pathname,
             });
