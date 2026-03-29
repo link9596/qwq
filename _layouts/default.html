@@ -267,31 +267,35 @@ for (var i = 0; i < codeblocks.length; i++) {
       </script>
             {% if site.PJAX %}
 <script src="/assets/js/instantclick.min.js" data-no-instant></script>
-    <script data-no-instant>
+<script data-no-instant type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+    let walineInstance = null;
+
     function initWaline() {
         const container = document.querySelector('#waline');
-        // 确保 Waline 存在且容器存在
-        if (container && typeof Waline !== 'undefined') {
-            // 使用 new 关键字进行实例化
-            new Waline({
+        if (container) {
+            // 如果已存在实例，可先销毁（视 Waline API 而定）
+            if (walineInstance && typeof walineInstance.destroy === 'function') {
+                walineInstance.destroy();
+            }
+            walineInstance = init({
                 el: '#waline',
-                serverURL: 'https://social.atlinker.cn',
+                serverURL: 'https://你的waline服务端地址',
+                path: window.location.pathname,
             });
         }
     }
 
-    // 监听 instantClick 的 change 事件
     if (typeof InstantClick !== 'undefined') {
         InstantClick.on('change', function() {
-            // 延迟一小会儿，确保新页面的 DOM 已经就绪
             setTimeout(initWaline, 50);
         });
         InstantClick.init();
     } else {
-        // 普通页面加载的降级方案
         document.addEventListener('DOMContentLoaded', initWaline);
     }
-    </script>
+</script>
       {% endif %}
   </body>
 </html>
