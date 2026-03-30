@@ -16,13 +16,13 @@
 #  describe: Troy的星球
 
 - name: 每日一文
-  image: /avatar/default.png
+  image: /avatar/ocecoco.png
   url: https://daily.atlinker.cn/daily
   describe: 人生左手是月亮，右手是六便士。
   skin: /theme/skin/skin1.png
 
 - name: 菲林小铺
-  image: https://demo.atlinker.cn/PHOTO/usr/themes/Story/film.png
+  image: /avatar/pingu.png
   url: https://film.atlinker.cn
   describe: 俺滴相册，嘿嘿
   mail: lk@atlinker.cn
