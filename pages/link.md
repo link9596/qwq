@@ -31,7 +31,7 @@ vc: t
 
 {% for f in site.data.friends %}
 <div class="link-chip-div"><a href="{{f.url}}" target="_blank" class="link-chip ripple">
- <img alt="{{f.describe}}" src="{{f.image}}" onerror="this.src='gugugaga.png'" class="link-chip-icon"/>
+ <img alt="{{f.describe}}" src="{{f.image}}" onerror="this.src='/avatar/gugugaga.png'" class="link-chip-icon"/>
  <img style="filter:opacity(0.8);float:right;height:64px;margin-right:-8px" src="{{f.skin}}" />
  <span title="{{f.describe}}" class="link-chip-title">{{f.name}}</span>
  <p class="link-chip-dc">{{f.describe}}</p></a></div>
