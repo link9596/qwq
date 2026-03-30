@@ -13,6 +13,16 @@ icon: /theme/icon/about.svg
 
 如今已~~写作~~ 碎碎念<span id="sitetime2"></span>天
 
+## #网站构成
+
+核心: [Jekyll](https://www.jekyll.com.cn/)
+主题: [Hydrogen (魔改版)](https://github.com/link9596/hydrogen)
+无刷新载入技术: [Instantclick](http://instantclick.io/)
+评论系统及后端: [Waline+Vercel](https://waline.js.org/guide/deploy/vercel.html)
+图床: [IMGCHR](https://imgchr.com/)
+
+感谢以上支持～
+
 ## #Catch me
 
 你可以通过以下方式找到我
