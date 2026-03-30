@@ -15,10 +15,10 @@ icon: /theme/icon/about.svg
 
 ## #网站构成
 
-核心: [Jekyll](https://www.jekyll.com.cn/)
-主题: [Hydrogen (魔改版)](https://github.com/link9596/hydrogen)
-无刷新载入技术: [Instantclick](http://instantclick.io/)
-评论系统及后端: [Waline+Vercel](https://waline.js.org/guide/deploy/vercel.html)
+核心: [Jekyll](https://www.jekyll.com.cn/)<br>
+主题: [Hydrogen (魔改版)](https://github.com/link9596/hydrogen)<br>
+无刷新载入技术: [Instantclick](http://instantclick.io/)<br>
+评论系统及后端: [Waline+Vercel](https://waline.js.org/guide/deploy/vercel.html)<br>
 图床: [IMGCHR](https://imgchr.com/)
 
 感谢以上支持～
