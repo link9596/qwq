@@ -62,9 +62,7 @@ Github: [link9596](https://github.com/link9596)
 
 <img align="center" style="display:table-cell" src="https://atlinker.cn/pay/pay.png">
 
-![wechat](https://atlinker.cn/pay/wechat.png)
-
-![apay](https://atlinker.cn/pay/apay.png)
+![donate](https://atlinker.cn/pay/donate.png)
 
 <table style="width：100%;table-layout:fixed;word-wrap:break-word;">
   <tr>
