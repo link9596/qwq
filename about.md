@@ -60,9 +60,9 @@ Github: [link9596](https://github.com/link9596)
 
 <center>扫下方付款二维码即可向我投喂!</center>
 
-<img align="center" style="display:table-cell" src="https://atlinker.cn/pay/pay.png">
+<p><img align="center" style="display:table-cell" src="https://atlinker.cn/pay/pay.png"></p>
 
-![donate](https://atlinker.cn/pay/donate.png)
+<p><img style="max-height: 400px" src="https://atlinker.cn/pay/donateWX.png" alt="donate"></p>
 
 <table style="width：100%;table-layout:fixed;word-wrap:break-word;">
   <tr>
