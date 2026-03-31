@@ -48,8 +48,14 @@
 
 @font-face
 {
-    font-family: Misans;
-    src: url('/assets/css/MisansTC-Normal-GB2312.woff2');
+    font-family: MisansGB;
+    src: url('/assets/css/MisansTC-Normal-GB2312.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Misans';
+  src: url('/assets/css/Misans.woff2') format('woff2');
+  
 }
 
 body {
