@@ -71,6 +71,14 @@ blockquote{border-left: 0.3rem solid #2a333c !important}
 .main-content code{background:#1b1e21 !important}
 .copybtn{background:#151515 !important}
 
+  table {
+    th,
+    td {
+      padding: 0.5rem 1rem;
+      border: 1px solid $table-border-color-dark;
+    }
+  }
+
 /*页脚图片*/
 .footerbkg{background: url("/theme/footer-night.png") !important;
   height:250px;
