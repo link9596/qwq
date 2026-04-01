@@ -55,6 +55,4 @@ Hydrogen是我倾注许多心血打造的主题，如果您喜欢\~您的Star将
  {% endfor %}<p><b>总金额： <span style="color:#E91E63">{{ allmoney }}</span> 元</b></p>
 </table>
 
-![wechat](https://atlinker.cn/pay/wechat.png)
-
-![pay](https://atlinker.cn/pay/apay.png)
+<img style="max-height: 400px" src="https://atlinker.cn/pay/donateWX.png" alt="donate">
