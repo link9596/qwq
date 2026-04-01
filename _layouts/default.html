@@ -176,6 +176,7 @@
   </div>
 </div>
 
+<script src='/assets/js/core.js'></script>    
             {% if site.PJAX %}
 <script src="/assets/js/instantclick.min.js" data-no-instant></script>
 <script data-no-instant type="module">
@@ -215,138 +216,6 @@
     }
 </script>
       {% endif %}
-
-<script>
-(function() {
-    if (window._copyCodeWithWidth) return;
-    window._copyCodeWithWidth = true;
-
-    // 为单个 pre 添加复制按钮
-    function addCopyButtonToPre(pre) {
-        if (pre.hasAttribute('data-copy-btn-added')) return;
-        pre.setAttribute('data-copy-btn-added', 'true');
-        pre.style.position = 'relative';
-
-        const btn = document.createElement('div');
-        btn.className = 'copybtn ripple';
-        btn.textContent = '复制';
-        btn.style.opacity = '0';
-        btn.style.cursor = 'pointer';
-        btn.style.width = '46px';
-        pre.appendChild(btn);
-    }
-
-    // 为所有未处理的 pre 添加按钮
-    function addCopyButtonsToAllPres() {
-        document.querySelectorAll('pre:not([data-copy-btn-added])').forEach(addCopyButtonToPre);
-    }
-
-    // 获取代码文本（排除按钮文字）
-    function getPureCodeFromPre(pre) {
-        const clone = pre.cloneNode(true);
-        clone.querySelectorAll('.copybtn').forEach(btn => btn.remove());
-        const code = clone.querySelector('code');
-        return code ? code.innerText : clone.innerText;
-    }
-
-    // 复制成功动画
-    function showCopySuccess(btn) {
-        const originalText = btn.textContent;
-        const originalWidth = btn.style.width; // 保存原宽度（可能是 '46px' 或未设置）
-        btn.textContent = '复制成功';
-        btn.style.width = '72px';
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.width = originalWidth || '46px'; // 恢复原宽度
-        }, 1000);
-    }
-
-    // 复制功能
-    async function copyCode(text, btn) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            try {
-                await navigator.clipboard.writeText(text);
-                showCopySuccess(btn);
-                return;
-            } catch (err) {
-                console.warn('Clipboard API 失败，降级到 execCommand', err);
-            }
-        }
-        // 备用方案
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.top = '-9999px';
-        document.body.appendChild(textarea);
-        textarea.select();
-        const success = document.execCommand('copy');
-        document.body.removeChild(textarea);
-        if (success) {
-            showCopySuccess(btn);
-        } else {
-            btn.textContent = '复制失败';
-            setTimeout(() => {
-                btn.textContent = '复制';
-                btn.style.width = '46px';
-            }, 1000);
-        }
-    }
-
-    // 事件委托：点击复制
-    document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.copybtn');
-        if (!btn) return;
-        const pre = btn.closest('pre');
-        if (!pre) return;
-        const pureText = getPureCodeFromPre(pre);
-        copyCode(pureText, btn);
-    });
-
-    // 鼠标悬浮显示/隐藏按钮（事件委托）
-    document.addEventListener('mouseenter', (e) => {
-        const pre = e.target.closest('pre');
-        if (pre) {
-            const btn = pre.querySelector('.copybtn');
-            if (btn) btn.style.opacity = '1';
-        }
-    }, true);
-    document.addEventListener('mouseleave', (e) => {
-        const pre = e.target.closest('pre');
-        if (pre) {
-            const btn = pre.querySelector('.copybtn');
-            if (btn) btn.style.opacity = '0';
-        }
-    }, true);
-
-    // 初始化现有 pre
-    addCopyButtonsToAllPres();
-
-    // MutationObserver 监听未来新增的 pre
-    const observer = new MutationObserver((mutations) => {
-        for (const mutation of mutations) {
-            if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                for (const node of mutation.addedNodes) {
-                    if (node.nodeType === 1) {
-                        if (node.matches && node.matches('pre')) {
-                            addCopyButtonToPre(node);
-                        } else if (node.querySelectorAll) {
-                            node.querySelectorAll('pre:not([data-copy-btn-added])').forEach(addCopyButtonToPre);
-                        }
-                    }
-                }
-            }
-        }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // 兼容 instantclick
-    if (typeof InstantClick !== 'undefined') {
-        InstantClick.on('change', function() {
-            addCopyButtonsToAllPres();
-        });
-    }
-})();
- </script>
 
       <script>
           ajax()
