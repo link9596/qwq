@@ -22,7 +22,10 @@
       {% assign page-title = site.title | escape %}
     {% endif %}
 
-    <title>{{ page-title }}</title>
+    {% comment %}<title>{{ page-title }}</title>{% endcomment %}
+
+                {% seo %}
+
 
     {% if site.gems contains "jekyll-seo-tag" %}
       <!-- seo-tag -->
