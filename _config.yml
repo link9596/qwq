@@ -4,6 +4,13 @@ keywords: blog,css,html,php
 show_downloads: false
 show_comment: false
 
+# SEO Tags
+defaults:
+  - scope:
+      path: "" #全站通用
+    values:
+      image: /avatar/avatar.png
+
 baseurl: "" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
 url: "https://atlinker.cn" # change this to the base hostname & protocol for your site
 
