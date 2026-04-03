@@ -123,6 +123,12 @@
   url: https://www.7gugu.com
   describe: 一只鸽子的Code Space
   skin: /theme/skin/skin5.png
+  
+- name: 司徒和丞相
+  image: https://s41.ax1x.com/2026/02/13/pZqMzSx.png
+  url: https://situchengxiang.github.io
+  describe: 愿热爱与勇气永不褪色。
+  skin: /theme/skin/skin4.png
 
 # - name: 轻惋导航
 #  image: /avatar/default.png
