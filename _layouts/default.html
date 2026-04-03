@@ -65,7 +65,8 @@
     {% if page.layout == 'tags' %}
       {% assign page-tagline = page.tagline | escape  %}
     {% endif %}
-    <script>
+    
+    {% comment %}<script>
       var OriginTitile = document.title;
       var titleTime;
       document.addEventListener('visibilitychange', function() {
@@ -80,7 +81,7 @@
           }, 2000);
         }});
 
-    </script>
+    {% endcomment %}</script>
 
     <section class="mdui-ripple page-header">
       <h1 class="project-name">{{ page-title }}</h1>
