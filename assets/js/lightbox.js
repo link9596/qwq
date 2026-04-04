@@ -21,7 +21,7 @@
     let initialScale = 1;
     let lastTouchCount = 0;
     let isResetting = false;
-    let isZoomAnimating = false;   // 新增：动画缩放进行中
+    let isZoomAnimating = false;   //动画缩放进行中
 
     // 移动端双击检测
     let lastTap = 0;
@@ -139,7 +139,7 @@
             cloneImg.removeEventListener('transitionend', onZoomEnd);
             cloneImg.style.transition = '';
             isZoomAnimating = false;
-            clampTranslate();  // 最终再校正一次
+            clampTranslate();
         };
         cloneImg.addEventListener('transitionend', onZoomEnd, { once: true });
         setTimeout(() => {
@@ -152,7 +152,7 @@
         }, 350);
     }
 
-    // 重置图片变换（带动画）
+    // 重置图片变换
     function resetTransform() {
         if (!cloneImg) return;
         if (isResetting || isZoomAnimating) return;
@@ -284,7 +284,7 @@
         }
     }
 
-    // 移动端双击检测（放大/复位，带动画）
+    // 移动端双击检测
     function onTouchStartForDoubleTap(e) {
         if (isResetting || isZoomAnimating) return;
         const now = Date.now();
@@ -299,7 +299,7 @@
             const touch = e.touches[0];
             if (touch) {
                 if (scale === 1) {
-                    const targetScale = Math.min(MAX_SCALE, 2);
+                    const targetScale = Math.min(MAX_SCALE, 2.5);
                     animateZoomToPoint(targetScale, touch.clientX, touch.clientY);
                 } else {
                     resetTransform();
@@ -316,7 +316,7 @@
         }
     }
 
-    // 桌面端双击（放大/复位，带动画）
+    // 桌面端双击
     function onDoubleClick(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -326,7 +326,7 @@
             if (cloneImg) cloneImg.style.cursor = 'pointer';
         }
         if (scale === 1) {
-            const targetScale = Math.min(MAX_SCALE, 2);
+            const targetScale = Math.min(MAX_SCALE, 2.5);
             animateZoomToPoint(targetScale, e.clientX, e.clientY);
         } else {
             resetTransform();
