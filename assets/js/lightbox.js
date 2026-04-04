@@ -1,4 +1,4 @@
-// lightbox.js - 支持缩放/拖拽的图片灯箱（带复位动画）
+// lightbox.js - 支持缩放/拖拽的图片灯箱（移动端双击复位修复版）
 (function (global) {
     'use strict';
 
@@ -21,7 +21,11 @@
     let initialDistance = 0;
     let initialScale = 1;
     let lastTouchCount = 0;
-    let isResetting = false;   // 新增：复位动画标志
+    let isResetting = false;
+
+    // 移动端双击检测
+    let lastTap = 0;
+    let tapTimer = null;
 
     const MIN_SCALE = 1;
     const MAX_SCALE = 5;
@@ -65,7 +69,6 @@
         }
 
         isResetting = true;
-        // 启用过渡动画
         cloneImg.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1)';
         
         scale = 1;
@@ -76,11 +79,10 @@
             cloneImg.removeEventListener('transitionend', onResetEnd);
             cloneImg.style.transition = '';
             isResetting = false;
-            clampTranslate(); // 确保完全居中
+            clampTranslate();
         };
         cloneImg.addEventListener('transitionend', onResetEnd, { once: true });
         
-        // 保险：防止事件未触发
         setTimeout(() => {
             if (isResetting) {
                 cloneImg.removeEventListener('transitionend', onResetEnd);
@@ -91,14 +93,12 @@
         }, 350);
     }
 
-    // 应用当前的缩放和位移到图片上
     function applyTransform() {
         if (!cloneImg) return;
         cloneImg.style.transform = `translate(${translate.x}px, ${translate.y}px) scale(${scale})`;
         cloneImg.style.transformOrigin = 'center center';
     }
 
-    // 限制位移边界
     function clampTranslate() {
         if (!cloneImg) return;
         const rect = cloneImg.getBoundingClientRect();
@@ -111,7 +111,7 @@
         applyTransform();
     }
 
-    // 处理鼠标滚轮缩放
+    // 滚轮缩放
     function onWheel(e) {
         if (!activeLightbox || isAnimating || isResetting) return;
         e.preventDefault();
@@ -138,7 +138,7 @@
         applyTransform();
     }
 
-    // 鼠标/触摸拖拽
+    // 拖拽
     function onPointerDown(e) {
         if (!activeLightbox || isAnimating || scale === 1 || isResetting) return;
         e.preventDefault();
@@ -164,7 +164,7 @@
         if (cloneImg) cloneImg.style.cursor = scale === 1 ? 'pointer' : 'grab';
     }
 
-    // 触摸双指缩放
+    // 双指缩放
     function onTouchStart(e) {
         if (isResetting) return;
         if (e.touches.length === 2) {
@@ -220,7 +220,30 @@
         }
     }
 
-    // 双击重置（带动画）
+    // 移动端双击检测（模拟双击）
+    function onTouchStartForDoubleTap(e) {
+        if (isResetting) return;
+        const now = Date.now();
+        const timeSinceLast = now - lastTap;
+        if (timeSinceLast < 300 && timeSinceLast > 0) {
+            // 检测到双击
+            e.preventDefault();
+            e.stopPropagation();
+            if (isDragging) {
+                isDragging = false;
+                if (cloneImg) cloneImg.style.cursor = 'pointer';
+            }
+            resetTransform();
+            lastTap = 0;
+            if (tapTimer) clearTimeout(tapTimer);
+        } else {
+            lastTap = now;
+            if (tapTimer) clearTimeout(tapTimer);
+            tapTimer = setTimeout(() => { lastTap = 0; }, 300);
+        }
+    }
+
+    // 桌面端双击
     function onDoubleClick(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -232,17 +255,21 @@
         resetTransform();
     }
 
-    // 绑定/解绑事件
+    // 绑定事件
     function bindZoomEvents() {
         if (!cloneImg) return;
         cloneImg.addEventListener('wheel', onWheel, { passive: false });
         cloneImg.addEventListener('mousedown', onPointerDown);
         window.addEventListener('mousemove', onPointerMove);
         window.addEventListener('mouseup', onPointerUp);
+        
+        // 触摸事件顺序：先检测双击，再处理单指/双指
+        cloneImg.addEventListener('touchstart', onTouchStartForDoubleTap, { passive: false });
         cloneImg.addEventListener('touchstart', onTouchStart, { passive: false });
         cloneImg.addEventListener('touchmove', onTouchMove, { passive: false });
         cloneImg.addEventListener('touchend', onTouchEnd);
         cloneImg.addEventListener('touchcancel', onTouchEnd);
+        
         cloneImg.addEventListener('dblclick', onDoubleClick);
         cloneImg.style.cursor = 'pointer';
     }
@@ -253,14 +280,17 @@
         cloneImg.removeEventListener('mousedown', onPointerDown);
         window.removeEventListener('mousemove', onPointerMove);
         window.removeEventListener('mouseup', onPointerUp);
+        cloneImg.removeEventListener('touchstart', onTouchStartForDoubleTap);
         cloneImg.removeEventListener('touchstart', onTouchStart);
         cloneImg.removeEventListener('touchmove', onTouchMove);
         cloneImg.removeEventListener('touchend', onTouchEnd);
         cloneImg.removeEventListener('touchcancel', onTouchEnd);
         cloneImg.removeEventListener('dblclick', onDoubleClick);
+        if (tapTimer) clearTimeout(tapTimer);
+        lastTap = 0;
     }
 
-    // ---------- 灯箱核心（打开/关闭）----------
+    // ---------- 灯箱核心（打开/关闭） ----------
     function destroyLightboxDom() {
         if (lightboxElement && lightboxElement.parentNode) {
             lightboxElement.parentNode.removeChild(lightboxElement);
@@ -273,22 +303,26 @@
         closeBtn = null;
     }
 
-    function resetLightboxState() {
-        activeLightbox = false;
-        isAnimating = false;
-        originalImgRef = null;
-        if (originalOverflow !== '') {
-            document.body.style.overflow = originalOverflow;
-            originalOverflow = '';
-        }
-        if (resizeHandler) window.removeEventListener('resize', resizeHandler);
-        if (escHandler) window.removeEventListener('keydown', escHandler);
-        resizeHandler = null;
-        escHandler = null;
-        scale = 1;
-        translate = { x: 0, y: 0 };
-        isDragging = false;
-    }
+function resetLightboxState() {
+    activeLightbox = false;
+    isAnimating = false;
+    originalImgRef = null;
+    
+    // 强制恢复页面滚动（无论之前保存的值是什么）
+    document.body.style.overflow = '';
+    originalOverflow = '';
+    
+    if (resizeHandler) window.removeEventListener('resize', resizeHandler);
+    if (escHandler) window.removeEventListener('keydown', escHandler);
+    resizeHandler = null;
+    escHandler = null;
+    scale = 1;
+    translate = { x: 0, y: 0 };
+    isDragging = false;
+    isResetting = false;
+    if (tapTimer) clearTimeout(tapTimer);
+    lastTap = 0;
+}
 
     function closeLightbox(skipAnimation = false) {
         if (!activeLightbox && !lightboxElement) return;
@@ -385,7 +419,7 @@
 
         const btnClose = document.createElement('div');
         btnClose.className = 'lightbox-close-btn';
-        btnClose.innerHTML = '✕';
+        btnClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24"><path fill="none" opacity="0.5" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" data-swindex="0" d="M12 12L7 7m5 5l5 5m-5-5l5-5m-5 5l-5 5"></path></svg>';
         btnClose.style.cssText = `
 	position: fixed;
 	top: 24px;
@@ -398,17 +432,14 @@
     	display: flex;
     	align-items: center;
     	justify-content: center;
-    	font-size: 21px;
-    	font-weight: 300;
     	color: #ffffffa8;
     	cursor: pointer;
     	z-index: 10002;
-    	font-family: monospace;
+                padding: 5px;
     	transition: opacity 0.2s, transform 0.2s;
     	opacity: 1;
     	box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
     	border: 1px solid rgba(200, 200, 200, 0.05);
-	padding-bottom: 2px;
 	-webkit-tap-highlight-color: transparent;
         `;
 
