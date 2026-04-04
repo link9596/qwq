@@ -188,18 +188,17 @@
     import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
     let walineInstance = null;
+    let lightboxLoaded = false;   // 标记灯箱脚本是否已加载过
 
+    // 初始化 Waline 评论
     function initWaline() {
         const container = document.querySelector('#waline');
         if (container) {
-            // 如果已存在实例，先销毁
             if (walineInstance && typeof walineInstance.destroy === 'function') {
                 walineInstance.destroy();
             }
             walineInstance = init({
-                 locale: {
-    placeholder: 'Talkk!',
-  },
+                locale: { placeholder: 'Talkk!' },
                 el: '#waline',
                 imageUploader: false,
                 search: false,
@@ -211,13 +210,52 @@
         }
     }
 
+    // 初始化灯箱
+    function loadAndInitLightbox() {
+        // 只对包含文章主体的页面启用
+        if (!document.querySelector('#main-article')) return;
+
+        if (typeof Lightbox !== 'undefined') {
+            // 已加载直接重新初始化
+            Lightbox.init('#main-article img');
+            return;
+        }
+
+        // 动态加载脚本
+        if (lightboxLoaded) return; // 防止重复请求
+        lightboxLoaded = true;
+
+        const script = document.createElement('script');
+        script.src = '/assets/js/lightbox.js';  // ⚠️ 请替换为 lightbox.js 的实际路径
+        script.onload = function() {
+            if (typeof Lightbox !== 'undefined') {
+                Lightbox.init('#main-article img');
+            } else {
+                console.warn('Lightbox 加载成功但对象不存在，请检查脚本');
+            }
+        };
+        script.onerror = function() {
+            console.error('Lightbox 脚本加载失败');
+            lightboxLoaded = false; // 允许重试
+        };
+        document.head.appendChild(script);
+    }
+
+    // InstantClick 处理
     if (typeof InstantClick !== 'undefined') {
         InstantClick.on('change', function() {
+            // 初始化 Waline
             setTimeout(initWaline, 50);
+            // 重设灯箱
+            loadAndInitLightbox();
         });
         InstantClick.init();
     } else {
-        document.addEventListener('DOMContentLoaded', initWaline);
+        // 非 InstantClick 环境
+        document.addEventListener('DOMContentLoaded', function() {
+            initWaline();
+            loadAndInitLightbox();
+        });
     }
 </script>
       {% endif %}
