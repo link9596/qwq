@@ -10,7 +10,7 @@ tags: Skill
 
 在MDUI的官网有Material Design的[设计规范中文文档](https://www.mdui.org/zh-cn/design/1/)
 
-![](https://s41.ax1x.com/2026/04/04/petNsc6.webp)
+![](https://s41.ax1x.com/2026/04/04/petUgx0.webp)
 
 而通过历代更新，Snackbar的样式也有了许多微小变化
 
