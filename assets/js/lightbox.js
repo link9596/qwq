@@ -11,7 +11,6 @@
     let originalImgRef = null;
     let resizeHandler = null;
     let escHandler = null;
-    let originalOverflow = '';
 
     // 缩放/拖拽相关状态
     let isDragging = false;
@@ -226,7 +225,6 @@
         const now = Date.now();
         const timeSinceLast = now - lastTap;
         if (timeSinceLast < 300 && timeSinceLast > 0) {
-            // 检测到双击
             e.preventDefault();
             e.stopPropagation();
             if (isDragging) {
@@ -263,7 +261,6 @@
         window.addEventListener('mousemove', onPointerMove);
         window.addEventListener('mouseup', onPointerUp);
         
-        // 触摸事件顺序：先检测双击，再处理单指/双指
         cloneImg.addEventListener('touchstart', onTouchStartForDoubleTap, { passive: false });
         cloneImg.addEventListener('touchstart', onTouchStart, { passive: false });
         cloneImg.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -303,26 +300,22 @@
         closeBtn = null;
     }
 
-function resetLightboxState() {
-    activeLightbox = false;
-    isAnimating = false;
-    originalImgRef = null;
-    
-    // 强制恢复页面滚动（无论之前保存的值是什么）
-    document.body.style.overflow = '';
-    originalOverflow = '';
-    
-    if (resizeHandler) window.removeEventListener('resize', resizeHandler);
-    if (escHandler) window.removeEventListener('keydown', escHandler);
-    resizeHandler = null;
-    escHandler = null;
-    scale = 1;
-    translate = { x: 0, y: 0 };
-    isDragging = false;
-    isResetting = false;
-    if (tapTimer) clearTimeout(tapTimer);
-    lastTap = 0;
-}
+    function resetLightboxState() {
+        activeLightbox = false;
+        isAnimating = false;
+        originalImgRef = null;
+        
+        if (resizeHandler) window.removeEventListener('resize', resizeHandler);
+        if (escHandler) window.removeEventListener('keydown', escHandler);
+        resizeHandler = null;
+        escHandler = null;
+        scale = 1;
+        translate = { x: 0, y: 0 };
+        isDragging = false;
+        isResetting = false;
+        if (tapTimer) clearTimeout(tapTimer);
+        lastTap = 0;
+    }
 
     function closeLightbox(skipAnimation = false) {
         if (!activeLightbox && !lightboxElement) return;
@@ -421,26 +414,26 @@ function resetLightboxState() {
         btnClose.className = 'lightbox-close-btn';
         btnClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24"><path fill="none" opacity="0.5" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" data-swindex="0" d="M12 12L7 7m5 5l5 5m-5-5l5-5m-5 5l-5 5"></path></svg>';
         btnClose.style.cssText = `
-	position: fixed;
-	top: 24px;
-	right: 28px;
-   	width: 44px;
-	height: 44px;
-	background: rgba(0, 0, 0, .5);
-	backdrop-filter: blur(8px);
-	border-radius: 50%;
-    	display: flex;
-    	align-items: center;
-    	justify-content: center;
-    	color: #ffffffa8;
-    	cursor: pointer;
-    	z-index: 10002;
-                padding: 5px;
-    	transition: opacity 0.2s, transform 0.2s;
-    	opacity: 1;
-    	box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
-    	border: 1px solid rgba(200, 200, 200, 0.05);
-	-webkit-tap-highlight-color: transparent;
+            position: fixed;
+            top: 24px;
+            right: 28px;
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 0, 0, .5);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffffa8;
+            cursor: pointer;
+            z-index: 10002;
+            padding: 5px;
+            transition: opacity 0.2s, transform 0.2s;
+            opacity: 1;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+            border: 1px solid rgba(200, 200, 200, 0.05);
+            -webkit-tap-highlight-color: transparent;
         `;
 
         const cloneImage = document.createElement('img');
@@ -470,9 +463,6 @@ function resetLightboxState() {
         lightboxElement = overlay;
         cloneImg = cloneImage;
         closeBtn = btnClose;
-
-        originalOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
 
         cloneImg.getBoundingClientRect();
         requestAnimationFrame(() => {
