@@ -1,4 +1,4 @@
-// 图片灯箱
+// lightbox.js - 支持缩放/拖拽（移动端锁定滚动，桌面端不锁）
 (function (global) {
     'use strict';
 
@@ -11,6 +11,11 @@
     let originalImgRef = null;
     let resizeHandler = null;
     let escHandler = null;
+
+    // 滚动锁定相关（仅移动端）
+    let originalOverflow = '';
+    let originalPaddingRight = '';
+    let isMobile = false;
 
     // 缩放/拖拽相关状态
     let isDragging = false;
@@ -28,6 +33,52 @@
 
     const MIN_SCALE = 1;
     const MAX_SCALE = 5;
+
+    // ---------- 检测移动端 ----------
+    function detectMobile() {
+        return ('ontouchstart' in window) || 
+               (navigator.maxTouchPoints > 0) || 
+               /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    // 获取滚动条宽度（缓存）
+    let scrollbarWidthCache = 0;
+    function getScrollbarWidth() {
+        if (scrollbarWidthCache !== 0) return scrollbarWidthCache;
+        const div = document.createElement('div');
+        div.style.cssText = 'overflow:scroll; visibility:hidden; position:absolute; width:100px; height:100px; top:-9999px;';
+        document.body.appendChild(div);
+        const width = div.offsetWidth - div.clientWidth;
+        document.body.removeChild(div);
+        scrollbarWidthCache = width;
+        return scrollbarWidthCache;
+    }
+
+    // 锁定滚动（仅移动端）
+    function lockScrollMobile() {
+        if (!isMobile) return;
+        originalOverflow = document.body.style.overflow;
+        originalPaddingRight = document.body.style.paddingRight;
+        const sbWidth = getScrollbarWidth();
+        if (sbWidth > 0 && document.body.style.overflow !== 'hidden') {
+            const currentPad = parseFloat(originalPaddingRight) || 0;
+            document.body.style.paddingRight = (currentPad + sbWidth) + 'px';
+        }
+        document.body.style.overflow = 'hidden';
+    }
+
+    // 恢复滚动（仅移动端）
+    function unlockScrollMobile() {
+        if (!isMobile) return;
+        document.body.style.overflow = originalOverflow || '';
+        if (originalPaddingRight !== '') {
+            document.body.style.paddingRight = originalPaddingRight;
+        } else {
+            document.body.style.paddingRight = '';
+        }
+        originalOverflow = '';
+        originalPaddingRight = '';
+    }
 
     // ---------- 辅助函数 ----------
     function getRect(el) {
@@ -287,7 +338,7 @@
         lastTap = 0;
     }
 
-    // ---------- 灯箱核心（打开/关闭） ----------
+    // ---------- 灯箱核心 ----------
     function destroyLightboxDom() {
         if (lightboxElement && lightboxElement.parentNode) {
             lightboxElement.parentNode.removeChild(lightboxElement);
@@ -304,6 +355,7 @@
         activeLightbox = false;
         isAnimating = false;
         originalImgRef = null;
+        unlockScrollMobile();  // 恢复滚动（移动端）
         
         if (resizeHandler) window.removeEventListener('resize', resizeHandler);
         if (escHandler) window.removeEventListener('keydown', escHandler);
@@ -318,7 +370,10 @@
     }
 
     function closeLightbox(skipAnimation = false) {
-        if (!activeLightbox && !lightboxElement) return;
+        if (!activeLightbox && !lightboxElement) {
+            unlockScrollMobile(); // 确保滚动恢复
+            return;
+        }
         if (isAnimating && !skipAnimation) return;
 
         if (resizeHandler) window.removeEventListener('resize', resizeHandler);
@@ -464,6 +519,9 @@
         cloneImg = cloneImage;
         closeBtn = btnClose;
 
+        // 移动端锁定滚动（桌面端无影响）
+        lockScrollMobile();
+
         cloneImg.getBoundingClientRect();
         requestAnimationFrame(() => {
             cloneImg.style.top = finalTop + 'px';
@@ -528,7 +586,12 @@
         resizeHandler = handleResize;
     }
 
+    // 初始化（支持重复调用）
+    let initHandler = null;
     function initLightbox(selector = '.lightbox-img') {
+        if (initHandler) {
+            document.body.removeEventListener('click', initHandler);
+        }
         const handleGlobalClick = (e) => {
             const img = e.target.closest(selector);
             if (img && img.tagName === 'IMG' && !activeLightbox && !isAnimating) {
@@ -537,10 +600,15 @@
             }
         };
         document.body.addEventListener('click', handleGlobalClick);
+        initHandler = handleGlobalClick;
         return function destroy() {
             document.body.removeEventListener('click', handleGlobalClick);
+            initHandler = null;
         };
     }
+
+    // 检测移动端并设置全局标志
+    isMobile = detectMobile();
 
     global.Lightbox = {
         init: initLightbox,
