@@ -21,6 +21,7 @@
     let initialScale = 1;
     let lastTouchCount = 0;
     let isResetting = false;
+    let isZoomAnimating = false;   // 新增：动画缩放进行中
 
     // 移动端双击检测
     let lastTap = 0;
@@ -58,14 +59,13 @@
         return { left: (viewportW - finalWidth) / 2, top: (viewportH - finalHeight) / 2 };
     }
 
-    // 以指定客户端坐标为中心缩放
+    // 无动画缩放（用于实时交互：滚轮、双指）
     function zoomAtPoint(newScale, clientX, clientY) {
         if (!cloneImg) return;
         newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, newScale));
         if (newScale === scale) return;
 
         const rect = cloneImg.getBoundingClientRect();
-        // 计算鼠标在图片上的相对位置（比例）
         const ratioX = (clientX - rect.left) / rect.width;
         const ratioY = (clientY - rect.top) / rect.height;
         const oldWidth = rect.width;
@@ -83,10 +83,79 @@
         applyTransform();
     }
 
+    // 带动画的缩放（用于双击放大/复位）
+    function animateZoomToPoint(targetScale, clientX, clientY) {
+        if (!cloneImg) return;
+        if (isZoomAnimating || isResetting || isAnimating) return;
+        targetScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, targetScale));
+        if (targetScale === scale) return;
+
+        // 计算目标 scale 和 translate，使缩放中心保持在 (clientX, clientY)
+        const rect = cloneImg.getBoundingClientRect();
+        const ratioX = (clientX - rect.left) / rect.width;
+        const ratioY = (clientY - rect.top) / rect.height;
+        const oldWidth = rect.width;
+        const oldHeight = rect.height;
+
+        const newScale = targetScale;
+        // 临时应用新 scale 计算新尺寸（不实际渲染，仅计算）
+        const tempTransform = `translate(${translate.x}px, ${translate.y}px) scale(${newScale})`;
+        const tempDiv = document.createElement('div');
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.visibility = 'hidden';
+        tempDiv.style.transform = tempTransform;
+        tempDiv.style.transformOrigin = 'center center';
+        tempDiv.style.width = rect.width + 'px';
+        tempDiv.style.height = rect.height + 'px';
+        document.body.appendChild(tempDiv);
+        const newRect = tempDiv.getBoundingClientRect();
+        document.body.removeChild(tempDiv);
+
+        const deltaX = (newRect.width - oldWidth) * ratioX;
+        const deltaY = (newRect.height - oldHeight) * ratioY;
+        let newTranslateX = translate.x - deltaX;
+        let newTranslateY = translate.y - deltaY;
+
+        // 临时保存目标值并应用边界限制（需要临时应用 scale 和 translate 来 clamp）
+        const oldScale = scale;
+        const oldTranslate = { ...translate };
+        scale = newScale;
+        translate = { x: newTranslateX, y: newTranslateY };
+        clampTranslate();        // 修正超出边界的偏移
+        newTranslateX = translate.x;
+        newTranslateY = translate.y;
+        scale = oldScale;
+        translate = oldTranslate;
+
+        // 开始动画
+        isZoomAnimating = true;
+        cloneImg.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1)';
+
+        scale = newScale;
+        translate = { x: newTranslateX, y: newTranslateY };
+        applyTransform();
+
+        const onZoomEnd = () => {
+            cloneImg.removeEventListener('transitionend', onZoomEnd);
+            cloneImg.style.transition = '';
+            isZoomAnimating = false;
+            clampTranslate();  // 最终再校正一次
+        };
+        cloneImg.addEventListener('transitionend', onZoomEnd, { once: true });
+        setTimeout(() => {
+            if (isZoomAnimating) {
+                cloneImg.removeEventListener('transitionend', onZoomEnd);
+                cloneImg.style.transition = '';
+                isZoomAnimating = false;
+                clampTranslate();
+            }
+        }, 350);
+    }
+
     // 重置图片变换（带动画）
     function resetTransform() {
         if (!cloneImg) return;
-        if (isResetting) return;
+        if (isResetting || isZoomAnimating) return;
         if (isDragging) {
             isDragging = false;
             if (cloneImg) cloneImg.style.cursor = 'pointer';
@@ -137,7 +206,7 @@
 
     // 滚轮缩放
     function onWheel(e) {
-        if (!activeLightbox || isAnimating || isResetting) return;
+        if (!activeLightbox || isAnimating || isResetting || isZoomAnimating) return;
         e.preventDefault();
         const delta = e.deltaY > 0 ? 0.9 : 1.1;
         let newScale = scale * delta;
@@ -148,7 +217,7 @@
 
     // 拖拽
     function onPointerDown(e) {
-        if (!activeLightbox || isAnimating || scale === 1 || isResetting) return;
+        if (!activeLightbox || isAnimating || scale === 1 || isResetting || isZoomAnimating) return;
         e.preventDefault();
         isDragging = true;
         const point = e.touches ? e.touches[0] : e;
@@ -174,7 +243,7 @@
 
     // 双指缩放
     function onTouchStart(e) {
-        if (isResetting) return;
+        if (isResetting || isZoomAnimating) return;
         if (e.touches.length === 2) {
             e.preventDefault();
             const touch1 = e.touches[0];
@@ -215,31 +284,27 @@
         }
     }
 
-    // 移动端双击检测（放大/复位）
+    // 移动端双击检测（放大/复位，带动画）
     function onTouchStartForDoubleTap(e) {
-        if (isResetting) return;
+        if (isResetting || isZoomAnimating) return;
         const now = Date.now();
         const timeSinceLast = now - lastTap;
         if (timeSinceLast < 300 && timeSinceLast > 0) {
-            // 双击生效
             e.preventDefault();
             e.stopPropagation();
             if (isDragging) {
                 isDragging = false;
                 if (cloneImg) cloneImg.style.cursor = 'pointer';
             }
-            // 获取触摸点坐标（以第一个手指为准）
             const touch = e.touches[0];
             if (touch) {
                 if (scale === 1) {
-                    // 放大到2倍（不超过MAX_SCALE）
                     const targetScale = Math.min(MAX_SCALE, 2);
-                    zoomAtPoint(targetScale, touch.clientX, touch.clientY);
+                    animateZoomToPoint(targetScale, touch.clientX, touch.clientY);
                 } else {
                     resetTransform();
                 }
             } else {
-                // 无触摸点时直接复位
                 resetTransform();
             }
             lastTap = 0;
@@ -251,19 +316,18 @@
         }
     }
 
-    // 桌面端双击（放大/复位）
+    // 桌面端双击（放大/复位，带动画）
     function onDoubleClick(e) {
         e.preventDefault();
         e.stopPropagation();
-        if (isResetting) return;
+        if (isResetting || isZoomAnimating) return;
         if (isDragging) {
             isDragging = false;
             if (cloneImg) cloneImg.style.cursor = 'pointer';
         }
         if (scale === 1) {
-            // 放大到2倍
             const targetScale = Math.min(MAX_SCALE, 2);
-            zoomAtPoint(targetScale, e.clientX, e.clientY);
+            animateZoomToPoint(targetScale, e.clientX, e.clientY);
         } else {
             resetTransform();
         }
@@ -329,6 +393,7 @@
         translate = { x: 0, y: 0 };
         isDragging = false;
         isResetting = false;
+        isZoomAnimating = false;
         if (tapTimer) clearTimeout(tapTimer);
         lastTap = 0;
     }
@@ -470,6 +535,7 @@
             box-shadow: 0 25px 40px rgba(0,0,0,0.3);
             cursor: pointer;
             background-color: rgba(0,0,0,0.05);
+            touch-action: none;
         `;
 
         overlay.appendChild(cloneImage);
