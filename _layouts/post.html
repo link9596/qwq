@@ -48,6 +48,9 @@ layout: default
   {% if site.show_comment %}
   123333
   {% endif %}
+
+  <script src="/assets/js/valine.js" data-no-instant></script>
+  
   {% if site.data.social.valine_comment.enable  == true %}
   <link rel="stylesheet" href="/comment/waline.css" />
   <div id="waline"></div>
@@ -61,6 +64,12 @@ layout: default
   {% endif %}
   {% include scripts.html %}
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // 对 #main-article 内的所有图片启用灯箱
+    Lightbox.init('#main-article img');
+  });
+  </script>
 
   {% if site.disqus.shortname %}
     {% include disqus_comments.html %}
