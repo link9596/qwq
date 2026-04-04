@@ -1,4 +1,4 @@
-// lightbox.js - 支持缩放/拖拽的图片灯箱（移动端双击复位修复版）
+// lightbox.js - 图片灯箱
 (function (global) {
     'use strict';
 
@@ -308,7 +308,7 @@ function resetLightboxState() {
     isAnimating = false;
     originalImgRef = null;
     
-    // 强制恢复页面滚动（无论之前保存的值是什么）
+    // 强制恢复页面滚动
     document.body.style.overflow = '';
     originalOverflow = '';
     
