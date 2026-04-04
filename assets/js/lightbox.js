@@ -1,4 +1,4 @@
-// lightbox.js - 图片灯箱
+// lightbox.js - 支持缩放/拖拽的图片灯箱（移动端双击复位 + 无位移滚动条处理）
 (function (global) {
     'use strict';
 
@@ -12,6 +12,8 @@
     let resizeHandler = null;
     let escHandler = null;
     let originalOverflow = '';
+    let originalPaddingRight = '';    // 用于滚动条宽度补偿
+    let scrollbarWidthCache = 0;      // 缓存滚动条宽度
 
     // 缩放/拖拽相关状态
     let isDragging = false;
@@ -31,6 +33,17 @@
     const MAX_SCALE = 5;
 
     // ---------- 辅助函数 ----------
+    function getScrollbarWidth() {
+        if (scrollbarWidthCache !== 0) return scrollbarWidthCache;
+        const div = document.createElement('div');
+        div.style.cssText = 'overflow:scroll; visibility:hidden; position:absolute; width:100px; height:100px; top:-9999px;';
+        document.body.appendChild(div);
+        const width = div.offsetWidth - div.clientWidth;
+        document.body.removeChild(div);
+        scrollbarWidthCache = width;
+        return scrollbarWidthCache;
+    }
+
     function getRect(el) {
         if (!el) return { top: 0, left: 0, width: 0, height: 0 };
         const rect = el.getBoundingClientRect();
@@ -226,7 +239,6 @@
         const now = Date.now();
         const timeSinceLast = now - lastTap;
         if (timeSinceLast < 300 && timeSinceLast > 0) {
-            // 检测到双击
             e.preventDefault();
             e.stopPropagation();
             if (isDragging) {
@@ -263,7 +275,6 @@
         window.addEventListener('mousemove', onPointerMove);
         window.addEventListener('mouseup', onPointerUp);
         
-        // 触摸事件顺序：先检测双击，再处理单指/双指
         cloneImg.addEventListener('touchstart', onTouchStartForDoubleTap, { passive: false });
         cloneImg.addEventListener('touchstart', onTouchStart, { passive: false });
         cloneImg.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -303,29 +314,42 @@
         closeBtn = null;
     }
 
-function resetLightboxState() {
-    activeLightbox = false;
-    isAnimating = false;
-    originalImgRef = null;
-    
-    // 强制恢复页面滚动
-    document.body.style.overflow = '';
-    originalOverflow = '';
-    
-    if (resizeHandler) window.removeEventListener('resize', resizeHandler);
-    if (escHandler) window.removeEventListener('keydown', escHandler);
-    resizeHandler = null;
-    escHandler = null;
-    scale = 1;
-    translate = { x: 0, y: 0 };
-    isDragging = false;
-    isResetting = false;
-    if (tapTimer) clearTimeout(tapTimer);
-    lastTap = 0;
-}
+    // 强制恢复页面滚动及 padding 补偿
+    function restorePageScroll() {
+        document.body.style.overflow = originalOverflow || '';
+        originalOverflow = '';
+        if (originalPaddingRight !== '') {
+            document.body.style.paddingRight = originalPaddingRight;
+            originalPaddingRight = '';
+        } else {
+            document.body.style.paddingRight = '';
+        }
+    }
+
+    function resetLightboxState() {
+        activeLightbox = false;
+        isAnimating = false;
+        originalImgRef = null;
+        restorePageScroll();
+        
+        if (resizeHandler) window.removeEventListener('resize', resizeHandler);
+        if (escHandler) window.removeEventListener('keydown', escHandler);
+        resizeHandler = null;
+        escHandler = null;
+        scale = 1;
+        translate = { x: 0, y: 0 };
+        isDragging = false;
+        isResetting = false;
+        if (tapTimer) clearTimeout(tapTimer);
+        lastTap = 0;
+    }
 
     function closeLightbox(skipAnimation = false) {
-        if (!activeLightbox && !lightboxElement) return;
+        // 无论什么情况，先确保滚动恢复（防止卡死）
+        if (!activeLightbox && !lightboxElement) {
+            restorePageScroll();
+            return;
+        }
         if (isAnimating && !skipAnimation) return;
 
         if (resizeHandler) window.removeEventListener('resize', resizeHandler);
@@ -421,26 +445,26 @@ function resetLightboxState() {
         btnClose.className = 'lightbox-close-btn';
         btnClose.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24"><path fill="none" opacity="0.5" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" data-swindex="0" d="M12 12L7 7m5 5l5 5m-5-5l5-5m-5 5l-5 5"></path></svg>';
         btnClose.style.cssText = `
-	position: fixed;
-	top: 24px;
-	right: 28px;
-   	width: 44px;
-	height: 44px;
-	background: rgba(0, 0, 0, .5);
-	backdrop-filter: blur(8px);
-	border-radius: 50%;
-    	display: flex;
-    	align-items: center;
-    	justify-content: center;
-    	color: #ffffffa8;
-    	cursor: pointer;
-    	z-index: 10002;
-                padding: 5px;
-    	transition: opacity 0.2s, transform 0.2s;
-    	opacity: 1;
-    	box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
-    	border: 1px solid rgba(200, 200, 200, 0.05);
-	-webkit-tap-highlight-color: transparent;
+            position: fixed;
+            top: 24px;
+            right: 28px;
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 0, 0, .5);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffffa8;
+            cursor: pointer;
+            z-index: 10002;
+            padding: 5px;
+            transition: opacity 0.2s, transform 0.2s;
+            opacity: 1;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+            border: 1px solid rgba(200, 200, 200, 0.05);
+            -webkit-tap-highlight-color: transparent;
         `;
 
         const cloneImage = document.createElement('img');
@@ -471,8 +495,16 @@ function resetLightboxState() {
         cloneImg = cloneImage;
         closeBtn = btnClose;
 
+        // ---- 处理滚动条位移 ----
         originalOverflow = document.body.style.overflow;
+        originalPaddingRight = document.body.style.paddingRight;
+        const sbWidth = getScrollbarWidth();
+        if (sbWidth > 0 && document.body.style.overflow !== 'hidden') {
+            const currentPad = parseFloat(originalPaddingRight) || 0;
+            document.body.style.paddingRight = (currentPad + sbWidth) + 'px';
+        }
         document.body.style.overflow = 'hidden';
+        // -----------------------
 
         cloneImg.getBoundingClientRect();
         requestAnimationFrame(() => {
@@ -480,7 +512,7 @@ function resetLightboxState() {
             cloneImg.style.left = finalLeft + 'px';
             cloneImg.style.width = finalWidth + 'px';
             cloneImg.style.height = finalHeight + 'px';
-            cloneImg.style.borderRadius = '20px';
+            cloneImg.style.borderRadius = '10px';
             overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
             overlay.style.backdropFilter = 'blur(12px)';
             btnClose.style.opacity = '1';
