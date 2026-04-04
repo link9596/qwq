@@ -535,7 +535,6 @@
             box-shadow: 0 25px 40px rgba(0,0,0,0.3);
             cursor: pointer;
             background-color: rgba(0,0,0,0.05);
-            touch-action: none;
         `;
 
         overlay.appendChild(cloneImage);
