@@ -67,7 +67,7 @@ layout: default
   <script>
     document.addEventListener('DOMContentLoaded', function() {
     // 对 #main-article 内的所有图片启用灯箱
-    Lightbox.init('#main-article img');
+    Lightbox.init('#main-article img:not(.no-lightbox)');
   });
   </script>
 
