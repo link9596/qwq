@@ -1,4 +1,4 @@
-// lightbox.js - 支持缩放/拖拽（移动端锁定滚动，桌面端不锁）
+// 图片灯箱
 (function (global) {
     'use strict';
 
@@ -11,11 +11,6 @@
     let originalImgRef = null;
     let resizeHandler = null;
     let escHandler = null;
-
-    // 滚动锁定相关（仅移动端）
-    let originalOverflow = '';
-    let originalPaddingRight = '';
-    let isMobile = false;
 
     // 缩放/拖拽相关状态
     let isDragging = false;
@@ -33,52 +28,6 @@
 
     const MIN_SCALE = 1;
     const MAX_SCALE = 5;
-
-    // ---------- 检测移动端 ----------
-    function detectMobile() {
-        return ('ontouchstart' in window) || 
-               (navigator.maxTouchPoints > 0) || 
-               /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    }
-
-    // 获取滚动条宽度（缓存）
-    let scrollbarWidthCache = 0;
-    function getScrollbarWidth() {
-        if (scrollbarWidthCache !== 0) return scrollbarWidthCache;
-        const div = document.createElement('div');
-        div.style.cssText = 'overflow:scroll; visibility:hidden; position:absolute; width:100px; height:100px; top:-9999px;';
-        document.body.appendChild(div);
-        const width = div.offsetWidth - div.clientWidth;
-        document.body.removeChild(div);
-        scrollbarWidthCache = width;
-        return scrollbarWidthCache;
-    }
-
-    // 锁定滚动（仅移动端）
-    function lockScrollMobile() {
-        if (!isMobile) return;
-        originalOverflow = document.body.style.overflow;
-        originalPaddingRight = document.body.style.paddingRight;
-        const sbWidth = getScrollbarWidth();
-        if (sbWidth > 0 && document.body.style.overflow !== 'hidden') {
-            const currentPad = parseFloat(originalPaddingRight) || 0;
-            document.body.style.paddingRight = (currentPad + sbWidth) + 'px';
-        }
-        document.body.style.overflow = 'hidden';
-    }
-
-    // 恢复滚动（仅移动端）
-    function unlockScrollMobile() {
-        if (!isMobile) return;
-        document.body.style.overflow = originalOverflow || '';
-        if (originalPaddingRight !== '') {
-            document.body.style.paddingRight = originalPaddingRight;
-        } else {
-            document.body.style.paddingRight = '';
-        }
-        originalOverflow = '';
-        originalPaddingRight = '';
-    }
 
     // ---------- 辅助函数 ----------
     function getRect(el) {
@@ -107,6 +56,31 @@
 
     function getCenterPosition(finalWidth, finalHeight, viewportW, viewportH) {
         return { left: (viewportW - finalWidth) / 2, top: (viewportH - finalHeight) / 2 };
+    }
+
+    // 以指定客户端坐标为中心缩放
+    function zoomAtPoint(newScale, clientX, clientY) {
+        if (!cloneImg) return;
+        newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, newScale));
+        if (newScale === scale) return;
+
+        const rect = cloneImg.getBoundingClientRect();
+        // 计算鼠标在图片上的相对位置（比例）
+        const ratioX = (clientX - rect.left) / rect.width;
+        const ratioY = (clientY - rect.top) / rect.height;
+        const oldWidth = rect.width;
+        const oldHeight = rect.height;
+
+        scale = newScale;
+        applyTransform();
+
+        const newRect = cloneImg.getBoundingClientRect();
+        const deltaX = (newRect.width - oldWidth) * ratioX;
+        const deltaY = (newRect.height - oldHeight) * ratioY;
+        translate.x -= deltaX;
+        translate.y -= deltaY;
+        clampTranslate();
+        applyTransform();
     }
 
     // 重置图片变换（带动画）
@@ -169,23 +143,7 @@
         let newScale = scale * delta;
         newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, newScale));
         if (newScale === scale) return;
-
-        const rect = cloneImg.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const ratioX = mouseX / rect.width;
-        const ratioY = mouseY / rect.height;
-
-        scale = newScale;
-        applyTransform();
-
-        const newRect = cloneImg.getBoundingClientRect();
-        const deltaX = newRect.width * ratioX - rect.width * ratioX;
-        const deltaY = newRect.height * ratioY - rect.height * ratioY;
-        translate.x -= deltaX;
-        translate.y -= deltaY;
-        clampTranslate();
-        applyTransform();
+        zoomAtPoint(newScale, e.clientX, e.clientY);
     }
 
     // 拖拽
@@ -238,22 +196,9 @@
             let newScale = initialScale * (distance / initialDistance);
             newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, newScale));
             if (newScale !== scale) {
-                const rect = cloneImg.getBoundingClientRect();
                 const centerX = (touch1.clientX + touch2.clientX) / 2;
                 const centerY = (touch1.clientY + touch2.clientY) / 2;
-                const ratioX = (centerX - rect.left) / rect.width;
-                const ratioY = (centerY - rect.top) / rect.height;
-                const oldWidth = rect.width;
-                const oldHeight = rect.height;
-                scale = newScale;
-                applyTransform();
-                const newRect = cloneImg.getBoundingClientRect();
-                const deltaX = (newRect.width - oldWidth) * ratioX;
-                const deltaY = (newRect.height - oldHeight) * ratioY;
-                translate.x -= deltaX;
-                translate.y -= deltaY;
-                clampTranslate();
-                applyTransform();
+                zoomAtPoint(newScale, centerX, centerY);
             }
         } else if (e.touches.length === 1) {
             onPointerMove(e);
@@ -270,19 +215,33 @@
         }
     }
 
-    // 移动端双击检测（模拟双击）
+    // 移动端双击检测（放大/复位）
     function onTouchStartForDoubleTap(e) {
         if (isResetting) return;
         const now = Date.now();
         const timeSinceLast = now - lastTap;
         if (timeSinceLast < 300 && timeSinceLast > 0) {
+            // 双击生效
             e.preventDefault();
             e.stopPropagation();
             if (isDragging) {
                 isDragging = false;
                 if (cloneImg) cloneImg.style.cursor = 'pointer';
             }
-            resetTransform();
+            // 获取触摸点坐标（以第一个手指为准）
+            const touch = e.touches[0];
+            if (touch) {
+                if (scale === 1) {
+                    // 放大到2倍（不超过MAX_SCALE）
+                    const targetScale = Math.min(MAX_SCALE, 2);
+                    zoomAtPoint(targetScale, touch.clientX, touch.clientY);
+                } else {
+                    resetTransform();
+                }
+            } else {
+                // 无触摸点时直接复位
+                resetTransform();
+            }
             lastTap = 0;
             if (tapTimer) clearTimeout(tapTimer);
         } else {
@@ -292,7 +251,7 @@
         }
     }
 
-    // 桌面端双击
+    // 桌面端双击（放大/复位）
     function onDoubleClick(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -301,7 +260,13 @@
             isDragging = false;
             if (cloneImg) cloneImg.style.cursor = 'pointer';
         }
-        resetTransform();
+        if (scale === 1) {
+            // 放大到2倍
+            const targetScale = Math.min(MAX_SCALE, 2);
+            zoomAtPoint(targetScale, e.clientX, e.clientY);
+        } else {
+            resetTransform();
+        }
     }
 
     // 绑定事件
@@ -338,7 +303,7 @@
         lastTap = 0;
     }
 
-    // ---------- 灯箱核心 ----------
+    // ---------- 灯箱核心（打开/关闭） ----------
     function destroyLightboxDom() {
         if (lightboxElement && lightboxElement.parentNode) {
             lightboxElement.parentNode.removeChild(lightboxElement);
@@ -355,7 +320,6 @@
         activeLightbox = false;
         isAnimating = false;
         originalImgRef = null;
-        unlockScrollMobile();  // 恢复滚动（移动端）
         
         if (resizeHandler) window.removeEventListener('resize', resizeHandler);
         if (escHandler) window.removeEventListener('keydown', escHandler);
@@ -370,10 +334,7 @@
     }
 
     function closeLightbox(skipAnimation = false) {
-        if (!activeLightbox && !lightboxElement) {
-            unlockScrollMobile(); // 确保滚动恢复
-            return;
-        }
+        if (!activeLightbox && !lightboxElement) return;
         if (isAnimating && !skipAnimation) return;
 
         if (resizeHandler) window.removeEventListener('resize', resizeHandler);
@@ -519,9 +480,6 @@
         cloneImg = cloneImage;
         closeBtn = btnClose;
 
-        // 移动端锁定滚动（桌面端无影响）
-        lockScrollMobile();
-
         cloneImg.getBoundingClientRect();
         requestAnimationFrame(() => {
             cloneImg.style.top = finalTop + 'px';
@@ -586,12 +544,7 @@
         resizeHandler = handleResize;
     }
 
-    // 初始化（支持重复调用）
-    let initHandler = null;
     function initLightbox(selector = '.lightbox-img') {
-        if (initHandler) {
-            document.body.removeEventListener('click', initHandler);
-        }
         const handleGlobalClick = (e) => {
             const img = e.target.closest(selector);
             if (img && img.tagName === 'IMG' && !activeLightbox && !isAnimating) {
@@ -600,15 +553,10 @@
             }
         };
         document.body.addEventListener('click', handleGlobalClick);
-        initHandler = handleGlobalClick;
         return function destroy() {
             document.body.removeEventListener('click', handleGlobalClick);
-            initHandler = null;
         };
     }
-
-    // 检测移动端并设置全局标志
-    isMobile = detectMobile();
 
     global.Lightbox = {
         init: initLightbox,
