@@ -243,18 +243,21 @@
 
     // 双指缩放
     function onTouchStart(e) {
-        if (isResetting || isZoomAnimating) return;
-        if (e.touches.length === 2) {
-            e.preventDefault();
-            const touch1 = e.touches[0];
-            const touch2 = e.touches[1];
-            initialDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-            initialScale = scale;
-            lastTouchCount = 2;
-        } else if (e.touches.length === 1) {
-            onPointerDown(e);
-        }
+    if (isResetting || isZoomAnimating) return;
+    if (e.touches.length === 2) {
+        // 双指操作：清除双击计时，避免误触发
+        if (tapTimer) clearTimeout(tapTimer);
+        lastTap = 0;
+        e.preventDefault();
+        const touch1 = e.touches[0];
+        const touch2 = e.touches[1];
+        initialDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
+        initialScale = scale;
+        lastTouchCount = 2;
+    } else if (e.touches.length === 1) {
+        onPointerDown(e);
     }
+}
 
     function onTouchMove(e) {
         if (e.touches.length === 2 && initialDistance > 0) {
@@ -284,37 +287,41 @@
         }
     }
 
-    // 移动端双击检测
-    function onTouchStartForDoubleTap(e) {
-        if (isResetting || isZoomAnimating) return;
-        const now = Date.now();
-        const timeSinceLast = now - lastTap;
-        if (timeSinceLast < 300 && timeSinceLast > 0) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (isDragging) {
-                isDragging = false;
-                if (cloneImg) cloneImg.style.cursor = 'pointer';
-            }
-            const touch = e.touches[0];
-            if (touch) {
-                if (scale === 1) {
-                    const targetScale = Math.min(MAX_SCALE, 2.5);
-                    animateZoomToPoint(targetScale, touch.clientX, touch.clientY);
-                } else {
-                    resetTransform();
-                }
+// 移动端双击检测：仅在单指触摸时生效
+function onTouchStartForDoubleTap(e) {
+    // 关键修复：只有单指才进行双击检测
+    if (e.touches.length !== 1) return;
+    if (isResetting || isZoomAnimating) return;
+
+    const now = Date.now();
+    const timeSinceLast = now - lastTap;
+    if (timeSinceLast < 300 && timeSinceLast > 0) {
+        // 检测到双击（单指双击）
+        e.preventDefault();
+        e.stopPropagation();
+        if (isDragging) {
+            isDragging = false;
+            if (cloneImg) cloneImg.style.cursor = 'pointer';
+        }
+        const touch = e.touches[0];
+        if (touch) {
+            if (scale === 1) {
+                const targetScale = Math.min(MAX_SCALE, 2);
+                animateZoomToPoint(targetScale, touch.clientX, touch.clientY);
             } else {
                 resetTransform();
             }
-            lastTap = 0;
-            if (tapTimer) clearTimeout(tapTimer);
         } else {
-            lastTap = now;
-            if (tapTimer) clearTimeout(tapTimer);
-            tapTimer = setTimeout(() => { lastTap = 0; }, 300);
+            resetTransform();
         }
+        lastTap = 0;
+        if (tapTimer) clearTimeout(tapTimer);
+    } else {
+        lastTap = now;
+        if (tapTimer) clearTimeout(tapTimer);
+        tapTimer = setTimeout(() => { lastTap = 0; }, 300);
     }
+}
 
     // 桌面端双击
     function onDoubleClick(e) {
