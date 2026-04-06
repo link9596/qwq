@@ -245,7 +245,7 @@
     function onTouchStart(e) {
     if (isResetting || isZoomAnimating) return;
     if (e.touches.length === 2) {
-        // 双指操作：清除双击计时，避免误触发
+        // 双指操作：清除双击计时，避免误触放大
         if (tapTimer) clearTimeout(tapTimer);
         lastTap = 0;
         e.preventDefault();
@@ -289,14 +289,14 @@
 
 // 移动端双击检测：仅在单指触摸时生效
 function onTouchStartForDoubleTap(e) {
-    // 关键修复：只有单指才进行双击检测
+    // 单指才进行双击检测
     if (e.touches.length !== 1) return;
     if (isResetting || isZoomAnimating) return;
 
     const now = Date.now();
     const timeSinceLast = now - lastTap;
     if (timeSinceLast < 300 && timeSinceLast > 0) {
-        // 检测到双击（单指双击）
+        // 单指双击
         e.preventDefault();
         e.stopPropagation();
         if (isDragging) {
