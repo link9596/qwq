@@ -2,6 +2,7 @@
 layout: post
 title: 谈谈假性亲密
 tags: 闲聊
+hidden: true
 ---
 
 在一起了，但没完全在一起。
