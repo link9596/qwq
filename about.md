@@ -17,8 +17,8 @@ icon: /theme/icon/about.svg
 
 核心: [Jekyll](https://www.jekyll.com.cn/)<br>
 主题: [Hydrogen](https://github.com/link9596/hydrogen) ~~(魔改版)~~<br>
+图床: [IMGCHR](https://imgchr.com/)<br>
 由[Waline+Vercel](https://waline.js.org/guide/deploy/vercel.html)提供评论系统及后端支持<br>
-图床: [IMGCHR](https://imgchr.com/)
 
 感谢以上支持～
 
