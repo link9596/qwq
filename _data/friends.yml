@@ -106,10 +106,10 @@
 #  image: https://cdn.jsdelivr.net/gh/Mashirl/Blog/source/images/avatar.jpg
 #  describe: 予 世界温柔以待 惟愿 时光静好
   
-- name: fly6022‘s Blog
-  image: https://cdn.luogu.com.cn/upload/usericon/473298.png
-  url: https://fly6022.fun/
-  describe: 自己的感受，比道理重要。
+- name: KuriCL
+  image: https://kuri.ink/images/avatar.jpg
+  url: https://kuri.ink/
+  describe: The older you get, the less you cry.
   skin: /theme/skin/skin3.png
   
 - name: CairBin
