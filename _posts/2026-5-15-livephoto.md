@@ -8,6 +8,8 @@ tags: skill
 
 ![](https://files.atlinker.cn/img-151409-9760.png)
 
+<iframe src="https://ghbtns.com/github-btn.html?user=link9596&repo=WebLivePhoto&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+
 起因是前几天在别人那里看到个很有意思的组件，可以在网页上放实况照片，而且体验和在ios上的实况照片几乎一致，上网搜了搜，发现苹果官方就给了LivePhotoKit JS这样的组件。
 
 看了一下文档发现很简单，只要创建一个div在里面声明图片和视频的链接就可以生成实况照片了，于是在相册装了一个试试，开始前两天用着挺好的，可是后面用着用着发现很多问题，于是乎就自己写了一个Web.LivePhoto，不依赖官方库，对图片和视频的格式要求更宽松。
