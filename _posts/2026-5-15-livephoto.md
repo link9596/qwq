@@ -4,7 +4,7 @@ title: 自己写一个实况照片网页组件？
 tags: skill
 ---
 
-因为苹果官方给的LivePhotoKit JS实在是台阶吧难用，于是乎自己动手写了一个...
+因为苹果官方给的LivePhotoKit JS实在是台阶吧难用![](/exp/wry.gif)，于是乎自己动手写了一个...
 
 ![](https://files.atlinker.cn/img-151409-9760.png)
 
@@ -48,6 +48,25 @@ tags: skill
 <script src="path/to/live-photo.js"></script>
 ```
 
+以下是初始化方式，你当然可以自定义其他匹配规则：
+
+## 初始化
+
+默认方式
+
+```html
+<script>
+    // 默认：自动扫描所有 .live-photo 容器并初始化
+    LivePhoto.init();
+</script>
+```
+```html
+<script>
+    // 指定选择器或元素，如查找所有id为myLivePhoto的元素
+     LivePhoto.init('#myLivePhoto');
+</script>
+```
+
 ## 展示实况照片
 
 在想要展示实况照片的地方，以下方的html格式编写
@@ -72,21 +91,6 @@ tags: skill
 
 实际上就是一个div容器包裹了一张照片和一个视频，js会在默认情况下会自动寻找类名为live-photo的div容器，把类名为live-photo-img的图片和类名为live-photo-video的视频包装成实况照片。
 
-以下是初始化方式，你当然可以自定义其他匹配规则：
+目前在小米自带浏览器上会出现video标签被劫持的情况，具体表现是会破坏原有样式、显示出浏览器自带的播放控件（太流氓了），其他浏览器都正常显示~~（奇怪了劫持视频标签干嘛呀，不会是为了插播广告吧）~~
 
-## 初始化
-
-默认方式
-
-```html
-<script>
-    // 默认：自动扫描所有 .live-photo 容器并初始化
-    LivePhoto.init();
-</script>
-```
-```html
-<script>
-    // 指定选择器或元素，如查找所有id为myLivePhoto的元素
-     LivePhoto.init('#myLivePhoto');
-</script>
-```
+想要破解只能使用 fetch 或 XMLHttpRequest 获取视频数据，转为 Blob 对象，再创建 Blob URL 赋给 <video> 标签。浏览器嗅探器就无法识别这类动态生成的 Blob URL，就不会被劫持了。但这样就不能跨域了，大家自己权衡吧= =，反正我觉得这类浏览器兼不兼容无所谓了![](/exp/razz.gif)...
