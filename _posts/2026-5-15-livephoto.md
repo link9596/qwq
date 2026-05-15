@@ -22,7 +22,7 @@ tags: skill
 
 最开始想着看看LivePhotoKit的源码，看看为什么同样的H.264视频一个能播，另一个又不能播，可是看了源码发现，官方的实现实在是太复杂了，看的让人眼花缭乱，而且组件好像很久也没人维护了。
 
-~~我chovy，你们做组件给我做好了呀~~
+## ~~我chovy，你们做组件给我做好了呀~~
 
 凭什么浏览器能放的视频，用这个组件又无法播放了？所以我决定放弃LivePhotoKit，决定自己写一个，以最简单的方式实现：一张图片和一个视频叠一起，长按让图片淡出，视频淡入，同时播放视频，结束后视频淡出图片淡入，于是就有了这个Web.LivePhoto组件。
 
@@ -55,6 +55,16 @@ tags: skill
 </div>
 ```
 
+当然还可以用简写成：
+
+```html
+
+<div class="live-photo" id="myLivePhoto">
+    <img class="live-photo-img" src="https://example.com/cover.jpg" alt="...">
+    <video class="live-photo-video" src="https://example.com/video.mp4" type="video/mp4" playsinline muted preload="auto"></video>
+</div>
+```
+
 实际上就是一个div容器包裹了一张照片和一个视频，js会在默认情况下会自动寻找类名为live-photo的div容器，把类名为live-photo-img的图片和类名为live-photo-video的视频包装成实况照片。
 
 以下是初始化方式，你当然可以自定义其他匹配规则：
@@ -63,13 +73,13 @@ tags: skill
 
 默认方式
 
-```javascript
+```html
 <script>
     // 默认：自动扫描所有 .live-photo 容器并初始化
     LivePhoto.init();
 </script>
 ```
-```javascript
+```html
 <script>
     // 指定选择器或元素，如查找所有id为myLivePhoto的元素
      LivePhoto.init('#myLivePhoto');
