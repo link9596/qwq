@@ -46,7 +46,6 @@ tags: skill
 在想要展示实况照片的地方，以下方的html格式编写
 
 ```html
-
 <div class="live-photo" id="myLivePhoto">
     <img class="live-photo-img" src="https://example.com/cover.jpg" alt="...">
     <video class="live-photo-video" playsinline muted preload="auto" poster="https://example.com/cover.jpg">
@@ -58,7 +57,6 @@ tags: skill
 当然还可以用简写成：
 
 ```html
-
 <div class="live-photo" id="myLivePhoto">
     <img class="live-photo-img" src="https://example.com/cover.jpg" alt="...">
     <video class="live-photo-video" src="https://example.com/video.mp4" type="video/mp4" playsinline muted preload="auto"></video>
