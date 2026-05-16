@@ -8,7 +8,7 @@ tags: skill
 
 ![](https://files.atlinker.cn/img-151409-9760.png)
 
-:point_right: [仓库地址](https://github.com/link9596/WebLivePhoto) :point_right: [演示页](https://atlinker.cn/demo/livephoto.html)
+:point_right: [仓库地址](https://github.com/link9596/WebLivePhoto) :point_right: <a href="https://atlinker.cn/demo/livephoto.html" target="_blank">演示页</a>
 <iframe src="https://ghbtns.com/github-btn.html?user=link9596&repo=WebLivePhoto&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
 
 起因是前几天在别人那里看到个很有意思的组件，可以在网页上放实况照片，而且体验和在ios上的实况照片几乎一致，上网搜了搜，发现苹果官方就给了LivePhotoKit JS这样的组件。
@@ -39,7 +39,7 @@ tags: skill
 
 ## 食用文档
 
- ### 安装
+### 安装
  
 下载 `live-photo.css` 和 `live-photo.js` 文件，在页面中引入：
 
