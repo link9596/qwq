@@ -178,7 +178,6 @@
       <div class="cardA">
         <div class="boxA translateA">
           <div class="fillA">
-            <!-- 显示摸的次数 -->
             <div id="nb" class="bubble">
               被摸了 <span id="touchCount">0</span> 次
             </div>
@@ -190,51 +189,41 @@
 </div>
 
 <script>
-  (function() {
-    // 计数器键名
-    const STORAGE_KEY = 'funny_touch_count';
-    
-    // 获取显示数字的 span 元素
-    const countSpan = document.getElementById('touchCount');
-    // 获取滑稽图片
+(function() {
+  function initCounter() {
     const funnyImg = document.getElementById('funnyImg');
-    
-    // 读取已存储的次数，没有则从 0 开始
-    let count = localStorage.getItem(STORAGE_KEY);
-    if (count === null) {
-      count = 0;
-    } else {
-      count = parseInt(count, 10);
+    const countSpan = document.getElementById('touchCount');
+    if (!funnyImg || !countSpan) {
+      console.error('找不到滑稽图片或计数元素');
+      return;
     }
-    // 更新显示
+
+    const STORAGE_KEY = 'funny_touch_count';
+    let count = parseInt(localStorage.getItem(STORAGE_KEY), 10) || 0;
     countSpan.textContent = count;
-    
-    // 定义摸一摸（点击）的处理函数
+
     function handleTouch() {
       count++;
       countSpan.textContent = count;
       localStorage.setItem(STORAGE_KEY, count);
-      
-      // 可选：添加简单动画反馈（图片轻微缩放）
+
+      // 点击动画
       funnyImg.style.transform = 'rotateY(180deg) scale(0.95)';
       setTimeout(() => {
         funnyImg.style.transform = 'rotateY(180deg) scale(1)';
       }, 150);
-      
-      // 可选：气泡闪烁效果
-      const bubble = document.getElementById('nb');
-      bubble.style.opacity = '0.7';
-      setTimeout(() => {
-        bubble.style.opacity = '1';
-      }, 200);
     }
-    
-    // 绑定点击事件
+
     funnyImg.addEventListener('click', handleTouch);
-    
-    // 如果你想支持“抚摸”（鼠标移入也算一次），取消下面注释
-    // funnyImg.addEventListener('mouseenter', handleTouch);
-  })();
+  }
+
+  // 确保 DOM 加载完成
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounter);
+  } else {
+    initCounter();
+  }
+})();
 </script>
 
 <script src='/assets/js/copy.js'></script>    
