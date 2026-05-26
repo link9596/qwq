@@ -366,7 +366,8 @@ width: 49.66%;
   width: 100px;
   height: 100px;
   cursor: pointer;
-  position: fixed;bottom: 15px;left:-50px
+  position: fixed;bottom: 15px;left:-50px;
+  user-select: none;
 }
 .card .box .fill {
   width: 100px;
