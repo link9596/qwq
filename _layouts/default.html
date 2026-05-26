@@ -227,14 +227,7 @@
     function handleTouch() {
       count++;
       if (countSpan) countSpan.textContent = count;
-      localStorage.setItem(STORAGE_KEY, count);
-
-
-      funnyCard.style.transform = 'scale(0.98)';
-      setTimeout(() => {
-        funnyCard.style.transform = '';
-      }, 150);
-      
+      localStorage.setItem(STORAGE_KEY, count);     
 
       if (bubble) {
         bubble.style.opacity = '0.6';
@@ -249,7 +242,7 @@
 
     funnyCard.style.cursor = 'pointer';
     
-    console.log('滑稽摸摸计数器已启动，当前计数：', count);
+    console.log('计数器已启动，当前计数：', count);
   }
 
   if (document.readyState === 'loading') {
