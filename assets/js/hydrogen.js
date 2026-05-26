@@ -1,5 +1,5 @@
 // funny-counter.js
-// 全局摸摸计数器 - 兼容 InstantClick 的独立模块
+// 全局摸摸计数器 - 兼容 InstantClick 的独立模块（带重试机制）
 
 (function() {
   // 防止重复初始化
@@ -7,7 +7,7 @@
   window._funnyCounterInitialized = true;
 
   // 全局配置
-  const API_BASE = 'https://funny-api.969608.xyz';   // 你的自定义域名
+  const API_BASE = 'https://funny-api.969608.xyz';
   const COMMIT_DELAY = 2000;
   const MAX_DELTA = 800;
   const MAX_PENDING = 800;
@@ -32,7 +32,12 @@
   let textSpan = null;
   let bubble = null;
 
-  // 辅助函数
+  // 重试相关
+  let initRetryCount = 0;
+  const MAX_RETRY = 10;      // 最多重试 10 次
+  const RETRY_DELAY = 150;   // 每次重试间隔 150ms
+
+  // 辅助函数（保持不变）
   async function fetchGlobalCount() {
     try {
       const res = await fetch(`${API_BASE}/count`);
@@ -277,16 +282,25 @@
     }
   });
 
-  // 核心初始化函数（每次页面切换时调用）
-  function init() {
-    // 重新获取 DOM 元素（因为页面可能被 InstantClick 替换）
+  // ========== 核心初始化函数（带重试） ==========
+  function initCore() {
     funnyCard = document.querySelector('.funny');
     textSpan = document.getElementById('bubbleText');
     bubble = document.getElementById('nb');
+    
     if (!funnyCard || !textSpan || !bubble) {
-      console.warn('滑稽计数器 DOM 元素不存在，跳过初始化');
+      if (initRetryCount < MAX_RETRY) {
+        initRetryCount++;
+        console.warn(`滑稽计数器 DOM 元素未找到，${RETRY_DELAY}ms 后重试 (${initRetryCount}/${MAX_RETRY})`);
+        setTimeout(initCore, RETRY_DELAY);
+      } else {
+        console.error('滑稽计数器 DOM 元素不存在，放弃初始化。请检查页面是否包含 .funny 和 #bubbleText 和 #nb');
+      }
       return;
     }
+
+    // 重置重试计数
+    initRetryCount = 0;
 
     // 解绑旧事件（避免重复）
     funnyCard.removeEventListener('click', onFunnyClick);
@@ -326,7 +340,13 @@
     });
   }
 
-  // 暴露 init 方法供外部调用
+  // 对外暴露的 init 方法（重置重试计数后执行）
+  function init() {
+    initRetryCount = 0;
+    initCore();
+  }
+
+  // 暴露 api
   window.FunnyCounter = { init };
 
   // 自动初始化：如果 InstantClick 存在则挂载到 change 事件，否则在 DOMContentLoaded 时初始化
