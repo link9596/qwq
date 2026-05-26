@@ -230,12 +230,17 @@
         InstantClick.on('change', function() {
             setTimeout(initWaline, 50);
             loadAndInitLightbox();
+            // 重新初始化计数器
+            if (window.FunnyCounter && typeof window.FunnyCounter.init === 'function') {
+                window.FunnyCounter.init();
+            }
         });
         InstantClick.init();
     } else {
         document.addEventListener('DOMContentLoaded', function() {
             initWaline();
             loadAndInitLightbox();
+            if (window.FunnyCounter) window.FunnyCounter.init();
         });
     }
 </script>
