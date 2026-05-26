@@ -190,38 +190,72 @@
 
 <script>
 (function() {
-  function initCounter() {
-    const funnyImg = document.getElementById('funnyImg');
-    const countSpan = document.getElementById('touchCount');
-    if (!funnyImg || !countSpan) {
-      console.error('找不到滑稽图片或计数元素');
+  function initFunnyCounter() {
+    const funnyCard = document.querySelector('.card.funny');
+    if (!funnyCard) {
+      console.error('未找到 .card.funny 元素');
       return;
     }
 
+
+    let bubble = funnyCard.querySelector('.bubble');
+    if (!bubble) {
+
+      bubble = document.getElementById('nb');
+    }
+
+    let countSpan = bubble ? bubble.querySelector('#touchCount') : null;
+    if (bubble && !countSpan) {
+
+      bubble.innerHTML = '被摸了 <span id="touchCount">0</span> 次';
+      countSpan = bubble.querySelector('#touchCount');
+    } else if (!bubble) {
+
+      const newCounter = document.createElement('div');
+      newCounter.className = 'bubble';
+      newCounter.innerHTML = '被摸了 <span id="touchCount">0</span> 次';
+      funnyCard.appendChild(newCounter);
+      bubble = newCounter;
+      countSpan = bubble.querySelector('#touchCount');
+    }
+
+
     const STORAGE_KEY = 'funny_touch_count';
     let count = parseInt(localStorage.getItem(STORAGE_KEY), 10) || 0;
-    countSpan.textContent = count;
+    if (countSpan) countSpan.textContent = count;
 
     function handleTouch() {
       count++;
-      countSpan.textContent = count;
+      if (countSpan) countSpan.textContent = count;
       localStorage.setItem(STORAGE_KEY, count);
 
-      // 点击动画
-      funnyImg.style.transform = 'rotateY(180deg) scale(0.95)';
+
+      funnyCard.style.transform = 'scale(0.98)';
       setTimeout(() => {
-        funnyImg.style.transform = 'rotateY(180deg) scale(1)';
+        funnyCard.style.transform = '';
       }, 150);
+      
+
+      if (bubble) {
+        bubble.style.opacity = '0.6';
+        setTimeout(() => {
+          bubble.style.opacity = '1';
+        }, 150);
+      }
     }
 
-    funnyImg.addEventListener('click', handleTouch);
+    funnyCard.addEventListener('click', handleTouch);
+    
+
+    funnyCard.style.cursor = 'pointer';
+    
+    console.log('滑稽摸摸计数器已启动，当前计数：', count);
   }
 
-  // 确保 DOM 加载完成
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCounter);
+    document.addEventListener('DOMContentLoaded', initFunnyCounter);
   } else {
-    initCounter();
+    initFunnyCounter();
   }
 })();
 </script>
