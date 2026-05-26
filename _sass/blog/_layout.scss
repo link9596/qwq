@@ -363,36 +363,20 @@ width: 49.66%;
 }
 
 /* ===== 滑稽 ===== */
-.funny {
-  position: fixed;
-  bottom: 15px;
-  left: -50px;
-  cursor: grab;
-  transition: transform 0.3s ease;
+/* 文字淡入淡出动画 */
+@keyframes fadeText {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.bubble span {
+  display: inline-block;
+  animation: fadeText 0.4s ease-out;
 }
 
-.funny:hover {
-  transform: translateX(50px);
-}
-
-.funny:active {
-  cursor: grabbing;
-}
-
-
-.funny img {
-  width: 100px;
-  height: 100px;
-  display: block;
-  transform: rotateY(180deg);
-  -webkit-user-drag: none;
-  user-drag: none;
-  pointer-events: auto;
-}
-
+/* 气泡初始位置和悬停移动 */
 .bubble {
   position: fixed;
-  bottom: 15px;
+  bottom: 30px;
   left: -233px;
   max-width: 233px;
   padding: 15px;
@@ -401,14 +385,34 @@ width: 49.66%;
   color: #fff;
   box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
   word-break: break-all;
-  transition: transform 0.3s ease;
+  transition: left 0.5s ease;
   pointer-events: none;
+  z-index: 9998;
 }
-
-
 .funny:hover ~ .bubble,
 .funny:hover + .bubble {
-  transform: translateX(283px);
+  left: 110px;
+}
+.funny {
+  position: fixed;
+  bottom: 15px;
+  left: -50px;
+  cursor: grab;
+  transition: transform 0.5s ease;
+  z-index: 9999;
+}
+.funny:hover {
+  transform: translateX(50px);
+}
+.funny:active {
+  cursor: grabbing;
+}
+.funny img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  transform: rotateY(180deg);
+  -webkit-user-drag: none;
 }
   .site-nav .page-link:before {
     display: none;//取消pglink下划线
