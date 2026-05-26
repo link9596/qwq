@@ -362,57 +362,54 @@ width: 49.66%;
 	color:#888;
 }
 
-.card .box {
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-  position: fixed;bottom: 15px;left:-50px;
-  user-select: none;
-}
-.card .box .fill {
-  width: 100px;
-  height: 100px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.translateX:hover .fill {
-  -webkit-transform: translateX(50px);
-  transform: translateX(50px);
-  position: fixed;bottom: 15px;left:-50px;
-}
-
-.cardA .boxA {
-  width: 150px;
-  height: 80px;
-  cursor: pointer;
-  position: fixed;bottom: 15px;left:-50px
-}
-.cardA .boxA .fillA {
-  width: 150px;
-  height: 80px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.translateA:hover .fillA {
-  -webkit-transform: translateX(50px);
-  transform: translateX(390px);
-  position: fixed;bottom: 15px;left:-50px;
-}
-/* 滑稽气泡 */
-.bubble{
-  -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
-          box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
-  word-break: break-all;
+/* ===== 滑稽 ===== */
+.funny {
   position: fixed;
-  left:-233px;
-  max-width:233px;
-  border-radius:10px;
-  padding:15px;
-  color:#fff;
-  background:#151515;
-  }
+  bottom: 15px;
+  left: -50px;
+  cursor: grab;
+  transition: transform 0.3s ease;
+}
+
+.funny:hover {
+  transform: translateX(50px);
+}
+
+.funny:active {
+  cursor: grabbing;
+}
+
+
+.funny img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  transform: rotateY(180deg);
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: auto;
+}
+
+.bubble {
+  position: fixed;
+  bottom: 15px;
+  left: -233px;
+  max-width: 233px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #151515;
+  color: #fff;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+  word-break: break-all;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+
+.funny:hover ~ .bubble,
+.funny:hover + .bubble {
+  transform: translateX(283px);
+}
   .site-nav .page-link:before {
     display: none;//取消pglink下划线
 }
