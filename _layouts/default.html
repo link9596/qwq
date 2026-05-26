@@ -173,64 +173,6 @@
   被摸了 <span id="touchCount">0</span> 次
 </div>
 
-<script>
-(function() {
-  function initFunnyCounter() {
-    const funnyCard = document.querySelector('.funny');
-    if (!funnyCard) {
-      console.error('未找到 .funny 元素');
-      return;
-    }
-
-
-    let bubble = funnyCard.querySelector('.bubble');
-    if (!bubble) {
-
-      bubble = document.getElementById('nb');
-    }
-
-    let countSpan = bubble ? bubble.querySelector('#touchCount') : null;
-    if (bubble && !countSpan) {
-
-      bubble.innerHTML = '被摸了 <span id="touchCount">0</span> 次';
-      countSpan = bubble.querySelector('#touchCount');
-    } else if (!bubble) {
-
-      const newCounter = document.createElement('div');
-      newCounter.className = 'bubble';
-      newCounter.innerHTML = '被摸了 <span id="touchCount">0</span> 次';
-      funnyCard.appendChild(newCounter);
-      bubble = newCounter;
-      countSpan = bubble.querySelector('#touchCount');
-    }
-
-
-    const STORAGE_KEY = 'funny_touch_count';
-    let count = parseInt(localStorage.getItem(STORAGE_KEY), 10) || 0;
-    if (countSpan) countSpan.textContent = count;
-
-    function handleTouch() {
-      count++;
-      if (countSpan) countSpan.textContent = count;
-      localStorage.setItem(STORAGE_KEY, count);     
-    }
-
-    funnyCard.addEventListener('click', handleTouch);
-    
-
-    funnyCard.style.cursor = 'pointer';
-    
-    console.log('计数器已启动，当前计数：', count);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFunnyCounter);
-  } else {
-    initFunnyCounter();
-  }
-})();
-</script>
-
 <script src='/assets/js/hydrogen.js'></script>    
             {% if site.PJAX %}
 <script src="/assets/js/instantclick.min.js" data-no-instant></script>
@@ -238,9 +180,8 @@
     import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 
     let walineInstance = null;
-    let lightboxLoaded = false;   // 标记灯箱脚本是否已加载过
+    let lightboxLoaded = false;
 
-    // 初始化 Waline 评论
     function initWaline() {
         const container = document.querySelector('#waline');
         if (container) {
@@ -260,21 +201,14 @@
         }
     }
 
-    // 初始化灯箱
     function loadAndInitLightbox() {
-        // 只对包含文章主体的页面启用
         if (!document.querySelector('#main-article')) return;
-
         if (typeof Lightbox !== 'undefined') {
-            // 已加载直接重新初始化
             Lightbox.init('#main-article img');
             return;
         }
-
-        // 动态加载脚本
-        if (lightboxLoaded) return; // 防止重复请求
+        if (lightboxLoaded) return;
         lightboxLoaded = true;
-
         const script = document.createElement('script');
         script.src = '/assets/js/lightbox.min.js';
         script.onload = function() {
@@ -286,7 +220,7 @@
         };
         script.onerror = function() {
             console.error('Lightbox 脚本加载失败');
-            lightboxLoaded = false; // 允许重试
+            lightboxLoaded = false;
         };
         document.head.appendChild(script);
     }
@@ -294,14 +228,11 @@
     // InstantClick 处理
     if (typeof InstantClick !== 'undefined') {
         InstantClick.on('change', function() {
-            // 初始化 Waline
             setTimeout(initWaline, 50);
-            // 重设灯箱
             loadAndInitLightbox();
         });
         InstantClick.init();
     } else {
-        // 非 InstantClick 环境
         document.addEventListener('DOMContentLoaded', function() {
             initWaline();
             loadAndInitLightbox();
