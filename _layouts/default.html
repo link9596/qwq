@@ -228,13 +228,6 @@
       count++;
       if (countSpan) countSpan.textContent = count;
       localStorage.setItem(STORAGE_KEY, count);     
-
-      if (bubble) {
-        bubble.style.opacity = '0.6';
-        setTimeout(() => {
-          bubble.style.opacity = '1';
-        }, 150);
-      }
     }
 
     funnyCard.addEventListener('click', handleTouch);
