@@ -29,7 +29,7 @@ icon: /theme/icon/about.svg
 ## #我的项目
 
 以下是我开发维护的开源项目，如果你喜欢，可以给我点一个star～
-
+<div class="github-cards-grid">
 <div data-github-repo="link9596/jekyll-theme-Hydrogen"></div>
 <div data-github-repo="link9596/typecho-theme-Protium"></div>
 <div data-github-repo="link9596/Github-Card"></div>
@@ -38,6 +38,7 @@ icon: /theme/icon/about.svg
 <div data-github-repo="link9596/LightboX"></div>
 <div data-github-repo="link9596/typecho-LightboX"></div>
 <div data-github-repo="link9596/PictoLab"></div>
+</div>
 
 ## #Catch me
 
