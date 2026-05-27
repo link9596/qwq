@@ -26,6 +26,19 @@ icon: /theme/icon/about.svg
 
 感谢以上支持～
 
+## #我的项目
+
+以下是我开发维护的开源项目，如果你喜欢，可以给我点一个star～
+
+<div data-github-repo="link9596/jekyll-theme-Hydrogen"></div>
+<div data-github-repo="link9596/typecho-theme-Protium"></div>
+<div data-github-repo="link9596/Github-Card"></div>
+<div data-github-repo="link9596/WebLivePhoto"></div>
+<div data-github-repo="link9596/Snackbar"></div>
+<div data-github-repo="link9596/LightboX"></div>
+<div data-github-repo="link9596/typecho-LightboX"></div>
+<div data-github-repo="link9596/PictoLab"></div>
+
 ## #Catch me
 
 你可以通过以下方式找到我
