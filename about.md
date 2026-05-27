@@ -20,7 +20,9 @@ icon: /theme/icon/about.svg
 图床: [IMGCHR](https://imgchr.com/)<br>
 由[Waline+Vercel](https://waline.js.org/guide/deploy/vercel.html)提供评论系统及后端支持<br>
 
-
+<script>
+  window.GithubCardProxy = 'https://gh-card.969608.xyz/';
+</script>
 <script src="/assets/js/github-card.js"></script>
 
 <div data-github-repo="link9596/hydrogen"></div>
