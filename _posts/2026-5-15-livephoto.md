@@ -6,6 +6,8 @@ tags: skill
 
 因为苹果官方给的LivePhotoKit JS实在是台阶吧难用![](/exp/wry.gif)，于是乎自己动手写了一个...
 
+## ~~我chovy，你们做组件给我做好了呀~~
+
 ![](https://files.atlinker.cn/img-151409-9760.png)
 
 :point_right: [仓库地址](https://github.com/link9596/WebLivePhoto) :point_right: <a href="https://atlinker.cn/demo/livephoto.html" target="_blank">演示页</a>
@@ -29,7 +31,7 @@ tags: skill
 
 最开始想着看看LivePhotoKit的源码，看看为什么同样的H.264视频一个能播，另一个又不能播，可是看了源码发现，官方的实现实在是太复杂了，看的让人眼花缭乱，而且组件好像很久也没人维护了。
 
-## ~~我chovy，你们做组件给我做好了呀~~
+## ~~沃德发~~
 
 凭什么浏览器能放的视频，用这个组件又无法播放了？所以我决定放弃LivePhotoKit，决定自己写一个，以最简单的方式实现：一张图片和一个视频叠一起，长按让图片淡出，视频淡入，同时播放视频，结束后视频淡出图片淡入，于是就有了这个Web.LivePhoto组件。
 
