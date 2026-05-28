@@ -55,6 +55,8 @@ Github: [link9596](https://github.com/link9596)
 
 摄影相册: [菲林小铺](https://film.atlinker.cn)
 
+RSS：[订阅本站](https://atlinker.cn/feed/feed.xml)
+
 ## #关于本站
 
 本站使用主题: Hydrogen
