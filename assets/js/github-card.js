@@ -32,7 +32,9 @@
 
     const CARD_STYLE = `
         .github-repo-card {
-            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             border: 1px solid var(--card-border);
             border-radius: 8px;
