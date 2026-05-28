@@ -18,11 +18,7 @@ layout: default
 {% if page.vc == 't' %}
   <link rel="stylesheet" href="/comment/waline.css" />
   <div id="waline"></div>
-  {% comment %}
-  <script src="/comment/av-min.js" data-no-instant></script>
-  <script src="/comment/valine.js" data-no-instant></script>
-  <div id="comments"></div>
-  {% endcomment %}
+
   {% include waline.html %}
   {% include scripts.html %}
 {% endif %}
