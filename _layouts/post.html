@@ -22,43 +22,12 @@ layout: default
     {% include tags_list.html tags=page.tags tag_count=page.tags.size %}
 
 <hr/>
-{% comment %}  
-<!-- LiveRe -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8zMjY0Mi85MjAz">
-  <script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-  </script>
-<noscript> 为正常使用评论功能请激活JavaScript</noscript>
-</div>
-<!-- end LiveRe -->
-<script src="/comment/av-min.js"></script>
-  <script src="/comment/Valine.min.js"></script>
-{% endcomment %}
-
-  {% if site.show_comment %}
-  123333
-  {% endif %}
 
   
   {% if site.data.social.valine_comment.enable  == true %}
   <link rel="stylesheet" href="/comment/waline.css" />
   <div id="waline"></div>
-
-  {% comment %}
-  <script src="/comment/av-min.js" data-no-instant></script>
-  <script src="/comment/valine.js" data-no-instant></script>
-  <div id="comments"></div>
-  {% endcomment %}
+  
   {% include waline.html %}
   {% endif %}
   {% include scripts.html %}
