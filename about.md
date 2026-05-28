@@ -31,7 +31,7 @@ icon: /theme/icon/about.svg
 
 ## #我的项目
 
-以下是我开发维护的开源项目，如果你喜欢，可以给我点一个star～
+以下是我开发维护的开源项目，如果你喜欢，欢迎给我点一个star～
 <div class="github-cards-grid">
 <div data-github-repo="link9596/jekyll-theme-Hydrogen"></div>
 <div data-github-repo="link9596/typecho-theme-Protium"></div>
