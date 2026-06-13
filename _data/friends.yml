@@ -62,11 +62,11 @@
   describe: SatyLeo的自留地。
   skin: /theme/skin/skin4.png
   
-- name: Eltrac's Track
-  image: https://avatars.githubusercontent.com/u/45323514?v=4
-  url: https://guhub.cn/
-  describe: All for one，one for all.
-  skin: /theme/skin/skin5.png
+#- name: Eltrac's Track
+#  image: https://avatars.githubusercontent.com/u/45323514?v=4
+#  url: https://guhub.cn/
+#  describe: All for one，one for all.
+#  skin: /theme/skin/skin5.png
   
 - name: OMG's Blog
   image: https://ohmyga.cn/headimg.png
