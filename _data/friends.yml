@@ -143,6 +143,12 @@
   describe: Protect What You Love.
   skin: /theme/skin/skin5.png
 
+- name: WineRed
+  image: https://winered-0v0.com/assets/images/avatar.png
+  url: https://winered-0v0.com/
+  describe: 尽管未来是当下每一刻的产物，明日依然不属于今日。
+  skin: /theme/skin/skin3.png
+
 # - name: 轻惋导航
 #  image: /avatar/default.png
 #  url: https://www.chainwon.com/
