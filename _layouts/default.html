@@ -182,9 +182,64 @@
     let walineInstance = null;
     let lightboxLoaded = false;
 
+    // ============================================
+    // 头像 onerror 自动修复
+    // ============================================
+    function fixAvatarError() {
+        // 备用头像地址模板
+        const FALLBACK_URL = 'https://lkin.cn/cat/?uid={hash}';
+
+        // 从 src 中提取 32 位哈希
+        function extractHash(url) {
+            const match = url.match(/avatar\/([a-f0-9]{32})/i);
+            return match ? match[1] : null;
+        }
+
+        // 处理单个图片加载失败
+        function handleAvatarError(e) {
+            const img = e.target;
+            if (img.dataset.fallbackAttempted) return;
+            img.dataset.fallbackAttempted = 'true';
+
+            const hash = extractHash(img.src);
+            if (hash) {
+                img.src = FALLBACK_URL.replace('{hash}', hash);
+            } else {
+                img.src = 'https://lkin.cn/cat/?uid=default'; // 无法提取哈希时
+            }
+        }
+
+        // 绑定 onerror 到单个 img
+        function bindErrorHandler(img) {
+            if (img.dataset.errorBound) return;
+            img.dataset.errorBound = 'true';
+            // 如果图片已经加载失败（complete 且宽高为 0）触发 fallback
+            if (img.complete && img.naturalWidth === 0) {
+                handleAvatarError({ target: img });
+            } else {
+                img.onerror = handleAvatarError;
+            }
+        }
+
+        // 处理当前已存在的头像
+        document.querySelectorAll('.wl-user-avatar').forEach(bindErrorHandler);
+
+        // 监听未来动态插入的头像
+        const observer = new MutationObserver(() => {
+            document.querySelectorAll('.wl-user-avatar:not([data-error-bound])').forEach(bindErrorHandler);
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // 保存 observer 以便可能的清理
+        window.__avatarObserver = observer;
+    }
+
+    // ============================================
+    // 初始化 Waline ============================================
     function initWaline() {
         const container = document.querySelector('#waline');
         if (container) {
+            // 如果已存在实例则销毁
             if (walineInstance && typeof walineInstance.destroy === 'function') {
                 walineInstance.destroy();
             }
@@ -195,12 +250,22 @@
                 search: false,
                 placeholder: 'Talkk！',
                 serverURL: 'https://social.atlinker.cn',
-                emoji: ['//demo.atlinker.cn/emoji/emojis/weibo', '//demo.atlinker.cn/emoji/emojis/alus', '//demo.atlinker.cn/emoji/emojis/tieba'],
+                emoji: [
+                    '//demo.atlinker.cn/emoji/emojis/weibo',
+                    '//demo.atlinker.cn/emoji/emojis/alus',
+                    '//demo.atlinker.cn/emoji/emojis/tieba'
+                ],
                 path: window.location.pathname,
             });
+
+            // 等待 Waline 渲染出头像后执行修复
+            setTimeout(fixAvatarError, 150);
         }
     }
 
+    // ============================================
+    // Lightbox 加载
+    // ============================================
     function loadAndInitLightbox() {
         if (!document.querySelector('#main-article')) return;
         if (typeof Lightbox !== 'undefined') {
@@ -215,7 +280,7 @@
             if (typeof Lightbox !== 'undefined') {
                 Lightbox.init('#main-article img');
             } else {
-                console.warn('Lightbox 加载成功但对象不存在，请检查脚本');
+                console.warn('Lightbox 加载成功但对象不存在');
             }
         };
         script.onerror = function() {
@@ -225,12 +290,13 @@
         document.head.appendChild(script);
     }
 
-    // InstantClick 处理
+    // ============================================
+    // InstantClick 或普通 DOM 加载
+    // ============================================
     if (typeof InstantClick !== 'undefined') {
         InstantClick.on('change', function() {
             setTimeout(initWaline, 50);
             loadAndInitLightbox();
-            // 重新初始化计数器
             if (window.FunnyCounter && typeof window.FunnyCounter.init === 'function') {
                 window.FunnyCounter.init();
             }
