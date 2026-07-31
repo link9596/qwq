@@ -22,4 +22,4 @@ Gravatar总是被墙？网站访客没有头像？用喵头像把他们~~全部�
 
 [https://cat.959608.xyz/cat?uid=0](https://cat.959608.xyz/cat?uid=0)
 
-具体文档可以参考[喵头像](https://lkin.cn/cat/doc)
+具体文档可以参考[喵头像](https://lkin.cn/cat/)
