@@ -187,7 +187,7 @@
     // ============================================
     function fixAvatarError() {
         // 备用头像地址模板
-        const FALLBACK_URL = 'https://lkin.cn/cat/?uid={hash}';
+        const FALLBACK_URL = 'https://cat.959608.xyz/cat/?uid={hash}';
 
         // 从 src 中提取 32 位哈希
         function extractHash(url) {
@@ -205,7 +205,7 @@
             if (hash) {
                 img.src = FALLBACK_URL.replace('{hash}', hash);
             } else {
-                img.src = 'https://lkin.cn/cat/?uid=default'; // 无法提取哈希时
+                img.src = 'https://cat.959608.xyz/cat/?uid=default'; // 无法提取哈希时
             }
         }
 
