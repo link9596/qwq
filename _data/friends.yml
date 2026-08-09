@@ -149,6 +149,18 @@
   describe: 尽管未来是当下每一刻的产物，明日依然不属于今日。
   skin: /theme/skin/skin3.png
 
+- name: Bai’Blog
+  image: https://baiblog.vip/images/5.png
+  url: https://baiblog.vip/
+  describe: Actions speak louder than words
+  skin: /theme/skin/skin4.png
+
+- name: MingBlog
+  image: https://mingblog.site/icons/icon-512.png
+  url: https://mingblog.site/
+  describe: 记录日常生活、城市影像、旅行与观察，以及认真看过、读过和听过的作品
+  skin: /theme/skin/skin4.png
+
 # - name: 轻惋导航
 #  image: /avatar/default.png
 #  url: https://www.chainwon.com/
