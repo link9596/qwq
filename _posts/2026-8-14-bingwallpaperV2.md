@@ -8,8 +8,8 @@ tags: Skill
 
 ## #必应壁纸 API v2 使用指南
 
-- **API 地址**：[https://bing.lkin.cn/](https://bing.lkin.cn/)
-- **所有接口均支持跨域（CORS）**
+- API 地址：[https://bing.lkin.cn/](https://bing.lkin.cn/)
+- 所有接口均支持跨域（CORS）
 - 默认返回国内版数据，支持添加 `region=cn` 参数来切换国内版
 - 国内版：[https://bing.lkin.cn/?region=cn](https://bing.lkin.cn/?region=cn)
 
@@ -41,7 +41,7 @@ tags: Skill
 
 接口提供了 `cors` 参数用于请求跨域代理的图片，来允许 JS `fetch` 处理或其他必须要求跨域的场景，请加上 `cors=true` 参数来获取允许跨域的图片
 
-GET [https://bing.lkin.cn/wallpaper?cors=true](https://bing.lkin.cn/wallpaper?cors=true)
+> GET [https://bing.lkin.cn/wallpaper?cors=true](https://bing.lkin.cn/wallpaper?cors=true)
 
 返回的图片会带上允许跨域的头，但会拖慢加载速度，因为图片要先从Bing下载到我的服务器，再二次分发
 
